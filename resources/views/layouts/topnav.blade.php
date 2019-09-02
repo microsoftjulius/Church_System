@@ -6,10 +6,7 @@
     </div>
 
     <ul class="nav navbar-nav">
-        <li class="">
-        <h1 style="text-transform:capitalize;" class="">NWSC APA Management System</h1>
-        </li>
-        <li class="" style="margin-left:400px" >
+        <li class="" style="margin-left:900px" >
         <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
             <img src="images/img.jpg" alt=""><span style="text-transform:capitalize">{{ auth()->user()->name }}</span>
             <span class=" fa fa-angle-down"></span>

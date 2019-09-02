@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-    <title>National Water And Sewage Co-operation | </title>
+    <title>Pahappa-church </title>
 
     <!-- Bootstrap -->
     <link href="{{ asset('bootstrap/vendors/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
