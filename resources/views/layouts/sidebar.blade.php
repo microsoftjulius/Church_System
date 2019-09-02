@@ -26,6 +26,8 @@
         <h3>General</h3>
         <ul class="nav side-menu">
         <li><a href='/home'><i class="fa fa-home"></i> Home </a></li>
+        <li><a href='/church'><i class="glyphicon glyphicon-book"></i> Churches </a></li>
+        <li><a href='/create-user'><i class="glyphicon glyphicon-user"></i> Create User </a></li>
         </ul>
     </div>
     </div>

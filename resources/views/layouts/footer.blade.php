@@ -1,6 +1,6 @@
 <footer>
         <div class="pull-right">
-          Designed by Kekirunga <a href="">Jean</a>
+          Designed by Pahappa <a href="">IT Department</a>
         </div>
         <div class="clearfix"></div>
 </footer>
