@@ -26,8 +26,14 @@
         <h3>General</h3>
         <ul class="nav side-menu">
         <li><a href='/home'><i class="fa fa-home"></i> Home </a></li>
-        <li><a href='/church'><i class="glyphicon glyphicon-book"></i> Churches </a></li>
-        <li><a href='/create-user'><i class="glyphicon glyphicon-user"></i> Create User </a></li>
+        <li><a href='/church'><i class="fa fa-book"></i> Churches </a></li>
+        <li><a href='/create-user'><i class="fa fa-user"></i> Create User </a></li>
+        <li><a href='/contacts' data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-phone"></i> Contacts</a>
+        <ul class="collapse list-unstyled">
+            <li class="mr-2"><a href='/manager'><i class="fa fa-phone"></i> Manager </a></li>
+            <li><a href='/groups'><i class="fa fa-computer"></i> Groups </a></li>
+        </ul>
+        </li>  
         </ul>
     </div>
     </div>

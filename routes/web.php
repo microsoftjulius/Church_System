@@ -23,3 +23,11 @@ Route::get('/church',function() {
 Route::get('/create-user',function() {
     return view('after_login.create-users');
 });
+
+Route::get('/contacts',function() {
+    return view('after_login.contacts');
+});
+
+Route::get('//manager',function() {
+    return view('after_login.manager');
+});

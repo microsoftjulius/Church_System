@@ -802,7 +802,7 @@ a:focus {
 }
 .nav.side-menu>li.active>a {
     text-shadow: rgba(0, 0, 0, 0.25) 0 -1px 0;
-    background: linear-gradient(#334556, #2C4257), #2A3F54;
+    background: linear-gradient(#334256, rgb(53, 89, 105)), rgb(42, 67, 84);
     box-shadow: rgba(0, 0, 0, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0.16) 0 1px 0
 }
 .navbar-brand,
@@ -837,7 +837,7 @@ a:focus {
     position: relative;
     display: block;
     padding: 10px 15px;
-    color: #34495E !important
+    color: rgb(10, 90, 136) !important
 }
 .nav>li>a:hover,
 .nav>li>a:focus {
@@ -1068,7 +1068,11 @@ h2 {
     -moz-column-break-inside: avoid;
     column-break-inside: avoid;
     opacity: 1;
-    transition: all .2s ease
+    transition: all .2s ease;
+    -webkit-transition: all .2s ease;
+    -moz-transition: all .2s ease;
+    -ms-transition: all .2s ease;
+    -o-transition: all .2s ease;
 }
 .x_title {
     border-bottom: 2px solid #E6E9ED;
