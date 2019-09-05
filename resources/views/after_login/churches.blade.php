@@ -32,47 +32,21 @@
                 <!-- /top navigation -->
                 <!-- page content -->
                 <div class="right_col" role="main">
-                <div class="row">
-                        <div class="col-lg-12">
-                            <div class="">
-                                <div class="row top_tiles">
-                                    <div class="animated flipInY col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                        <div class="tile-stats">
-                                            <div class="icon"><i class="fa fa-home"></i></div>
-                                            <div class="count">2</div>
-                                            <h3>Churches</h3>
-                                            <p>Total Churches</p>
-                                        </div>
-                                    </div>
-                                    <div class="animated flipInY col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                        <div class="tile-stats">
-                                            <div class="icon"><i class="fa fa-users"></i></div>
-                                            <div class="count">2</div>
-                                            <h3>Users</h3>
-                                            <p>Total Users</p>
-                                        </div>
-                                    </div>
-                                    <div class="animated flipInY col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                        <div class="tile-stats">
-                                            <div class="icon"><i class="fa fa-phone"></i></div>
-                                            <div class="count">2</div>
-                                            <h3>Contacts</h3>
-                                            <p>Total Contacts</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                <form  class="pull-right">
+                    @include('layouts.message')
+                <form  class="pull-right" action="/search-church" method="POST">
+                    @csrf
                     <div class="form-group row col-lg-12">
                         <label for="churchName" class="col-sm-2 col-form-label">Church</label>
                         <div class="col-sm-5">
                             <input type="text" class="form-control" name="church_name" placeholder="enter church name"required>
                         </div>
-                        <button type="submit" class="btn btn-primary">Create Church</button>
-                    </div> 
+                        <div class="col-sm-3">
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Church</button>
+                        </div>
+                        <div class="col-sm-2">
+                            <a href="/createchurches"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> Church</button></a>
+                        </div>
+                    </div>
                 </form>
                 <!--table -->
                 <div class="row">
@@ -81,47 +55,28 @@
                                 <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
-                                        <th class="th-sm">ChurchName
+                                        <th class="th-sm">No.</th>
+                                        <th class="th-sm">Name
                                         </th>
-                                        <th class="th-sm">UserName
-                                        </th>
-                                        <th class="th-sm">Email
-                                        </th>
-                                        <th class="th-sm">Description
-                                        </th>
-                                        <th class="th-sm">Created At
-                                        </th>
-                                        <th class="th-sm">Actions
-                                        </th>
+                                        <th class="th-sm">Database Name</th>
+                                        <th class="th-sm">Database Url</th>
+                                        <th class="th-sm">Church Logo</th>
+                                        <th class="th-sm"> Options</th>
                                     </tr>
                                 </thead>
-                                <tbody> 
-                                <tr>
-                                    <td>St Augustine</td>
-                                    <td>Doe</td>
-                                    <td>john@example.com</td>
-                                    <td>Caters all christians</td>
-                                    <td>03/09/2019</td>
-                                    <td>Delete</td>
-                                </tr>
-                                <tr>
-                                    <td>St Francis</td>
-                                    <td>Moe</td>
-                                    <td>mary@example.com</td>
-                                    <td>all christians</td>
-                                    <td>03/09/2019</td>
-                                    <td>Edit</td>
-                                </tr>
-                                <tr>
-                                    <td>St Paul</td>
-                                    <td>Dooley</td>
-                                    <td>july@example.com</td>
-                                    <td>christians center</td>
-                                    <td>03/09/2019</td>
-                                    <td>Delete</td>
-                                </tr>  
-                                </tbody>    
-                                </table>    
+                                <tbody>
+                                    @foreach ($churches as $church)
+                                        <tr>
+                                            <td>4</td>
+                                            <td>{{ $church->church_name }}</td>
+                                            <td>{{ $church->database_name }}</td>
+                                            <td>{{ $church->database_url }}</td>
+                                            <td>{{ $church->attached_logo }}</td>
+                                            <td><a href="/church/{{$church->id}}">create / View users</a></td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                                </table>
                             </section>
                         </div>
                     </div>

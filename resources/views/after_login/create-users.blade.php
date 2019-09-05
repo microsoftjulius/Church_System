@@ -38,17 +38,13 @@
                             <!-- Default form login -->
                         <!-- Material form register -->
                             <div class="card" style=" border:1px solid black; padding :1em">
-
-                            <h5 class="card-header info-color white-text text-center py-4">
-                                <strong>Sign up</strong>
-                            </h5>
-
                             <!--Card content-->
                             <div class="card-body px-lg-10 pt-0"></div>
                                 <!-- Form -->
-                                <form method="POST" action="{{ route('register') }}" class="text-center" style="color: #757575;">
+                                <form method="POST" action="/create-user" class="text-center" style="color: #757575;">
                                   @csrf
-                                  
+                                  @foreach($all_churches as $all_church)
+                                    <input type="hidden" name="church_id" value="{{ $all_church->id }}">
                                         <div class="form-group row">
                                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
@@ -106,9 +102,11 @@
                                                 </button>
                                             </div>
                                         </div>
-                                    </form>  
+
+                                  @endforeach
+                                    </form>
                                 <!-- Form -->
-                    
+
                             </div>
 
                             </div>
