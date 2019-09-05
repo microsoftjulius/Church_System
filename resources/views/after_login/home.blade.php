@@ -39,7 +39,7 @@
                                     <div class="animated flipInY col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                         <div class="tile-stats">
                                             <div class="icon"><i class="fa fa-home"></i></div>
-                                            <div class="count">2</div>
+                                            <div class="count">{{ auth()->user()->count_churches() }}</div>
                                             <h3>Churches</h3>
                                             <p>Registered Churches</p>
                                         </div>
@@ -47,7 +47,7 @@
                                     <div class="animated flipInY col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                         <div class="tile-stats">
                                             <div class="icon"><i class="fa fa-users"></i></div>
-                                            <div class="count">2</div>
+                                            <div class="count">{{ auth()->user()->count_users_in_church() }}</div>
                                             <h3>Users</h3>
                                             <p>Churches With Users</p>
                                         </div>
@@ -65,45 +65,8 @@
                         </div>
                     </div>
                     <!--Setupform-->
-                    
-                    <form class="col-md-offset-3 col-sm-6" style="border: 1px solid black ;border-width: 4px 4px 4px 4px; padding :1em; border: ridge #ccc; background-color:white;">
-                    <div class="panel-heading text-center"><h4>Please Enter Church Details</h4></div>
-                            <div class="form-group row md-form">
-                                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Name</label>
-                                <div class="col-sm-10">
-                                <input type="text" class="form-control form-control-sm" name="name" id="materialFormCardNameEx" placeholder="Enter Church name">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="colFormLabel" class="col-sm-2 col-form-label">Database</label>
-                                <div class="col-sm-10">
-                                <input type="text" class="form-control" id="colFormLabel" name="database_name" placeholder="Enter Database name">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">URL</label>
-                                <div class="col-sm-10">
-                                <input type="text" class="form-control form-control-lg" name="url" id="colFormLabelLg" placeholder="Enter Your url">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Password</label>
-                                <div class="col-sm-10">
-                                <input type="password" class="form-control form-control-lg" name="password" id="colFormLabelLg" placeholder="xxxxxxxxxxxxxxx">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Logo</label>
-                                <div class="col-sm-10">
-                                <input type="text" class="form-control form-control-lg" name="logo" id="colFormLabelLg" placeholder="attach logo">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="text-center py-4 mt-3 ">
-                                <button type="submit" class="btn btn-primary">Save</button>
-                                </div>
-                            </div>
-                        </form>
+
+
 
                     <div class="row">
                     </div>

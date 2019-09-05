@@ -27,14 +27,14 @@
         <ul class="nav side-menu">
         <li><a href='/home'><i class="fa fa-home"></i> Home </a></li>
         <li><a href='/church'><i class="fa fa-book"></i> Churches </a></li>
-        <li><a href='/create-user'><i class="fa fa-user"></i> Create User </a></li>
+        {{--  <li><a href="/createchurches"><i class="fa fa-plus"></i>Add new Church</a></li>  --}}
         <li><a href='/contacts' data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-phone"></i> Contacts</a>
         <ul class="collapse list-unstyled">
             <li class="text-center text-white py-4"><a href='/form'><i class="fa fa-table"></i> Form </a></li>
             <li class="text-center text-white p-5"><a href='/groups'><i class="fa fa-group"></i> Groups </a></li>
             <li class="text-center text-white"><a href='/manager'><i class="fa fa-spinner"></i> Manager </a></li>
         </ul>
-        </li>  
+        </li>
         </ul>
     </div>
     </div>

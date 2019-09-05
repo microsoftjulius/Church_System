@@ -39,11 +39,16 @@ class User extends Authenticatable
     ];
 
     public function count_churches(){
-        $count = churches::where('church_name','!=','Super_admin')->get()->count();
+        $count = churches::where('id','>',1)->get()->count();
         return $count;
     }
 
     public function count_users_in_church(){
+        $count = User::where('church_id',Auth::user()->id)->get()->count();
+        return $count;
+    }
+
+    public function count_registered_contacts(){
         $count = User::where('church_id',Auth::user()->id)->get()->count();
         return $count;
     }
