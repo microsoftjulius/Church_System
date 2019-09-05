@@ -28,6 +28,10 @@ Route::get('/contacts',function() {
     return view('after_login.contacts');
 });
 
-Route::get('//manager',function() {
+Route::get('/manager',function() {
     return view('after_login.manager');
+});
+
+Route::get('/form',function() {
+    return view('after_login.form');
 });
