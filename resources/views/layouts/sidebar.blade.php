@@ -27,16 +27,21 @@
         <ul class="nav side-menu">
         <li><a href='/home'><i class="fa fa-home"></i> Home </a></li>
         <li><a href='/church'><i class="fa fa-book"></i> Churches </a></li>
+<<<<<<< HEAD
         <li><a><i class="fa fa-envelope"></i> Messages <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
                 <li><a href="/sent-messages">Sent Messages</a></li>
             </ul>
         </li>
+=======
+        <li><a href='/add-user'><i class="fa fa-user"></i> Add User </a></li>
+>>>>>>> e3ba598b23aeb50641738a16f3da0a4c8f429fdf
         {{--  <li><a href="/createchurches"><i class="fa fa-plus"></i>Add new Church</a></li>  --}}
         <li><a href='/contacts' data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-phone"></i> Contacts</a>
         <ul class="collapse list-unstyled">
-            <li class="mr-2"><a href='/manager'><i class="fa fa-phone"></i> Manager </a></li>
-            <li><a href='/groups'><i class="fa fa-computer"></i> Groups </a></li>
+            <li class="text-center text-white py-4"><a href='/form'><i class="fa fa-table"></i> Form </a></li>
+            <li class="text-center text-white p-5"><a href='/groups'><i class="fa fa-group"></i> Groups </a></li>
+            <li class="text-center text-white"><a href='/manager'><i class="fa fa-spinner"></i> Manager </a></li>
         </ul>
         </li>
         </ul>

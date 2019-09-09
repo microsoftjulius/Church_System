@@ -21,6 +21,10 @@ Route::get('/church','ChurchesController@index_showall');
 
 Route::get('/create-user',function() { return view('after_login.create-users');});
 
+Route::get('/add-user',function() {
+    return view('after_login.add-user');
+});
+
 Route::get('/contacts',function() {
     return view('after_login.contacts');
 });
