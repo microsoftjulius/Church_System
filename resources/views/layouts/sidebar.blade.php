@@ -27,7 +27,7 @@
         <ul class="nav side-menu">
         <li><a href='/home'><i class="fa fa-home"></i> Home </a></li>
         <li><a href='/church'><i class="fa fa-book"></i> Churches </a></li>
-        <li><a href='/add-user'><i class="fa fa-user"></i> Add User </a></li>
+        <li><a href='/user'><i class="fa fa-user"></i>User </a></li>
         {{--  <li><a href="/createchurches"><i class="fa fa-plus"></i>Add new Church</a></li>  --}}
         <li><a href='/contacts' data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-phone"></i> Contacts</a>
         <ul class="collapse list-unstyled">
