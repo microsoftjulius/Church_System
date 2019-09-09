@@ -15,7 +15,12 @@ class ChurchesController extends Controller
     public function index_showall()
     {
         $churches     = churchdatabase::where('id','>',1)->paginate(10);
+        if(auth()->user()->church_id == 1){
         return view('after_login.churches',compact('churches'));
+        }
+        else{
+            return Redirect()->back();
+        }
     }
     //Redirect to a page showing churches with this Id
     public function index($id)
