@@ -31,3 +31,6 @@ Route::get('/manager',function() {
 Route::post('/create-church','ChurchesController@create');
 Route::post('/create-user','ChurchesController@create_church_user');
 Route::get('/createchurches',function(){return view('after_login.create-church');});
+Route::post('/search-church','ChurchesController@search');
+Route::get('/view-church-user/{id}','ChurchesController@view_church_user');
+Route::get('/sent-messages','messages@index');

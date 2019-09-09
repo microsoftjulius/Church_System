@@ -40,31 +40,31 @@
                             <div class="form-group row md-form">
                                 <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Name</label>
                                 <div class="col-sm-10">
-                                <input type="text" class="form-control form-control-sm" name="church_name" id="materialFormCardNameEx" placeholder="Enter Church name">
+                                <input type="text" class="form-control form-control-sm" name="church_name" id="materialFormCardNameEx" placeholder="Enter Church name" required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="colFormLabel" class="col-sm-2 col-form-label">Database</label>
                                 <div class="col-sm-10">
-                                <input type="text" class="form-control" id="colFormLabel" name="database_name" placeholder="Enter Database name">
+                                <input type="text" class="form-control" id="colFormLabel" name="database_name" placeholder="Enter Database name" required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">URL</label>
                                 <div class="col-sm-10">
-                                <input type="text" class="form-control form-control-lg" name="url" id="colFormLabelLg" placeholder="Enter Your url">
+                                <input type="url" class="form-control form-control-lg" name="url" id="colFormLabelLg" placeholder="Enter Your url" required>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Password</label>
+                                <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">DB Password</label>
                                 <div class="col-sm-10">
-                                <input type="password" class="form-control form-control-lg" name="password" id="colFormLabelLg" placeholder="xxxxxxxxxxxxxxx">
+                                <input type="password" class="form-control form-control-lg" name="password" id="colFormLabelLg" placeholder="xxxxxxxxxxxxxxx" required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Logo</label>
                                 <div class="col-sm-10">
-                                <input type="file" class="form-control form-control-lg" name="logo" id="colFormLabelLg" placeholder="attach logo">
+                                <input type="file" class="form-control form-control-lg" name="logo" id="colFormLabelLg" placeholder="attach logo" required>
                                 </div>
                             </div>
                             <div class="form-group row">

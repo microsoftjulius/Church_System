@@ -27,6 +27,11 @@
         <ul class="nav side-menu">
         <li><a href='/home'><i class="fa fa-home"></i> Home </a></li>
         <li><a href='/church'><i class="fa fa-book"></i> Churches </a></li>
+        <li><a><i class="fa fa-envelope"></i> Messages <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
+                <li><a href="/sent-messages">Sent Messages</a></li>
+            </ul>
+        </li>
         {{--  <li><a href="/createchurches"><i class="fa fa-plus"></i>Add new Church</a></li>  --}}
         <li><a href='/contacts' data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-phone"></i> Contacts</a>
         <ul class="collapse list-unstyled">

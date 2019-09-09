@@ -56,23 +56,18 @@
                                 <thead>
                                     <tr>
                                         <th class="th-sm">No.</th>
-                                        <th class="th-sm">Name
-                                        </th>
-                                        <th class="th-sm">Database Name</th>
-                                        <th class="th-sm">Database Url</th>
-                                        <th class="th-sm">Church Logo</th>
-                                        <th class="th-sm"> Options</th>
+                                        <th class="th-sm">Names</th>
+                                        <th class="th-sm">User Name</th>
+                                        <th class="th-sm">Church Name</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($churches as $church)
+                                    @foreach ($view_user as $user)
                                         <tr>
                                             <td>4</td>
-                                            <td>{{ $church->church_name }}</td>
-                                            <td>{{ $church->database_name }}</td>
-                                            <td>{{ $church->database_url }}</td>
-                                            <td>{{ $church->attached_logo }}</td>
-                                            <td><a href="/view-church-user/{{$church->id}}">View user</a></td>
+                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td>{{ $user->church_name }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>

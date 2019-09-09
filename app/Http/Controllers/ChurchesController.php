@@ -11,12 +11,13 @@ use App\User;
 
 class ChurchesController extends Controller
 {
+    //Redirect to a page showing all churches and creating all churches
     public function index_showall()
     {
         $churches     = churchdatabase::where('id','>',1)->paginate(10);
         return view('after_login.churches',compact('churches'));
     }
-    //Redirect to a page showing all churches and creating all churches
+    //Redirect to a page showing churches with this Id
     public function index($id)
     {
         $all_users_in_this_church = User::where('church_id',$id)->get();
@@ -31,12 +32,24 @@ class ChurchesController extends Controller
         {
             return Redirect()->back()->withErrors('Church Name already Registered');
         }
+        if(empty($request->logo)){
+            return Redirect()->back()->withErrors('Please attach a logo');
+        }
         churchdatabase::create(array(
             'church_name'       =>  $request->church_name,
             'database_name'     =>  $request->database_name,
             'database_url'      =>  $request->url,
             'database_password' =>  $request->password,
             'attached_logo'     =>  $request->logo
+        ));
+        $church_id = churchdatabase::where('church_name',$request->church_name)->value('id');
+        User::create([
+            'name'      =>  $request->church_name,
+            'email'     =>  strtolower(str_replace(' ', '', $request->church_name)),
+            'password'  =>  Hash::make($request->church_name . "123"),
+        ]);
+        User::where('church_id',null)->update(array(
+            'church_id' =>  $church_id,
         ));
         return redirect('/church');
     }
@@ -76,5 +89,20 @@ class ChurchesController extends Controller
         churchdatabase::where('id',$request->church_id)->update(array(
             'status'=>'deleted'
         ));
+    }
+
+    public function search(Request $request){
+        $churches     = churchdatabase::where('database_url',$request->church_name)
+        ->orWhere('church_name',$request->church_name)
+        ->orWhere('database_name',$request->church_name)
+        ->get();
+        return view('after_login.churches',compact('churches'));
+    }
+
+    public function view_church_user($id){
+        $view_user = User::where('church_id',$id)
+        ->join('church_databases','church_databases.id','users.church_id')
+        ->paginate('10');
+        return view('after_login.church_user',compact('view_user'));
     }
 }
