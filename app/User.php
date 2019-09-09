@@ -39,7 +39,7 @@ class User extends Authenticatable
     ];
 
     public function count_churches(){
-        $count = churches::where('id','>',1)->get()->count();
+        $count = churchdatabase::where('id','>',1)->get()->count();
         return $count;
     }
 
