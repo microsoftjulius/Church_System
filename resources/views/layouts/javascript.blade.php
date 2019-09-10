@@ -57,3 +57,21 @@
 
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="{{ asset('bootstrap/charts/js/mdb.min.js') }}"></script>
+
+<script type="text/javascript">
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    today = mm + '/' + dd + '/' + yyyy + " " + today.getHours() + ":" + today.getMinutes();
+    document.getElementById('dateshown').setAttribute("Value",today);
+
+</script>
+
+<script type="text/javascript">
+function countChars(obj){
+    document.getElementById("charNum").innerHTML = obj.value.length+' characters';
+}
+
+</script>

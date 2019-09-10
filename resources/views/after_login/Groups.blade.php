@@ -39,7 +39,7 @@
                             @csrf
                                 <div class="col-md-12">
                                         <div class="col-md-8"></div>
-                                            <div class="col-md-2">
+                                            <div class="col-md-4">
                                                     <div class="input-group">
                                                            <input type="text" class="form-control col-md-12" placeholder="Search" name="search" id="srch-term" required>
                                                             <div class="input-group-btn">
@@ -47,12 +47,7 @@
                                                                 </button>
                                                             </div>
                                                     </div>
-                                            </div>
-                                        <div class="col-md-2">
-                                            <div class="input-group"> 
-                                            <a href="/addusers"><button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-user"> AddUser</i></button></a>
-                                            </div>
-                                        </div>
+                                            </div>   
                                 </div>
                             </form>    
                         </div>
@@ -64,28 +59,17 @@
                                             <thead>
                                                 <tr>
                                                     <th class="th-sm">ID</th>
-                                                    <th class="th-sm">First Name
+                                                    <th class="th-sm">Message Body
                                                     </th>
-                                                    <th class="th-sm">Last Name
+                                                    <th class="th-sm">Number of Contacts Sent To
                                                     </th> 
-                                                    <th class="th-sm">UserName
+                                                    <th class="th-sm">Created By
                                                     </th> 
-                                                    <th class="th-sm">Created</th>
-                                                    <th class="th-sm"> Options</th>
+                                                    <th class="th-sm">Date/Time</th>
+                                                    <th class="th-sm"> Message Status</th>
                                                 </tr>
                                             </thead>
                                         <tbody>
-                                        @foreach ($display_all_church_users as $users_particular_church)
-                                            <tr>
-                                                <td>{{ $users_particular_church->id }}</td>
-                                                <td>{{ $users_particular_church->first_name }}</td>
-                                                <td>{{ $users_particular_church->last_name }}</td>
-                                                <td>{{ $users_particular_church->username }}</td>
-                                                <td>{{ $users_particular_church->created_at }}</td>
-                                                <td hidden>{{ $users_particular_church->id }}</td>
-                                                <td>
-                                            </tr>
-                                            @endforeach
                                         </tbody>
                                         </table>
                                 </section>
