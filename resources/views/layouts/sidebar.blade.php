@@ -29,10 +29,10 @@
                 <li><a href='/home'><i class="fa fa-home"></i> Home </a></li>
                 <li><a href='/church'><i class="fa fa-book"></i> Churches </a></li>
             @endif
-        <li><a href='/user'><i class="fa fa-user"></i>User </a></li>
+        <li><a href='/user'><i class="fa fa-user"></i>Users </a></li>
         <li><a><i class="fa fa-phone"></i> Contacts <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-                <li><a href="/sent-messages">Form</a></li>
+                <li><a href="/contact-groups">Contact Groups</a></li>
                 <li><a href="/sent-messages">Groups</a></li>
                 <li><a href="/sent-messages">Manager</a></li>
             </ul>

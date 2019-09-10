@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::get('/', function () {return redirect('/login');});
 
 Auth::routes();
@@ -19,6 +20,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/church/{id}','ChurchesController@index');
 Route::get('/church','ChurchesController@index_showall');
 Route::get('/user','ChurchUserController@show');
+
 Route::post('/search','ChurchUserController@index');
 
 Route::get('/create-user',function() { return view('after_login.create-users');});
@@ -39,4 +41,11 @@ Route::post('/adds-user','ChurchUserController@store');
 Route::get('/createchurches',function(){return view('after_login.create-church');});
 Route::post('/search-church','ChurchesController@search');
 Route::get('/view-church-user/{id}','ChurchesController@view_church_user');
-Route::get('/sent-messages','messages@index');
+Route::get('/sent-messages','ContactsController@index');
+Route::get('/contact-groups','GroupsController@index');
+Route::post('/search-group','GroupsController@search_group');
+
+Route::post('/create-group','GroupsController@create_group');
+Route::get('/create-group-form','GroupsController@show_form');
+
+

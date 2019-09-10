@@ -27,7 +27,7 @@ class HomeController extends Controller
             return view('after_login.home');
         }
         else{
-            return Redirect()->back();
+            return redirect('/user');
         }
     }
 }

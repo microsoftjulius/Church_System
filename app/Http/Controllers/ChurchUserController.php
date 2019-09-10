@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\church_user;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class ChurchUserController extends Controller
 {
@@ -16,13 +18,13 @@ class ChurchUserController extends Controller
     {
         //
             $search = $request->search;
-        
+
             //now get all user and services in one go without looping using eager loading
             //In your foreach() loop, if you have 1000 users you will make 1000 queries
-        
+
             $display_all_church_users = church_user::where('first_name',$search)->get();
             return view('after_login.users', compact('display_all_church_users'));
-        
+
     }
 
     /**
@@ -44,11 +46,11 @@ class ChurchUserController extends Controller
     public function store(Request $request)
     {
         //
-        church_user::create(array(
-            'first_name'       =>  $request->first_name,
-            'last_name'     =>  $request->last_name,
-            'username'      =>  $request->username,
-            'password' =>  $request->password
+        User::create(array(
+            'name'       =>  $request->first_name ." " . $request->last_name ,
+            'email'      =>  $request->username,
+            'password'   =>  Hash::make($request->password),
+            'church_id'  =>  Auth::user()->church_id
         ));
         return redirect('/user');
     }
@@ -62,9 +64,7 @@ class ChurchUserController extends Controller
     public function show()
     {
         //
-        $display_all_church_users = church_user::all()
-        ->where('church_id',auth()->user()->id);
-        //->paginate(10);
+        $display_all_church_users = User::where('church_id',Auth()->user()->church_id)->paginate('10');
         return view('after_login.users',['display_all_church_users'=>$display_all_church_users]);
     }
 
