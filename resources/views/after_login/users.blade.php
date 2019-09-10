@@ -41,7 +41,7 @@
                                         <div class="col-md-8"></div>
                                             <div class="col-md-2">
                                                     <div class="input-group">
-                                                           <input type="text" class="form-control col-md-12" placeholder="Search" name="search" id="srch-term" required>
+                                                        <input type="text" class="form-control col-md-12" placeholder="Search" name="search" id="srch-term" required>
                                                             <div class="input-group-btn">
                                                                 <button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-search"></i>
                                                                 </button>
@@ -49,12 +49,17 @@
                                                     </div>
                                             </div>
                                         <div class="col-md-2">
+<<<<<<< HEAD
                                             <div class="input-group"> 
                                             <a href="/addusers"><button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-user"> AddUser</i></button></a>
+=======
+                                            <div class="input-group">
+                                            <a href="/addusers"><button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-user"> Add User</i></button></a>
+>>>>>>> df15fc687452d7513c7752e0c757015061606cad
                                             </div>
                                         </div>
                                 </div>
-                            </form>    
+                            </form>
                         </div>
                     <!--Table-->
                 <div class="row">
@@ -67,23 +72,28 @@
                                                     <th class="th-sm">First Name
                                                     </th>
                                                     <th class="th-sm">Last Name
-                                                    </th> 
+                                                    </th>
                                                     <th class="th-sm">UserName
-                                                    </th> 
-                                                    <th class="th-sm">Created</th>
+                                                    </th>
+                                                    <th class="th-sm">Created At</th>
                                                     <th class="th-sm"> Options</th>
                                                 </tr>
                                             </thead>
                                         <tbody>
                                         @foreach ($display_all_church_users as $users_particular_church)
                                             <tr>
+                                                <?php
+                                                    $first_name = explode(' ',trim($users_particular_church->name));
+                                                    if(empty($first_name[1])){
+                                                        array_push($first_name,'');
+                                                    }
+                                                ?>
                                                 <td>{{ $users_particular_church->id }}</td>
-                                                <td>{{ $users_particular_church->first_name }}</td>
-                                                <td>{{ $users_particular_church->last_name }}</td>
-                                                <td>{{ $users_particular_church->username }}</td>
+                                                <td>{{ $first_name[0] }}</td>
+                                                <td>{{ $first_name[1] }}</td>
+                                                <td>{{ $users_particular_church->email }}</td>
                                                 <td>{{ $users_particular_church->created_at }}</td>
-                                                <td hidden>{{ $users_particular_church->id }}</td>
-                                                <td>
+                                                <td><a href="">delete user</a></td>
                                             </tr>
                                             @endforeach
                                         </tbody>

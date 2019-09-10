@@ -23,6 +23,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('after_login.home');
+        if(auth()->user()->church_id == 1){
+            return view('after_login.home');
+        }
+        else{
+            return redirect('/user');
+        }
     }
 }
