@@ -20,15 +20,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/church/{id}','ChurchesController@index');
 Route::get('/church','ChurchesController@index_showall');
 Route::get('/user','ChurchUserController@show');
-<<<<<<< HEAD
 Route::get('/view-church-user/{id}','ChurchesController@view_church_user');
-Route::get('/sent-messages','messages@send');
+Route::get('/display-sent-messages','messages@display_sent_messages');
 Route::get('/sent-quick-messages','messages@send_quick_sms');
 Route::get('/groups','messages@contact_groups');
-=======
 
-Route::post('/search','ChurchUserController@index');
->>>>>>> df15fc687452d7513c7752e0c757015061606cad
 
 
 
@@ -43,15 +39,5 @@ Route::post('/create-church','ChurchesController@create');
 Route::post('/create-user','ChurchesController@create_church_user');
 Route::post('/adds-user','ChurchUserController@store');
 Route::post('/search-church','ChurchesController@search');
-<<<<<<< HEAD
-=======
-Route::get('/view-church-user/{id}','ChurchesController@view_church_user');
-Route::get('/sent-messages','ContactsController@index');
-Route::get('/contact-groups','GroupsController@index');
-Route::post('/search-group','GroupsController@search_group');
-
-Route::post('/create-group','GroupsController@create_group');
-Route::get('/create-group-form','GroupsController@show_form');
-
->>>>>>> df15fc687452d7513c7752e0c757015061606cad
+Route::post('/store-sent-messages','messages@store_sent_messages');
 

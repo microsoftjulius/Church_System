@@ -34,7 +34,7 @@
                 <div class="right_col" role="main">
                     <!--Setupform-->
 
-                    <form class="col-md-offset-1 col-sm-10" style="border-width: 4px 4px 4px 4px; padding :1em; background-color:white;" action="/adds-user" method="POST">
+                    <form class="col-md-offset-1 col-sm-10" style="border-width: 4px 4px 4px 4px; padding :1em; background-color:white;" action="/store-sent-messages" method="POST">
                         @csrf
                     <div class="panel-heading text-center"><h4></h4>
                     <hr>
@@ -42,34 +42,30 @@
                             <div class="form-group row md-form">
                                 <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Contact Groups</label>
                                 <div class="col-sm-8">
-                                     
-                                            <select class="form-control form-control-lg">
-                                                <option>Choose Your Group</option>
-                                                <option>Kikoni Group</option>
-                                                <option>Wandegeya Group</option>
-                                                <option>Kasubi Group</option>
-                                                <option>Nakulyabe Group</option>
-                                            </select>  
-                                    
+                                <select class="form-control" id="group_id" name="group_id">
+                                  @foreach($drop_down_groups as $picking_from_database)
+                                    <option value="{{$picking_from_database->id}}">{{$picking_from_database->group_name}}</option>    
+                                  @endforeach
+                                </select> 
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="colFormLabel" class="col-sm-2 col-form-label">Current Date/Time</label>
                                 <div class="col-sm-8">
-                                <input type="text" class="form-control" id="dateshown" name="current_date_time">
+                                <input type="text" class="form-control" id="dateshown" name="created_at">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Text Message</label>
                                 <div class="col-sm-8">
-                                <textarea type="text" class="form-control form-control-lg" onkeyup="countChars(this);" rows="7" name="message"></textarea>
+                                <textarea type="text" class="form-control form-control-lg" onkeyup="countChars(this);" rows="7" id="message" name="message"></textarea>
                                 <p class="text-" id="charNum">0 characters</p>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Contact Character </label>
                                 <div class="col-sm-8">
-                                <input type="text" class="form-control form-control-lg" name="characters" id="colFormLabelLg" placeholder="">
+                                <input type="text" class="form-control form-control-lg" name="contact_character" id="contact_character" placeholder="">
                                 </div>
                             </div>
                             <div class="form-group row">

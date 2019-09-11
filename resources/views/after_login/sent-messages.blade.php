@@ -62,10 +62,20 @@
                                                         <th class="th-sm">Message Body
                                                         </th>  
                                                         <th class="th-sm">Date/Time</th>
-                                                        <th class="th-sm"> Message Status</th>
+                                                        <th class="th-sm"> Created By</th>
+                                                        <th class="th-sm"> Message Status</th>  
                                                     </tr>
                                                 </thead>
                                             <tbody>
+                                            @foreach ($display_sent_message_details as $message_details)
+                                                <tr>
+                                                    <td>{{ $message_details->id}}</td>
+                                                    <td>{{ $message_details->message }}</td>
+                                                    <td>{{ $message_details->created_on }}</td>
+                                                    <td>{{ $message_details->email }}</td>
+                                                    <td>{{ $message_details->status }}</td> 
+                                                </tr>
+                                            @endforeach
                                             </tbody>
                                     </table>       
                                 </section>
