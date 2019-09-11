@@ -42,11 +42,6 @@
                 <li><a href="/sent-quick-messages">Quicksms</a></li>
             </ul>
         </li>
-<<<<<<< HEAD
-=======
-
-        {{--  <li><a href="/createchurches"><i class="fa fa-plus"></i>Add new Church</a></li>  --}}
->>>>>>> 02eda0e594d37251bd7533f501e0dae729521b71
         </ul>
     </div>
     </div>

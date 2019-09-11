@@ -49,14 +49,9 @@
                                                     </div>
                                             </div>
                                         <div class="col-md-2">
-<<<<<<< HEAD
                                             <div class="input-group">
                                             <a href="/addusers"><button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-user"> AddUser</i></button></a>
 
-=======
-                                            <div class="input-group"> 
-                                            <a href="/addusers"><button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-user"> AddUser</i></button></a>
->>>>>>> 02eda0e594d37251bd7533f501e0dae729521b71
                                             </div>
                                         </div>
                                 </div>
