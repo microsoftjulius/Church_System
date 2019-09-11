@@ -33,8 +33,7 @@
         <li><a><i class="fa fa-phone"></i> Contacts <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
                 <li><a href="/contact-groups">Contact Groups</a></li>
-                <li><a href="/sent-messages">Groups</a></li>
-                <li><a href="/sent-messages">Manager</a></li>
+                <li><a href="/manager">Manager</a></li>
             </ul>
         </li>
         <li><a><i class="fa fa-envelope"></i> Messages <span class="fa fa-chevron-down"></span></a>
@@ -43,19 +42,6 @@
                 <li><a href="/sent-quick-messages">Quicksms</a></li>
             </ul>
         </li>
-<<<<<<< HEAD
-        <li><a href='/user'><i class="fa fa-user"></i>User </a></li>
-
-        {{--  <li><a href="/createchurches"><i class="fa fa-plus"></i>Add new Church</a></li>  --}}
-        <li><a href='/contacts' data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-phone"></i> Contacts<span class="fa fa-chevron-down"></span></a>
-        <ul class="collapse list-unstyled nav child_menu">
-            <li class="text-white"><a href='/form'><i class="fa fa-table"></i> Form </a></li>
-            <li class="text-white"><a href='/groups'><i class="fa fa-group"></i> Groups </a></li>
-            <li class="text-white"><a href='/manager'><i class="fa fa-spinner"></i> Manager </a></li>
-        </ul>
-        </li>
-=======
->>>>>>> df15fc687452d7513c7752e0c757015061606cad
         </ul>
     </div>
     </div>

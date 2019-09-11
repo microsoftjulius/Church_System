@@ -57,23 +57,25 @@
                                         <th class="th-sm">No.</th>
                                         <th class="th-sm">Group Name</th>
                                         <th class="th-sm">Created By</th>
-                                        <th class="th-sm">Date Created</th>
-                                        <th class="th-sm">Number Of contacts</th>
+                                        <th class="th-sm">Updated by</th>
+                                        <th class="th-sm">Contacts</th>
                                         <th class="th-sm">Option</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($contacts as $contact)
+                                    @foreach ($get_group_contacts as $contact)
                                         <tr>
                                             <td>4</td>
                                             <td>{{ $contact->group_name }}</td>
                                             <td>{{ $contact->email }}</td>
-                                            <td>{{ $contact->created_at }}</td>
-                                            <td>{{ $counted }}</td>
-                                            <td><a href="/view-contacts/{{ $contact->id }}">view contacts</a> | <a href="/add-user/{{ $contact->id }}">Add Contact</a></td>
+                                            <td>{{ $contact->email }}</td>
+                                            <?php $data = json_decode($contact->contact_number)?>
+                                            <td>{{ $data->Contact }}</td>
+                                            <td><a href="">view contacts</a> | <a href="">Delete</a></td>
                                         </tr>
                                     @endforeach
                                 </tbody>
+                                {{ $get_group_contacts->links() }}
                                 </table>
                             </section>
                         </div>
