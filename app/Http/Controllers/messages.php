@@ -48,7 +48,11 @@ class messages extends Controller
 
         return $request->created_at;
     }
-            
+    public function search_use_contact_group_attributes(Request $request) {
+        $search = $request->search;
+            $display_sent_message_details = message::where('email',$search)->get();
+            return view('after_login.sent-messages', compact('display_sent_message_details'));
+    }   
 }
 
 

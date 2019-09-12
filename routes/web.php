@@ -39,6 +39,7 @@ Route::post('/adds-user','ChurchUserController@store');
 Route::post('/search-church','ChurchesController@search');
 Route::get('/contact-groups','GroupsController@index');
 Route::post('/search-group','GroupsController@search_group');
+Route::post('/search-sent-messages','messages@search_use_contact_group_attributes');
 
 Route::post('/create-group','GroupsController@create_group');
 Route::get('/create-group-form','GroupsController@show_form');
