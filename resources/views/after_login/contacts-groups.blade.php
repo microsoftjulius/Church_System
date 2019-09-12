@@ -70,7 +70,7 @@
                                             <td>{{ $contact->email }}</td>
                                             <td>{{ $contact->created_at }}</td>
                                             <td>{{ $counted }}</td>
-                                            <td><a href="/view-contacts/{{ $contact->id }}">view contacts</a> | <a href="/add-user/{{ $contact->id }}">Add Contact</a></td>
+                                            <td><a href="/view-contacts/{{ $contact->id }}">view contacts</a></td>
                                         </tr>
                                     @endforeach
                                 </tbody>

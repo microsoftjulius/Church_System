@@ -44,3 +44,4 @@ Route::post('/create-group','GroupsController@create_group');
 Route::get('/create-group-form','GroupsController@show_form');
 Route::post('/store-sent-messages','messages@store_sent_messages');
 Route::get('/view-contacts/{id}','ContactsController@view_for_group');
+Route::post('/save-contact-to-group/{id}','ContactsController@save_contact_to_group');

@@ -44,9 +44,9 @@
                                 <div class="col-sm-8">
                                 <select class="form-control" id="group_id" name="group_id">
                                   @foreach($drop_down_groups as $picking_from_database)
-                                    <option value="{{$picking_from_database->id}}">{{$picking_from_database->group_name}}</option>    
+                                    <option value="{{$picking_from_database->id}}">{{$picking_from_database->group_name}}</option>
                                   @endforeach
-                                </select> 
+                                </select>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -59,7 +59,7 @@
                                 <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Text Message</label>
                                 <div class="col-sm-8">
                                 <textarea type="text" class="form-control form-control-lg" onkeyup="countChars(this);" rows="7" id="message" name="message"></textarea>
-                                <p class="text-" id="charNum">0 characters</p>
+                                <p class="text-" id="charNum"><span class="text-primary">0 characters [1message is 160 characters,2messages 320 characters]</span></p>
                                 </div>
                             </div>
                             <div class="form-group row">

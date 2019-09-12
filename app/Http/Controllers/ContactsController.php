@@ -6,6 +6,7 @@ use App\Contacts;
 use App\Groups;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class ContactsController extends Controller
 {
@@ -47,5 +48,23 @@ class ContactsController extends Controller
         ->join('users','users.id','contacts.created_by')
         ->where('group_id',$id)->where('contacts.church_id',Auth::user()->church_id)->paginate('10');
         return view('after_login.contacts',compact('get_group_contacts'));
+    }
+
+    //save contact to group
+    public function save_contact_to_group($id, Request $request){
+        $contact_array = json_decode(Contacts::where('contacts.id',$id)->value('contact_number'));
+        foreach($contact_array as $contact){
+            if($contact->Contact == ""){
+                $contact->Contact = $request->contact;
+            }
+        }
+        $nospace_request = str_replace(" ","",$request->contact);
+        $empty_array = array('Contact'=>$nospace_request);
+        array_push($contact_array, $empty_array);
+        //saving new array to the database
+        Contacts::where('contacts.id',$id)->update(array(
+            'contact_number' => json_encode($contact_array)
+        ));
+        return Redirect()->back();
     }
 }
