@@ -66,5 +66,5 @@ class ContactsController extends Controller
             'contact_number' => json_encode($contact_array)
         ));
         return Redirect()->back();
-    }
+        }
 }
