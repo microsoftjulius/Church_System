@@ -60,14 +60,12 @@
                                 <div class="col-sm-8">
                                     <textarea type="text" class="form-control form-control-lg" onkeyup="countChars(this);" rows="7" id="message" name="message"></textarea>
                                     <p class="text-" id="charNum"><span class="text-primary mr-4">0 characters(1 Message is 160 characters but MTN includes:*196#, 2 Messages is 310 characters)</span></p>
-                                    <p>Tick Telcome To Send To</p>
                                     <div class="container">
                                         <div class="row">
-                                        <div class="form-group">
-                                        (
+                                        <div class="form-group"> 
                                         <label class="col-md-1 checkbox-inline" for="checkboxes-0">
                                         <input type="checkbox" name="checkboxes" id="checkboxes-0" value="1">
-                                        MTN
+                                         MTN
                                         </label>
                                         <label class="col-md-1 checkbox-inline" for="checkboxes-1">
                                         <input type="checkbox" name="checkboxes" id="checkboxes-1" value="2">
@@ -77,13 +75,14 @@
                                         <input type="checkbox" name="checkboxes" id="checkboxes-2" value="3">
                                         UTL
                                         </label>
-                                        <label class="col-md-1 checkbox-inline" for="checkboxes-3">
+                                        <label class="col-md-6 checkbox-inline" for="checkboxes-3">
                                         <input type="checkbox" name="checkboxes" id="checkboxes-3" value="4">
-                                        Africell
+                                        Africell <span class="text-italic text-success mr-1"><em>(Tick Telecoms To Send To)</em></span>
                                         </label>
-                                        )
+                                        
                                         </div>
                                         </div>
+                                        
                                     </div>  
                                 <hr>
                                 </div>
