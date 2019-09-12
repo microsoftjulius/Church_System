@@ -59,7 +59,7 @@
                                 <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Text Message</label>
                                 <div class="col-sm-8">
                                 <textarea type="text" class="form-control form-control-lg" onkeyup="countChars(this);" rows="7" id="message" name="message"></textarea>
-                                <p class="text-" id="charNum"><span class="text-primary mr-4">0 characters(1 Message is 160 characters,2 messages is 310)</span></p>
+                                <p class="text-" id="charNum"><span class="text-primary mr-4">0 characters(1 Message is 160 characters but MTN includes:*196#,2 messages is 310 characters)</span></p>
                             </div>
                             </div>
                             <div class="form-group row">

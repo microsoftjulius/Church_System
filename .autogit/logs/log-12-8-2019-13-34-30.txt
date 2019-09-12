@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Thu Sep 12 2019 13:34:30 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* app/User.php
+
+
+Created files:
+* .autogit/logs/log-12-8-2019-12-34-7.txt
+
+
+Deleted files:
+
+
+Renamed files:
