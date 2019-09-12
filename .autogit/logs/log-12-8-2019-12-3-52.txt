@@ -1,0 +1,17 @@
+-------------------- Auto-Git Log --------------------
+		Thu Sep 12 2019 12:03:52 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* app/User.php
+* resources/views/after_login/Quicksms.blade.php
+
+
+Created files:
+* .autogit/logs/log-12-8-2019-11-33-39.txt
+
+
+Deleted files:
+
+
+Renamed files:

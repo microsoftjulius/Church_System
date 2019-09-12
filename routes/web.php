@@ -23,7 +23,7 @@ Route::get('/user','ChurchUserController@show');
 
 Route::post('/search-user','ChurchUserController@index');
 Route::get('/display-sent-messages','messages@display_sent_messages');
-Route::get('/sent-quick-messages','messages@send_quick_sms');
+Route::get('/sent-quick-messages','messages@drop_down_groups');
 Route::get('/sent-messages','messages@send');
 Route::get('/view-church-user/{id}','ChurchesController@view_church_user');
 Route::get('/create-user',function() { return view('after_login.create-users');});
@@ -39,6 +39,7 @@ Route::post('/adds-user','ChurchUserController@store');
 Route::post('/search-church','ChurchesController@search');
 Route::get('/contact-groups','GroupsController@index');
 Route::post('/search-group','GroupsController@search_group');
+//Route::post('/search-sent-messages','messages@search_use_contact_group_attributes');
 
 Route::post('/create-group','GroupsController@create_group');
 Route::get('/create-group-form','GroupsController@show_form');
