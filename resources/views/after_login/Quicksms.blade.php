@@ -63,7 +63,7 @@
                             </div>
                             </div>
                             <div class="form-group row">
-                                <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Contact Character </label>
+                                <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg"> Number of Contacts</label>
                                 <div class="col-sm-8">
                                 <input type="text" class="form-control form-control-lg" name="contact_character" id="contact_character" placeholder="">
                                 </div>
