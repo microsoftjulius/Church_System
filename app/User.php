@@ -53,7 +53,7 @@ class User extends Authenticatable
     }
     
     public function count_contacts_in_a_groups(){
-     $count = Contacts::where('contacts.contact_number',"=",Auth::user()->contact_number)->get()->count();
+     $count = Contacts::where('contact_number',"=",Auth::user()->id)->get()->count();
      return $count;
     }
 }
