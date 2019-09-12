@@ -60,6 +60,7 @@
                                 <div class="col-sm-8">
                                     <textarea type="text" class="form-control form-control-lg" onkeyup="countChars(this);" rows="7" id="message" name="message"></textarea>
                                     <p class="text-" id="charNum"><span class="text-primary mr-4"><span class="text-danger">0 characters</span>(1 Message is 160 characters but MTN includes:*196#, 2 Messages is 310 characters)</span></p>
+                                    <hr>
                                     <div class="container">
                                         <div class="row">
                                            <div class="col-sm-1"></div>
@@ -83,7 +84,8 @@
                                             </div>
                                         </div>
                                         
-                                    </div>  
+                                    </div> 
+                                    <hr> 
                                 <div class="container">
                                         <div class="row">
                                             <div class="form-group"> 
