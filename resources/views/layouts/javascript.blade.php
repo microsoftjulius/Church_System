@@ -71,6 +71,6 @@
 
 <script type="text/javascript">
 function countChars(obj){
-    document.getElementById("charNum").innerHTML = obj.value.length+' characters (1 Message is 160 characters,2 messages is 310)';
+    document.getElementById("charNum").innerHTML = obj.value.length+' characters (1 Message is 160 characters but MTN includes:*196#, 2 MSSSSessages is 310 characters)';
 }
 </script>
