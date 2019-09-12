@@ -48,7 +48,12 @@ class User extends Authenticatable
     }
 
     public function count_registered_contacts(){
-        $count = User::where('church_id',Auth::user()->id)->get()->count();
+        $count = User::where('church_id',"=",Auth::user()->id)->get()->count();
         return $count;
+    }
+    
+    public function count_contacts_in_a_groups(){
+     $count = Contacts::where('contact_number',"=",Auth::user()->id)->get()->count();
+     return $count;
     }
 }

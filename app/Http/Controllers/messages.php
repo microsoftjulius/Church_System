@@ -15,7 +15,12 @@ class messages extends Controller
     {
         return view('after_login.messages');
     }
-
+    
+    public function search_use_contact_group_attributes(Request $request) {
+        $search = $request->search;
+            $display_sent_message_details = message::where('created_by',$search)->get();
+            return view('after_login.sent-messages', compact('display_sent_message_details'));
+    }  
 
     public function display_sent_messages()
     {
@@ -25,7 +30,7 @@ class messages extends Controller
      return view('after_login.sent-messages',['display_sent_message_details'=>$display_sent_message_details]);
     }
 
-    public function send_quick_sms(){
+    public function drop_down_groups(){
         $drop_down_groups = Groups::all();
         return view('after_login.Quicksms',compact('drop_down_groups'));
     }
@@ -48,7 +53,7 @@ class messages extends Controller
 
         return $request->created_at;
     }
-            
+     
 }
 
 
