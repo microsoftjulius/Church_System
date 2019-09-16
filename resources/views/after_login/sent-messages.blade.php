@@ -41,7 +41,7 @@
                                         <div class="col-md-8"></div>
                                             <div class="col-md-4">
                                                     <div class="input-group">
-                                                            <input type="text" class="form-control col-md-12" placeholder="Search" name="search" id="srch-term" required>
+                                                            <input type="text" class="form-control col-md-12" placeholder="Search" name="search_message" id="srch-term" required>
                                                             <div class="input-group-btn">
                                                                 <button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-search"></i>
                                                                 </button>
