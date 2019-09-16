@@ -43,10 +43,10 @@
                                 <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Contact Groups</label>
                                 <div class="col-sm-8">
                                 <select class="form-control" id="group_id" name="group_id">
-                                  @foreach($drop_down_groups as $picking_from_database)
-                                    <option value="{{$picking_from_database->id}}">{{$picking_from_database->group_name}}</option>    
-                                  @endforeach
-                                </select> 
+                                    @foreach($drop_down_groups as $picking_from_database)
+                                        <option value="{{$picking_from_database->id}}">{{$picking_from_database->group_name}}</option>
+                                    @endforeach
+                                </select>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -64,7 +64,7 @@
                                     <div class="container">
                                         <div class="row">
                                            <div class="col-sm-1"></div>
-                                            <div class="form-group"> 
+                                            <div class="form-group">
                                                 <label class="col-md-1 checkbox-inline" for="checkboxes-0">
                                                 <input type="checkbox" name="checkboxes" id="checkboxes-0" value="1">
                                                 MTN
@@ -83,12 +83,12 @@
                                                 </label><br>
                                             </div>
                                         </div>
-                                        
-                                    </div> 
-                                    <hr> 
+
+                                    </div>
+                                    <hr>
                                 <div class="container">
                                         <div class="row">
-                                            <div class="form-group"> 
+                                            <div class="form-group">
                                                 <label class="col-md-4 checkbox-inline" for="messages">
                                                 <input type="checkbox" name="checkboxes" id="messages-0" value="1">
                                                 schedule Message
@@ -96,9 +96,9 @@
                                                 <label class="col-md-4 checkbox-inline" for="messages-1">
                                                 <input type="checkbox" name="checkboxes" id="messages-1" value="2">
                                                 Save message as template
-                                                </label>  
+                                                </label>
                                         </div>
-                                        
+
                                     </div>
                             </div>
                                 </div>

@@ -41,15 +41,15 @@
                                         <div class="col-md-8"></div>
                                             <div class="col-md-4">
                                                     <div class="input-group">
-                                                           <input type="text" class="form-control col-md-12" placeholder="Search" name="search" id="srch-term" required>
+                                                            <input type="text" class="form-control col-md-12" placeholder="Search" name="search" id="srch-term" required>
                                                             <div class="input-group-btn">
                                                                 <button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-search"></i>
                                                                 </button>
                                                             </div>
                                                     </div>
-                                            </div>      
+                                            </div>
                                 </div>
-                            </form>    
+                            </form>
                         </div>
                     <!--Table-->
                 <div class="row">
@@ -60,10 +60,10 @@
                                                     <tr>
                                                         <th class="th-sm">ID</th>
                                                         <th class="th-sm">Message Body
-                                                        </th>  
+                                                        </th>
                                                         <th class="th-sm">Date/Time</th>
                                                         <th class="th-sm"> Created By</th>
-                                                        <th class="th-sm"> Message Status</th>  
+                                                        <th class="th-sm"> Message Status</th>
                                                     </tr>
                                                 </thead>
                                             <tbody>
@@ -73,11 +73,11 @@
                                                     <td>{{ $message_details->message }}</td>
                                                     <td>{{ $message_details->created_on }}</td>
                                                     <td>{{ $message_details->email }}</td>
-                                                    <td>{{ $message_details->status }}</td> 
+                                                    <td>{{ $message_details->status }}</td>
                                                 </tr>
                                             @endforeach
                                             </tbody>
-                                    </table>       
+                                    </table>
                                 </section>
                             </div>
                     </div>
