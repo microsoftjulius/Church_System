@@ -47,4 +47,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/view-contacts/{id}','ContactsController@view_for_group');
     Route::post('/save-contact-to-group/{id}','ContactsController@save_contact_to_group');
 
+    Route::post('/search-sent-messages','messages@search_messages');
 });

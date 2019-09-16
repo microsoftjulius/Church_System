@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Contacts;
-use DB;
-
 use App\messages as message;
 use App\Groups;
 use Illuminate\Http\Request;
@@ -19,7 +17,8 @@ class messages extends Controller
 
     public function search_use_contact_group_attributes(Request $request) {
         $search = $request->search;
-            $display_sent_message_details = message::where('created_by',$search)->get();
+            $display_sent_message_details = message::where('created_by',$search)
+            ->where('church_id',Auth::user()->church_id)->paginate('10');
             return view('after_login.sent-messages', compact('display_sent_message_details'));
     }
 
@@ -28,7 +27,7 @@ class messages extends Controller
     $display_sent_message_details = message::join('users','users.id', 'messages.created_by')
     ->where('users.church_id',Auth::user()->church_id)
     ->select('messages.id', 'messages.message','messages.created_on','messages.status','users.email')->get();
-     return view('after_login.sent-messages',['display_sent_message_details'=>$display_sent_message_details]);
+    return view('after_login.sent-messages',['display_sent_message_details'=>$display_sent_message_details]);
     }
 
     public function drop_down_groups(){
@@ -80,10 +79,15 @@ class messages extends Controller
             'created_by'    =>  Auth::user()->id
         ));
         return redirect('/sent-quick-messages');
-
-        //return $request->created_at;
     }
 
+    public function search_messages(Request $request){
+        $display_sent_message_details = message::where('message',$request->search_message)
+        ->orWhere('message', 'like', '%' . $request->search_message. '%')
+        ->where('church_id',Auth::user()->church_id)
+        ->paginate('10');
+        return view('after_login.sent-messages',compact('display_sent_message_details'));
+    }
 }
 
 

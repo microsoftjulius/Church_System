@@ -69,7 +69,7 @@
                                                 <td><input type="text" name="created_by" value="{{ auth()->user()->email }}" class="form-control" disabled></td>
                                                 <td><input type="text" name="contact" value="" class="form-control"></td>
                                             </tr>
-                                            <input type="submit" value="save">
+                                            <button class="btn btn-primary pull-right" type="submit">save</button>
                                         </form>
                                         @endforeach
                                     </tbody>

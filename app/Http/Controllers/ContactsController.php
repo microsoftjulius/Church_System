@@ -13,10 +13,7 @@ class ContactsController extends Controller
     //It redirects to a page showing all contacts
     public function index()
     {
-        $contacts = Contacts::join('church_databases','church_databases.id','contacts.church_id')
-        ->join('users','users.id','contacts.created_by')
-        ->where('users.church_id',Auth::user()->church_id)->get();
-        return view('after_login.contacts',compact('contacts'));
+
     }
 
     /**

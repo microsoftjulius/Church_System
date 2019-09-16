@@ -63,19 +63,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($contacts as $contact)
+                                    @foreach ($contacts as $index=>$contact)
                                         <tr>
-                                            <td>4</td>
+                                            <td>{{ $index+1 }}</td>
                                             <td>{{ $contact->group_name }}</td>
                                             <td>{{ $contact->email }}</td>
                                             <td>{{ $contact->created_at }}</td>
-                                            <td>{{ $counted }}</td>
+                                            <td></td>
                                             <td><a href="/view-contacts/{{ $contact->id }}">view contacts</a></td>
                                         </tr>
                                     @endforeach
                                 </tbody>
                                 </table>
                             </section>
+                            {{ $contacts->links() }}
                         </div>
                     </div>
                     <div class="row">
