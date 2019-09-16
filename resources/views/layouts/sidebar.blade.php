@@ -32,14 +32,13 @@
         <li><a href='/user'><i class="fa fa-user"></i>Users </a></li>
         <li><a><i class="fa fa-phone"></i> Contacts <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-                <li><a href="/contact-groups">Contact Groups</a></li>
-                <li><a href="/manager">Manager</a></li> 
+                <li><a href="/contact-groups">Contacts groups</a></li> 
             </ul>
         </li>
         <li><a><i class="fa fa-envelope"></i> Messages <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-                <li><a href="/display-sent-messages">sent-messages</a></li>
-                <li><a href="/sent-quick-messages">Quicksms</a></li>
+                <li><a href="/sent-quick-messages">Quick Message</a></li>
+                <li><a href="/display-sent-messages">Sent Messages</a></li> 
             </ul>
         </li>
         </ul>

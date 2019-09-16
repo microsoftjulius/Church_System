@@ -64,7 +64,7 @@
                                     <div class="container">
                                         <div class="row">
                                            <div class="col-sm-1"></div>
-                                            <div class="form-group"> 
+                                            <div class="form-group">
                                                 <label class="col-md-1 checkbox-inline" for="checkboxes-0">
                                                 <input type="checkbox" name="checkboxes" id="checkboxes-0" value="1">
                                                     <div class="profile_pic">
@@ -95,12 +95,11 @@
                                                 <br>
                                             </div>
                                         </div>
-                                        
                                     </div> 
                                     <hr>
                                     <div class="container">
                                         <div class="row">
-                                            <div class="form-group"> 
+                                            <div class="form-group">
                                                 <label class="col-md-4 checkbox-inline" for="messages">
                                                 <input type="checkbox" name="checkboxes" id="messages-0" value="1">
                                                 schedule Message
@@ -108,9 +107,9 @@
                                                 <label class="col-md-4 checkbox-inline" for="messages-1">
                                                 <input type="checkbox" name="checkboxes" id="messages-1" value="2">
                                                 Save message as template
-                                                </label>  
+                                                </label>
                                         </div>
-                                        
+
                                     </div>
                             </div><br>
                                 </div>
