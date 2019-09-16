@@ -33,7 +33,7 @@
         <li><a><i class="fa fa-phone"></i> Contacts <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
                 <li><a href="/contact-groups">Contact Groups</a></li>
-                <li><a href="/manager">Manager</a></li>
+                <li><a href="/manager">Manager</a></li> 
             </ul>
         </li>
         <li><a><i class="fa fa-envelope"></i> Messages <span class="fa fa-chevron-down"></span></a>
