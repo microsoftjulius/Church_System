@@ -65,24 +65,6 @@
                         </div>
                     </div>
                     <!--Setupform-->
-
-                        <!--checkboxs-->
-                        <div class="mc-field-group input-group"><strong>What Kind Of Shoes Are You Interested In?</strong><br>
-    
-                        <ul>
-                            
-                            <li><input id="selectAll" type="checkbox"><label for='selectAll'>Select All</label></li>
-                            <li><input id="mce-group[19]-19-0" type="checkbox" name="group[19][8]" value="8" /><label for="mce-group[19]-19-0">Women's</label></li>
-                            <li><input id="mce-group[19]-19-1" type="checkbox" name="group[19][16]" value="16" /><label for="mce-group[19]-19-1">Men's</label></li>
-                            <li><input id="mce-group[19]-19-2" type="checkbox" name="group[19][32]" value="32" /><label for="mce-group[19]-19-2">Kid's</label></li>
-                            <li><input id="mce-group[19]-19-3" type="checkbox" name="group[19][64]" value="64" /><label for="mce-group[19]-19-3">Athletic</label></li>
-                            <li><input id="mce-group[19]-19-4" type="checkbox" name="group[19][128]" value="128" /><label for="mce-group[19]-19-4">Outdoor</label></li>
-                            <li><input id="mce-group[19]-19-5" type="checkbox" name="group[19][256]" value="256" /><label for="mce-group[19]-19-5">Dress Shoes</label></li>
-                            <li><input id="mce-group[19]-19-6" type="checkbox" name="group[19][512]" value="512" /><label for="mce-group[19]-19-6">Casual</label></li>
-                            <li><input id="mce-group[19]-19-7" type="checkbox" name="group[19][1024]" value="1024" /><label for="mce-group[19]-19-7">Flip Flops</label></li>
-                        </ul>
-                    </div>
-
                     <div class="row">
                     </div>
                 </div>
@@ -94,16 +76,6 @@
         </div>
     
             @include('layouts.javascript')
-
-            <script type="text/javascript">
-
-            $("#selectAll").click(function(){
-            $("input[type=checkbox]").prop('checked', $(this).prop('checked'));
-                
-            });
-
-
-            jackHarnerSig();
-            </script>
+     
     </body>
 </html>

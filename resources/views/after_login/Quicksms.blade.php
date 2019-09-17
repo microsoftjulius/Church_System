@@ -42,7 +42,7 @@
                             <div class="form-group row md-form">
                                 <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Contact Groups</label>
                                 <div class="col-sm-8">
-                                <select class="form-control checkbox" id="group_id" name="group_id" multiple="multiple">
+                                <select class="form-control" id="group_id" name="group_id">
                                   @foreach($drop_down_groups as $picking_from_database)
                                     <option value="{{$picking_from_database->id}}">{{$picking_from_database->group_name}}</option>
                                   @endforeach
