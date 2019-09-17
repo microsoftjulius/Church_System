@@ -76,7 +76,7 @@
                                                 </tr>
                                             </thead>
                                         <tbody>
-                                        @foreach ($display_all_church_users as $users_particular_church)
+                                        @foreach ($display_all_church_users as $index =>$users_particular_church)
                                             <tr>
                                                 <?php
                                                     $first_name = explode(' ',trim($users_particular_church->name));
@@ -84,7 +84,7 @@
                                                         array_push($first_name,'');
                                                     }
                                                 ?>
-                                                <td>{{ $users_particular_church->id }}</td>
+                                                <td>{{ $index +1 }}</td>
                                                 <td>{{ $first_name[0] }}</td>
                                                 <td>{{ $first_name[1] }}</td>
                                                 <td>{{ $users_particular_church->email }}</td>

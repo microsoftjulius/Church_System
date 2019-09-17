@@ -58,6 +58,9 @@
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="{{ asset('bootstrap/charts/js/mdb.min.js') }}"></script>
 
+<!--multiselect checkboxes-->
+
+
 <script type="text/javascript">
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
@@ -74,3 +77,4 @@ function countChars(obj){
     document.getElementById("charNum").innerHTML = obj.value.length+' characters [1message is 160 characters,2messages 320 characters]';
 }
 </script>
+
