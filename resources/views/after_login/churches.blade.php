@@ -77,6 +77,7 @@
                                     @endforeach
                                 </tbody>
                                 </table>
+                                {{ $churches->links() }}
                             </section>
                         </div>
                     </div>

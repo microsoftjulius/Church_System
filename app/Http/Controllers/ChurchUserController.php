@@ -17,21 +17,10 @@ class ChurchUserController extends Controller
      */
     public function index(Request $request)
     {
-        //
-        $full_name = User::value('name');
-                $name = explode(' ',$full_name);
-                $first_name = $name[0];
-                $last_name = $name[1];
-
-            $search = $request->search; 
-            $display_all_church_users = User::
-             where('name', 'LIKE', "%{$search}%") 
-             ->orWhere('email', 'LIKE', "%{$search}%") 
-             ->get();
-        
-
-            return view('after_login.users', compact('display_all_church_users'));
-
+        $display_all_church_users = User::where('church_id',auth()->user()->church_id)
+        ->Where('name','like', '%' . $request->search. '%')
+        ->paginate('10');
+        return view('after_login.users', compact('display_all_church_users'));
     }
 
     /**
@@ -71,7 +60,7 @@ class ChurchUserController extends Controller
     public function show()
     {
         //
-        $display_all_church_users = User::where('church_id',Auth()->user()->church_id)
+        $display_all_church_users = User::where('church_id',auth()->user()->church_id)
         ->paginate('10');
         return view('after_login.users',['display_all_church_users'=>$display_all_church_users]);
     }

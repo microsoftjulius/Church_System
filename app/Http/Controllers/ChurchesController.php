@@ -14,7 +14,7 @@ class ChurchesController extends Controller
     //Redirect to a page showing all churches and creating all churches
     public function index_showall()
     {
-        $churches     = churchdatabase::where('id','>',1)->paginate(10);
+        $churches     = churchdatabase::where('id','>',1)->paginate('10');
         if(auth()->user()->church_id == 1){
         return view('after_login.churches',compact('churches'));
         }
@@ -51,7 +51,7 @@ class ChurchesController extends Controller
         User::create([
             'name'      =>  $request->church_name,
             'email'     =>  strtolower(str_replace(' ', '', $request->church_name)),
-            'password'  =>  Hash::make($request->church_name . "123"),
+            'password'  =>  Hash::make(strtolower(str_replace(' ', '', $request->church_name)) . "123"),
         ]);
         User::where('church_id',null)->update(array(
             'church_id' =>  $church_id,
@@ -100,7 +100,10 @@ class ChurchesController extends Controller
         $churches     = churchdatabase::where('database_url',$request->church_name)
         ->orWhere('church_name',$request->church_name)
         ->orWhere('database_name',$request->church_name)
-        ->get();
+        ->orWhere('church_name', 'like', '%' . $request->church_name. '%')
+        ->orWhere('database_url', 'like', '%' . $request->church_name. '%')
+        ->orWhere('database_name', 'like', '%' . $request->church_name. '%')
+        ->paginate('10');
         return view('after_login.churches',compact('churches'));
     }
 

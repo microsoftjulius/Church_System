@@ -13,10 +13,7 @@ class ContactsController extends Controller
     //It redirects to a page showing all contacts
     public function index()
     {
-        $contacts = Contacts::join('church_databases','church_databases.id','contacts.church_id')
-        ->join('users','users.id','contacts.created_by')
-        ->where('users.church_id',Auth::user()->church_id)->get();
-        return view('after_login.contacts',compact('contacts'));
+
     }
 
     /**
@@ -64,6 +61,9 @@ class ContactsController extends Controller
         //saving new array to the database
         Contacts::where('contacts.id',$id)->update(array(
             'contact_number' => json_encode($contact_array)
+        ));
+        Groups::where('id',$id)->update(array(
+            'number_of_contacts' => count($contact_array)
         ));
         return Redirect()->back();
         }
