@@ -39,6 +39,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/search-church','ChurchesController@search');
     Route::get('/contact-groups','GroupsController@index');
     Route::post('/search-group','GroupsController@search_group');
+    Route::post('/import-contacts/{id}', 'ContactsController@import')->name('import');
     //Route::post('/search-sent-messages','messages@search_use_contact_group_attributes');
 
     Route::post('/create-group','GroupsController@create_group');
@@ -46,6 +47,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/store-sent-messages','messages@store_sent_messages');
     Route::get('/view-contacts/{id}','ContactsController@view_for_group');
     Route::post('/save-contact-to-group/{id}','ContactsController@save_contact_to_group');
-
     Route::post('/search-sent-messages','messages@search_messages');
 });

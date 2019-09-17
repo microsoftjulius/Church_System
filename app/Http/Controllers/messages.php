@@ -41,7 +41,7 @@ class messages extends Controller
 
     public function store_sent_messages(Request $request){
         $message_to_send = $request->message;
-        $contact_array = json_decode(Contacts::where('contacts.id',$request->group_id)->value('contact_number'));
+        $contact_array = json_decode(Contacts::where('contacts.group_id',$request->group_id)->value('contact_number'));
         foreach($contact_array as $contact){
                 $contact->Contact;
                 //echo $contact->Contact;
