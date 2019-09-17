@@ -62,6 +62,9 @@ class ContactsController extends Controller
         Contacts::where('contacts.id',$id)->update(array(
             'contact_number' => json_encode($contact_array)
         ));
+        Groups::where('id',$id)->update(array(
+            'number_of_contacts' => count($contact_array)
+        ));
         return Redirect()->back();
         }
 }

@@ -31,7 +31,6 @@ class GroupsController extends Controller
     return view('after_login.contacts-groups',compact('contacts','counted'));
     }
 
-
     /**
      * Show the form for creating a new resource.
      *

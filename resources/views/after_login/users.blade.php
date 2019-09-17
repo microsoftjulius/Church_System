@@ -64,7 +64,7 @@
                                         <table id="dtBasicExample" class="table table-striped table-bordered table-sm bg-white" cellspacing="0" width="100%">
                                             <thead>
                                                 <tr>
-                                                    <th class="th-sm">ID</th> 
+                                                    <th class="th-sm">ID</th>
                                                     <th class="th-sm">First Name
                                                     </th>
                                                     <th class="th-sm">Last Name

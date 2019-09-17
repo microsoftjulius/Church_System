@@ -70,6 +70,7 @@
                                                 <td><input type="text" name="contact" value="" class="form-control"></td>
                                             </tr>
                                             <button class="btn btn-primary pull-right" type="submit">save</button>
+                                            <button class="btn btn-primary pull-right" type="submit">Clear</button>
                                         </form>
                                         @endforeach
                                     </tbody>
