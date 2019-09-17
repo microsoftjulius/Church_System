@@ -34,18 +34,26 @@
                 <div class="right_col" role="main">
                     @include('layouts.message')
                 <form  class="pull-right" action="/search-group" method="POST">
-                    @csrf
-                    <div class="form-group row col-lg-12">
-                        <div class="col-sm-5">
-                            <input type="text" class="form-control" name="group_name" placeholder="search group"required>
-                        </div>
-                        <div class="col-sm-3">
-                            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Group</button>
-                        </div>
-                        <div class="col-sm-2">
-                            <a href="/create-group-form"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> Group</button></a>
-                        </div>
-                    </div>
+                    @csrf 
+                    <!--serch form  -->
+                    <div class="col-md-12">
+                                        <div class="col-md-8"></div>
+                                            <div class="col-md-2">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control col-md-12" placeholder="search group" name="group_name" id="srch-term" required>
+                                                            <div class="input-group-btn">
+                                                                <button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-search"></i>
+                                                                </button>
+                                                            </div>
+                                                    </div>
+                                            </div>
+                                        <div class="col-md-2">
+                                            <div class="input-group">
+                                            <a href="/create-group-form"><button type="button" class="btn btn-primary"><i class="fa fa-plus"> Group</i></button></a>
+
+                                            </div>
+                                        </div>
+                                </div>
                 </form>
                 <!--table -->
                 <div class="row">
@@ -78,7 +86,7 @@
                             </section>
                             {{ $contacts->links() }}
                         </div>
-                    </div>
+                    </div> 
                     <div class="row">
                     </div>
                 </div>

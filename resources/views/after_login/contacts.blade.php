@@ -50,9 +50,9 @@
                                     <tbody>
                                         @foreach ($get_group_contacts as $contact)
                                         <?php $data = json_decode($contact->contact_number)?>
-                                        @foreach ($data as $item)
+                                        @foreach ($data as $index => $item)
                                         <tr>
-                                            <td>4</td>
+                                            <td>{{ $index +1 }}</td>
                                             <td>{{ $contact->group_name }}</td>
                                             <td>{{ $contact->email }}</td>
                                             <td>{{ $contact->email }}</td>

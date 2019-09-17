@@ -75,6 +75,12 @@
                                 </section>
                             </div>
                     </div>
+                    <div class="col-md-2 pull-right">
+                        <div class="input-group">
+                        <a href=""><button type="button" class="btn btn-danger"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Back</i></button></a>
+
+                        </div>
+                </div>
 
                     <div class="row">
                     </div>

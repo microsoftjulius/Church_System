@@ -36,28 +36,23 @@
                 <form  class="pull-right" action="/search-church" method="POST">
                     @csrf   
                             <div class="col-md-12">
-                                        <div class="col-md-7"></div>
-                                            <div class="col-md-3">
+                                        <div class="col-md-8"></div>
+                                            <div class="col-md-2">
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control col-md-12" placeholder="enter church name" name="church_name" id="srch-term" required>
+                                                        <input type="text" class="form-control col-md-12" placeholder="Search church" name="church_name" id="srch-term" required>
                                                             <div class="input-group-btn">
-                                                                <button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-search">Church</i>
+                                                                <button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-search"></i>
                                                                 </button>
                                                             </div>
                                                     </div>
                                             </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mr-2">
                                             <div class="input-group">
                                             <a href="/createchurches"><button type="button" class="btn btn-primary"><i class="fa fa-plus"> Church</i></button></a>
 
                                             </div>
                                         </div>
-                                </div>
-                        <!--
-                        <div class="col-sm-2">
-                            <a href="/createchurches"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> Church</button></a>
-                        </div>
-                    </div>-->
+                                </div>      
                 </form>
                 <!--table -->
                 <div class="row">
