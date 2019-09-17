@@ -56,6 +56,16 @@ class ChurchesController extends Controller
         User::where('church_id',null)->update(array(
             'church_id' =>  $church_id,
         ));
+        //creating the churches properties file
+
+        $my_file = $request->church_name.'.txt';
+        $handle = fopen($my_file, 'w') or die('Cannot open file:  '.$my_file);
+        $url = "Url: ".$request->url;
+        fwrite($handle, $url);
+        $username = "\n UserName: ".$request->church_name;
+        fwrite($handle, $username);
+        $Password = "\n Password: ".Hash::make($request->password);
+        fwrite($handle, $Password);
         return redirect('/church');
     }
 
