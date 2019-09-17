@@ -40,45 +40,51 @@ class messages extends Controller
     }
 
     public function store_sent_messages(Request $request){
-        $message_to_send = $request->message;
-        $contact_array = json_decode(Contacts::where('contacts.id',$request->group_id)->value('contact_number'));
-        foreach($contact_array as $contact){
-                $contact->Contact;
-                //echo $contact->Contact;
-                $data= array(
-                    'method'=>'SendSms',
-                    'userdata'=> array(
-                    'username'=>'microsoft',// Egosms Username
-                    'password'=>'123456' //Egosms Password
-                    ),
-                    'msgdata'=> array(
-                    array('number'=>$contact->Contact,'message'=>$message_to_send,'senderid'=>'Good')
-                    )
-                );
-                    //encode the array into json
-                    $json_builder =json_encode($data);
-                    //use curl to post the the json encoded information
-                    $ch = curl_init('http://www.egosms.co/api/v1/json/');
-                    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-                    curl_setopt($ch, CURLOPT_HEADER, 0);
-                    curl_setopt($ch, CURLOPT_POST, 1);
-                    curl_setopt($ch, CURLOPT_POSTFIELDS, $json_builder);
-                    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 0);
-                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-                    $ch_result = curl_exec($ch);
-                    curl_close($ch);
-                    //print an array that is json decoded
-                    print_r(json_decode($ch_result,true));
+        if(!empty($request->check_list))
+        {
+         $request->check_list;
         }
-        message::create(array(
-            'church_id'   =>  Auth::user()->church_id,
-            'group_id'     =>  $request->group_id,
-            'message'      =>  $request->message,
-            'contact_character' =>$request->contact_character,
-            'created_on'   =>  $request->created_at,
-            'created_by'    =>  Auth::user()->id
-        ));
-        return redirect('/sent-quick-messages');
+
+        
+        // $message_to_send = $request->message;
+        // $contact_array = json_decode(Contacts::where('contacts.id',$request->group_id)->value('contact_number'));
+        // foreach($contact_array as $contact){
+        //         $contact->Contact;
+        //         //echo $contact->Contact;
+        //         $data= array(
+        //             'method'=>'SendSms',
+        //             'userdata'=> array(
+        //             'username'=>'microsoft',// Egosms Username
+        //             'password'=>'123456' //Egosms Password
+        //             ),
+        //             'msgdata'=> array(
+        //             array('number'=>$contact->Contact,'message'=>$message_to_send,'senderid'=>'Good')
+        //             )
+        //         );
+        //             //encode the array into json
+        //             $json_builder =json_encode($data);
+        //             //use curl to post the the json encoded information
+        //             $ch = curl_init('http://www.egosms.co/api/v1/json/');
+        //             curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+        //             curl_setopt($ch, CURLOPT_HEADER, 0);
+        //             curl_setopt($ch, CURLOPT_POST, 1);
+        //             curl_setopt($ch, CURLOPT_POSTFIELDS, $json_builder);
+        //             curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 0);
+        //             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        //             $ch_result = curl_exec($ch);
+        //             curl_close($ch);
+        //             //print an array that is json decoded
+        //             print_r(json_decode($ch_result,true));
+        //}
+        // message::create(array(
+        //     'church_id'   =>  Auth::user()->church_id,
+        //     'group_id'     =>  $request->group_id,
+        //     'message'      =>  $request->message,
+        //     'contact_character' =>$request->contact_character,
+        //     'created_on'   =>  $request->created_at,
+        //     'created_by'    =>  Auth::user()->id
+        // ));
+        // return redirect('/sent-quick-messages');
     }
 
     public function search_messages(Request $request){
