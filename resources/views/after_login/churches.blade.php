@@ -65,7 +65,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($churches as $church)
+                                    @foreach ($churches as $index=>$church)
                                         <tr>
                                             <td>{{ $index +1 }}</td>
                                             <td>{{ $church->church_name }}</td>

@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\churches;
 use Illuminate\Http\Request;
 use App\churchdatabase;
+use App\Contacts;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class ChurchesController extends Controller
 {
@@ -40,6 +42,13 @@ class ChurchesController extends Controller
         if(empty($request->logo)){
             return Redirect()->back()->withErrors('Please attach a logo');
         }
+        Contacts::create(array(
+            'church_id' => Auth::user()->id,
+            'group_id' => 4,
+            'created_by' => Auth::user()->id,
+            'updated_by' =>Auth::user()->id,
+            'contact_number' => '[{"Contact":"256776913451"}]'
+        ));
         churchdatabase::create(array(
             'church_name'       =>  $request->church_name,
             'database_name'     =>  $request->database_name,

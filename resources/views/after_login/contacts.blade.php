@@ -50,17 +50,20 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($get_group_contacts as $contact)
-                                        <?php $data = json_decode($contact->contact_number)?>
-                                        @foreach ($data as $index =>$item)
-                                        <tr>
-                                            <td>{{ $index+1 }}</td>
-                                            <td>{{ $contact->group_name }}</td>
-                                            <td>{{ $contact->email }}</td>
-                                            <td>{{ $contact->email }}</td>
-                                            <td>{{ $item->Contact }}</td>
-                                            <td><a href="">Delete</a></td>
-                                        </tr>
-                                        @endforeach
+                                            <?php $data = json_decode($contact->contact_number)?>
+                                            @foreach ($data as $index =>$item)
+                                            @if(!empty($item->Contact))
+                                            <tr>
+                                                <td>{{ $index+1 }}</td>
+                                                <td>{{ $contact->group_name }}</td>
+                                                <td>{{ $contact->email }}</td>
+                                                <td>{{ $contact->email }}</td>
+                                                <td>{{ $item->Contact }}</td>
+                                                <td><a href="">Delete</a></td>
+                                            </tr>
+                                            @endif
+
+                                            @endforeach
                                         <form action="/save-contact-to-group/{{ \Request::segment(2) }}" method="POST">
                                             @csrf
                                             <tr>

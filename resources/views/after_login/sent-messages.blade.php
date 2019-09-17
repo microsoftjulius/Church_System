@@ -78,6 +78,7 @@
                                             @endforeach
                                             </tbody>
                                     </table>
+                                    {{ $display_sent_message_details->links() }}
                                 </section>
                             </div>
                     </div>

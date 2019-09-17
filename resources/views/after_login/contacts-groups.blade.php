@@ -69,7 +69,7 @@
                                             <td>{{ $contact->group_name }}</td>
                                             <td>{{ $contact->email }}</td>
                                             <td>{{ $contact->created_at }}</td>
-                                            <td></td>
+                                            <td>{{ $contact->number_of_contacts }}</td>
                                             <td><a href="/view-contacts/{{ $contact->id }}">view contacts</a></td>
                                         </tr>
                                     @endforeach

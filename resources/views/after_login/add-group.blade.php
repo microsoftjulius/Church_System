@@ -32,10 +32,10 @@
                 <!-- /top navigation -->
                 <!-- page content -->
                 <div class="right_col" role="main">
-                    @include('layouts.message')
                 <!--table -->
                 <div class="row">
                         <div class="col-lg-12">
+                                @include('layouts.message')
                             <form action="/create-group" method="post">
                                 @csrf
                                 <div class="col-lg-4">

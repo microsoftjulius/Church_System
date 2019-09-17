@@ -26,7 +26,7 @@ class messages extends Controller
     {
     $display_sent_message_details = message::join('users','users.id', 'messages.created_by')
     ->where('users.church_id',Auth::user()->church_id)
-    ->select('messages.id', 'messages.message','messages.created_on','messages.status','users.email')->get();
+    ->select('messages.id', 'messages.message','messages.created_on','messages.status','users.email')->paginate('10');
     return view('after_login.sent-messages',['display_sent_message_details'=>$display_sent_message_details]);
     }
 
@@ -41,7 +41,8 @@ class messages extends Controller
 
     public function store_sent_messages(Request $request){
         $message_to_send = $request->message;
-        $contact_array = json_decode(Contacts::where('contacts.group_id',$request->group_id)->value('contact_number'));
+        for($i = 0; $i<count($request->checkbox); $i++){
+        $contact_array = json_decode(Contacts::where('contacts.group_id',$request->checkbox[$i])->value('contact_number'));
         foreach($contact_array as $contact){
                 $contact->Contact;
                 //echo $contact->Contact;
@@ -72,12 +73,14 @@ class messages extends Controller
         }
         message::create(array(
             'church_id'   =>  Auth::user()->church_id,
-            'group_id'     =>  $request->group_id,
+            'group_id'     =>  $request->checkbox[$i],
             'message'      =>  $request->message,
             'contact_character' =>$request->contact_character,
             'created_on'   =>  $request->created_at,
             'created_by'    =>  Auth::user()->id
         ));
+            //return count($request->checkbox);
+        }
         return redirect('/sent-quick-messages');
     }
 
