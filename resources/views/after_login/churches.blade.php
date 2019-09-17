@@ -67,7 +67,7 @@
                                 <tbody>
                                     @foreach ($churches as $church)
                                         <tr>
-                                            <td>4</td>
+                                            <td>{{ $index +1 }}</td>
                                             <td>{{ $church->church_name }}</td>
                                             <td>{{ $church->database_name }}</td>
                                             <td>{{ $church->database_url }}</td>
