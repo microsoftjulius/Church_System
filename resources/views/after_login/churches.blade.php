@@ -34,19 +34,30 @@
                 <div class="right_col" role="main">
                     @include('layouts.message')
                 <form  class="pull-right" action="/search-church" method="POST">
-                    @csrf
-                    <div class="form-group row col-lg-12">
-                        <label for="churchName" class="col-sm-2 col-form-label">Church</label>
-                        <div class="col-sm-5">
-                            <input type="text" class="form-control" name="church_name" placeholder="enter church name"required>
-                        </div>
-                        <div class="col-sm-3">
-                            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Church</button>
-                        </div>
+                    @csrf   
+                            <div class="col-md-12">
+                                        <div class="col-md-7"></div>
+                                            <div class="col-md-3">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control col-md-12" placeholder="enter church name" name="church_name" id="srch-term" required>
+                                                            <div class="input-group-btn">
+                                                                <button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-search">Church</i>
+                                                                </button>
+                                                            </div>
+                                                    </div>
+                                            </div>
+                                        <div class="col-md-2">
+                                            <div class="input-group">
+                                            <a href="/createchurches"><button type="button" class="btn btn-primary"><i class="fa fa-plus"> Church</i></button></a>
+
+                                            </div>
+                                        </div>
+                                </div>
+                        <!--
                         <div class="col-sm-2">
                             <a href="/createchurches"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> Church</button></a>
                         </div>
-                    </div>
+                    </div>-->
                 </form>
                 <!--table -->
                 <div class="row">
@@ -65,7 +76,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($churches as $church)
+                                    @foreach ($churches as $index => $church)
                                         <tr>
                                             <td>{{ $index +1 }}</td>
                                             <td>{{ $church->church_name }}</td>
