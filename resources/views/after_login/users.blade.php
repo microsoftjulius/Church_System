@@ -71,8 +71,7 @@
                                                     </th>
                                                     <th class="th-sm">UserName
                                                     </th>
-                                                    <th class="th-sm">Created At</th>
-                                                    <th class="th-sm"> Options</th>
+                                                    <th class="th-sm">Created At</th> 
                                                 </tr>
                                             </thead>
                                         <tbody>
@@ -89,7 +88,6 @@
                                                 <td>{{ $first_name[1] }}</td>
                                                 <td>{{ $users_particular_church->email }}</td>
                                                 <td>{{ $users_particular_church->created_at }}</td>
-                                                <td><a href="">delete user</a></td>
                                             </tr>
                                             @endforeach
                                         </tbody>
@@ -97,7 +95,6 @@
                                 </section>
                             </div>
                     </div>
-
                     <div class="row">
                     </div>
                 </div>

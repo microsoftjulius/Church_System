@@ -52,11 +52,11 @@ class ContactsController extends Controller
             return Redirect()->back();
         }
         $contact_array = json_decode(Contacts::where('contacts.group_id', $id)->value('contact_number'));
-        foreach ($contact_array as $contact) {
-            // if ($contact->Contact == "") {
-            //     $contact->Contact = $request->contact;
-            // }
-        }
+        // foreach ($contact_array as $contact) {
+        //     if ($contact->Contact == "") {
+        //         $contact->Contact = $request->contact;
+        //     }
+        // }
         $nospace_request = str_replace(" ", "", $request->contact);
         $empty_array     = array(
             'Contact' => $nospace_request

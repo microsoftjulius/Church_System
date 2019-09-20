@@ -42,6 +42,8 @@ class GroupsController extends Controller
         if(Groups::where('church_id',Auth::user()->church_id)->where('group_name',$request->group_name)
         ->exists()){
             return Redirect()->back()->withErrors('Group Already Exists, Kindly Create a new Group');
+            // $group_id = Groups::max('id');
+            // return $group_id;
         }
         Groups::create(array(
             'group_name'      =>$request->group_name,
@@ -50,7 +52,7 @@ class GroupsController extends Controller
         ));
         $group_id = Groups::max('id');
         Contacts::create(array(
-            'church_id' => Auth::user()->id,
+            'church_id' => Auth::user()->church_id,
             'group_id'  => $group_id,
             'created_by' => Auth::user()->id,
             'update_by' => Auth::user()->id,

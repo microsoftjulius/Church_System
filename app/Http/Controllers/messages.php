@@ -31,7 +31,7 @@ class messages extends Controller
     }
 
     public function drop_down_groups(){
-        $drop_down_groups = Groups::all();
+        $drop_down_groups = Groups::where('church_id',Auth::user()->church_id)->get();
         return view('after_login.Quicksms',compact('drop_down_groups'));
     }
 

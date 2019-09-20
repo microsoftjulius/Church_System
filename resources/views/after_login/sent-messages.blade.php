@@ -78,11 +78,10 @@
                                             @endforeach
                                             </tbody>
                                     </table>
-                                    {{ $display_sent_message_details->links() }}
                                 </section>
+                                {{ $display_sent_message_details->links() }}
                             </div>
                     </div>
-
                     <div class="row">
                     </div>
                 </div>

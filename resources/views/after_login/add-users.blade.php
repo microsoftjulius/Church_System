@@ -33,9 +33,9 @@
                 <!-- page content -->
                 <div class="right_col" role="main">
                     <!--Setupform-->
-
                     <form class="col-md-offset-3 col-sm-6" style="border-width: 4px 4px 4px 4px; padding :1em; background-color:white;" action="/adds-user" method="POST">
                         @csrf
+                        @include('layouts.message')
                     <div class="panel-heading text-center"><h4>Please Add User</h4>
                     <hr>
                     </div>
@@ -72,6 +72,13 @@
 
                     <div class="row">
                     </div>
+                    <!--back button-->
+                    <div class="col-md-2 pull-right">
+                        <div class="input-group">
+                        <a href="/user"><button type="button" class="btn btn-danger"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Back</i></button></a>
+
+                        </div>
+                </div>
                 </div>
                 <!-- /page content -->
                 <!-- footer content -->
