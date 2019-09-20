@@ -62,7 +62,6 @@
                                                 <td><a href="">Delete</a></td>
                                             </tr>
                                             @endif
-
                                             @endforeach
                                         <form action="/save-contact-to-group/{{ \Request::segment(2) }}" method="POST">
                                             @csrf

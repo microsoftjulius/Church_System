@@ -39,15 +39,15 @@ class ChurchesController extends Controller
         {
             return Redirect()->back()->withErrors('Church Name already Registered');
         }
-        if(empty($request->logo)){
-            return Redirect()->back()->withErrors('Please attach a logo');
-        }
+        // if(empty($request->logo)){
+        //     return Redirect()->back()->withErrors('Please attach a logo');
+        // }
         Contacts::create(array(
             'church_id' => Auth::user()->id,
             'group_id' => 4,
             'created_by' => Auth::user()->id,
-            'updated_by' =>Auth::user()->id,
-            'contact_number' => '[{"Contact":"256776913451"}]'
+            'update_by' =>Auth::user()->id,
+            'contact_number' => '[{"Contact":""}]'
         ));
         churchdatabase::create(array(
             'church_name'       =>  $request->church_name,
@@ -122,7 +122,7 @@ class ChurchesController extends Controller
         ->orWhere('church_name', 'like', '%' . $request->church_name. '%')
         ->orWhere('database_url', 'like', '%' . $request->church_name. '%')
         ->orWhere('database_name', 'like', '%' . $request->church_name. '%')
-        ->paginate('10');
+        ->paginate('4');
         return view('after_login.churches',compact('churches'));
     }
 

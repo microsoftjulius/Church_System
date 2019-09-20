@@ -66,7 +66,6 @@
                             <div class="col-sm-8">
                                 <textarea type="text" class="form-control form-control-lg" onkeyup="countChars(this);" rows="7" id="message" name="message"></textarea>
                                 <p class="text-" id="charNum"><span class="text-primary">0 characters [1message is 160 characters,2messages 320 characters]</span></p>
-
                                 <div class="container">
                                     <div class="row">
                                         <div class="form-group">
@@ -96,6 +95,12 @@
                             </div>
                         </div>
                     </form>
+                    <div class="col-md-2 pull-right">
+                        <div class="input-group">
+                        <a href="/home"><button type="button" class="btn btn-danger"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Back</i></button></a>
+
+                        </div>
+                </div>
                     <div class="row">
                     </div>
                 </div>

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\church_user;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class ChurchUserController extends Controller
 {
@@ -42,6 +43,9 @@ class ChurchUserController extends Controller
     public function store(Request $request)
     {
         //
+        if(User::where('email',$request->username)->exists()){
+            return Redirect()->back()->withErrors('Username already taken, kindly choose another username');
+        }
         User::create(array(
             'name'       =>  $request->first_name ." " . $request->last_name ,
             'email'      =>  $request->username,
