@@ -45,32 +45,37 @@
                                             <th class="th-sm">Created By</th>
                                             <th class="th-sm">Updated by</th>
                                             <th class="th-sm">Contacts</th>
+                                            <th class="th-sm">Options</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($get_group_contacts as $contact)
-                                        <?php $data = json_decode($contact->contact_number)?>
-                                        @foreach ($data as $item)
-                                        <tr>
-                                            <td>4</td>
-                                            <td>{{ $contact->group_name }}</td>
-                                            <td>{{ $contact->email }}</td>
-                                            <td>{{ $contact->email }}</td>
-                                            <td>{{ $item->Contact }}</td>
-                                        </tr>
-                                        @endforeach
-                                        <form action="/save-contact-to-group/{{ \Request::segment(2) }}
-                                            " method="POST">
+                                            <?php $data = json_decode($contact->contact_number)?>
+                                            @foreach ($data as $index =>$item)
+                                            @if(!empty($item->Contact))
+                                            <tr>
+                                                <td>{{ $index+1 }}</td>
+                                                <td>{{ $contact->group_name }}</td>
+                                                <td>{{ $contact->email }}</td>
+                                                <td>{{ $contact->email }}</td>
+                                                <td>{{ $item->Contact }}</td>
+                                                <td><a href="">Delete</a></td>
+                                            </tr>
+                                            @endif
+                                            @endforeach
+                                        <form action="/save-contact-to-group/{{ \Request::segment(2) }}" method="POST">
                                             @csrf
                                             <tr>
-                                                <td>4</td>
+                                                <td></td>
                                                 <td><input type="text" name="groupname" value="{{ $contact->group_name }}" class="form-control" disabled></td>
                                                 <td><input type="text" name="created_by" value="{{ auth()->user()->email }}" class="form-control" disabled></td>
                                                 <td><input type="text" name="created_by" value="{{ auth()->user()->email }}" class="form-control" disabled></td>
                                                 <td><input type="text" name="contact" value="" class="form-control"></td>
+                                                <td></td>
                                             </tr>
                                             <button class="btn btn-primary pull-right" type="submit">save</button>
                                             <button class="btn btn-primary pull-right" type="submit">Clear</button>
+                                            {{-- <input type="file" name="file" id="" value="Upload"> --}}
                                         </form>
                                         @endforeach
                                     </tbody>

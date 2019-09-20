@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\churches;
 use Illuminate\Http\Request;
 use App\churchdatabase;
+use App\Contacts;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class ChurchesController extends Controller
 {
@@ -37,9 +39,16 @@ class ChurchesController extends Controller
         {
             return Redirect()->back()->withErrors('Church Name already Registered');
         }
-        if(empty($request->logo)){
-            return Redirect()->back()->withErrors('Please attach a logo');
-        }
+        // if(empty($request->logo)){
+        //     return Redirect()->back()->withErrors('Please attach a logo');
+        // }
+        Contacts::create(array(
+            'church_id' => Auth::user()->id,
+            'group_id' => 4,
+            'created_by' => Auth::user()->id,
+            'update_by' =>Auth::user()->id,
+            'contact_number' => '[{"Contact":""}]'
+        ));
         churchdatabase::create(array(
             'church_name'       =>  $request->church_name,
             'database_name'     =>  $request->database_name,
@@ -56,6 +65,16 @@ class ChurchesController extends Controller
         User::where('church_id',null)->update(array(
             'church_id' =>  $church_id,
         ));
+        //creating the churches properties file
+
+        $my_file = $request->church_name.'.txt';
+        $handle = fopen($my_file, 'w') or die('Cannot open file:  '.$my_file);
+        $url = "Url: ".$request->url;
+        fwrite($handle, $url);
+        $username = "\n UserName: ".$request->church_name;
+        fwrite($handle, $username);
+        $Password = "\n Password: ".Hash::make($request->password);
+        fwrite($handle, $Password);
         return redirect('/church');
     }
 
@@ -103,7 +122,7 @@ class ChurchesController extends Controller
         ->orWhere('church_name', 'like', '%' . $request->church_name. '%')
         ->orWhere('database_url', 'like', '%' . $request->church_name. '%')
         ->orWhere('database_name', 'like', '%' . $request->church_name. '%')
-        ->paginate('10');
+        ->paginate('4');
         return view('after_login.churches',compact('churches'));
     }
 

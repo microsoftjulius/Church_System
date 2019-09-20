@@ -79,9 +79,9 @@
                                             </tbody>
                                     </table>
                                 </section>
+                                {{ $display_sent_message_details->links() }}
                             </div>
                     </div>
-
                     <div class="row">
                     </div>
                 </div>

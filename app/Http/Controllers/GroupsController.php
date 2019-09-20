@@ -6,6 +6,7 @@ use App\Groups;
 use App\Contacts;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class GroupsController extends Controller
 {
@@ -20,7 +21,7 @@ class GroupsController extends Controller
     $contacts = Groups::join('church_databases','church_databases.id','Groups.church_id')
     ->join('users','users.id','Groups.created_by')
     ->where('users.church_id',Auth::user()->church_id)
-    ->select('Groups.group_name','users.email','Groups.id','Groups.created_at')
+    ->select('Groups.group_name','users.email','Groups.id','Groups.created_at','Groups.number_of_contacts')
     ->paginate('10');
 
     $counted = Groups::join('church_databases','church_databases.id','Groups.church_id')
@@ -38,10 +39,24 @@ class GroupsController extends Controller
      */
     public function create_group(Request $request)
     {
+        if(Groups::where('church_id',Auth::user()->church_id)->where('group_name',$request->group_name)
+        ->exists()){
+            return Redirect()->back()->withErrors('Group Already Exists, Kindly Create a new Group');
+            // $group_id = Groups::max('id');
+            // return $group_id;
+        }
         Groups::create(array(
             'group_name'      =>$request->group_name,
             'church_id' => Auth::user()->church_id,
             'created_by' => Auth::user()->id
+        ));
+        $group_id = Groups::max('id');
+        Contacts::create(array(
+            'church_id' => Auth::user()->church_id,
+            'group_id'  => $group_id,
+            'created_by' => Auth::user()->id,
+            'update_by' => Auth::user()->id,
+            'contact_number' => '[{"Contact":""}]'
         ));
         return redirect('/contact-groups');
     }

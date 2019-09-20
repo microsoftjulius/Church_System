@@ -64,7 +64,7 @@
                             <div class="form-group row">
                                 <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Logo</label>
                                 <div class="col-sm-10">
-                                <input type="file" class="form-control form-control-lg" name="logo" id="colFormLabelLg" placeholder="attach logo" required>
+                                <input type="file" class="form-control form-control-lg" name="logo" id="colFormLabelLg" placeholder="attach logo">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -73,9 +73,15 @@
                                 </div>
                             </div>
                         </form>
-
                     <div class="row">
                     </div>
+                    <!--back button-->
+                    <div class="col-md-2 pull-right">
+                        <div class="input-group">
+                        <a href="/church"><button type="button" class="btn btn-danger"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Back</i></button></a>
+
+                        </div>
+                </div>
                 </div>
                 <!-- /page content -->
                 <!-- footer content -->

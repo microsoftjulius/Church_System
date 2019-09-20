@@ -1,0 +1,15 @@
+-------------------- Auto-Git Log --------------------
+		Tue Sep 17 2019 10:17:31 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* resources/views/after_login/home.blade.php
+
+
+Created files:
+
+
+Deleted files:
+
+
+Renamed files:

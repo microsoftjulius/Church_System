@@ -47,9 +47,9 @@
                                                                 </button>
                                                             </div>
                                                     </div>
-                                            </div>   
+                                            </div>
                                 </div>
-                            </form>    
+                            </form>
                         </div>
                     <!--Table-->
                 <div class="row">
@@ -62,9 +62,9 @@
                                                     <th class="th-sm">Message Body
                                                     </th>
                                                     <th class="th-sm">Number of Contacts Sent To
-                                                    </th> 
+                                                    </th>
                                                     <th class="th-sm">Created By
-                                                    </th> 
+                                                    </th>
                                                     <th class="th-sm">Date/Time</th>
                                                     <th class="th-sm"> Message Status</th>
                                                 </tr>
@@ -75,6 +75,12 @@
                                 </section>
                             </div>
                     </div>
+                    <div class="col-md-2 pull-right">
+                        <div class="input-group">
+                        <a href=""><button type="button" class="btn btn-danger"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Back</i></button></a>
+
+                        </div>
+                </div>
 
                     <div class="row">
                     </div>

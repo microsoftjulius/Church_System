@@ -32,22 +32,7 @@
                 <!-- /top navigation -->
                 <!-- page content -->
                 <div class="right_col" role="main">
-                    @include('layouts.message')
-                <form  class="pull-right" action="/search-church" method="POST">
-                    @csrf
-                    <div class="form-group row col-lg-12">
-                        <label for="churchName" class="col-sm-2 col-form-label">Church</label>
-                        <div class="col-sm-5">
-                            <input type="text" class="form-control" name="church_name" placeholder="enter church name"required>
-                        </div>
-                        <div class="col-sm-3">
-                            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Church</button>
-                        </div>
-                        <div class="col-sm-2">
-                            <a href="/createchurches"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> Church</button></a>
-                        </div>
-                    </div>
-                </form>
+                    @include('layouts.message') 
                 <!--table -->
                 <div class="row">
                         <div class="col-lg-12">
@@ -62,9 +47,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($view_user as $user)
+                                    @foreach ($view_user as $index => $user)
                                         <tr>
-                                            <td>4</td>
+                                            <td>{{ $index +1 }}</td>
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
                                             <td>{{ $user->church_name }}</td>
