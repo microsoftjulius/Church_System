@@ -62,7 +62,6 @@
                                 <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
-                                        <th class="th-sm">No.</th>
                                         <th class="th-sm">Group Name</th>
                                         <th class="th-sm">Created By</th>
                                         <th class="th-sm">Date Created</th>
@@ -71,9 +70,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($contacts as $index=>$contact)
+                                    @foreach ($contacts as $contact)
                                         <tr>
-                                            <td>{{ $index+1 }}</td>
                                             <td>{{ $contact->group_name }}</td>
                                             <td>{{ $contact->email }}</td>
                                             <td>{{ $contact->created_at }}</td>
