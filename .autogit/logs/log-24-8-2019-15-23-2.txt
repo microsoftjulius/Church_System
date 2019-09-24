@@ -1,0 +1,15 @@
+-------------------- Auto-Git Log --------------------
+		Tue Sep 24 2019 15:23:02 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* resources/views/after_login/churches.blade.php
+
+
+Created files:
+
+
+Deleted files:
+
+
+Renamed files:
