@@ -39,6 +39,7 @@
                             <h4></h4>
                             <hr>
                         </div>
+                        @include('layouts.message')
                         <div class="form-group row md-form">
                             <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Contact Groups</label>
                             <div class="col-sm-10">
@@ -49,9 +50,10 @@
                                     <ul class="dropdown-menu" style="padding: 10px;" id="myDiv">
                                         <li><input type="checkbox" id="select_all"/> Select all Groups</li>
                                             @foreach($drop_down_groups as $picking_from_database)
-                                            
-                                                <li><input type="checkbox" class="checkbox dropdown-item" name="checkbox[]" value="{{$picking_from_database->id}}" /> {{ $picking_from_database->group_name }}</li>
-                                            @endforeach
+                                            <div class="checkbox">
+                                                <label><input type="checkbox" class="checkbox dropdown-item" name="checkbox[]" value="{{$picking_from_database->id}}" /> {{ $picking_from_database->group_name }}</label>
+                                            </div>
+                                                @endforeach
                                     </ul>
                                 </div>
                             </div>
