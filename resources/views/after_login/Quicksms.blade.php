@@ -49,6 +49,7 @@
                                     <ul class="dropdown-menu" style="padding: 10px;" id="myDiv">
                                         <li><input type="checkbox" id="select_all"/> Select all Groups</li>
                                             @foreach($drop_down_groups as $picking_from_database)
+                                            
                                                 <li><input type="checkbox" class="checkbox dropdown-item" name="checkbox[]" value="{{$picking_from_database->id}}" /> {{ $picking_from_database->group_name }}</li>
                                             @endforeach
                                     </ul>
