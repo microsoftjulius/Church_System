@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\churches;
-use Illuminate\Http\Request;
-use App\churchdatabase;
-use App\Contacts;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 use App\User;
+use App\churches;
+use App\Contacts;
+use App\churchdatabase;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
 class ChurchesController extends Controller

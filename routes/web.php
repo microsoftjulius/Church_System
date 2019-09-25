@@ -39,7 +39,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/adds-user','ChurchUserController@store');
     Route::get('/search-church?page={id}','ChurchesController@search');
     Route::get('/contact-groups','GroupsController@index');
-    Route::post('/search-group','GroupsController@search_group');
+    Route::get('/get-next-page/{id}','GroupsController@pagination_for_groups');
+    Route::get('/search-group','GroupsController@search_group');
     Route::post('/import-contacts/{id}', 'ContactsController@import')->name('import');
     //Route::post('/search-sent-messages','messages@search_use_contact_group_attributes');
     Route::post('/create-group','GroupsController@create_group');
