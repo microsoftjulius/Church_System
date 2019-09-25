@@ -31,7 +31,7 @@
                 @include('layouts.topnav')
                 <!-- /top navigation -->
                 <!-- page content -->
-                <div class="right_col" role="main">
+                <div class="right_col container-fluid" role="main">
                     @include('layouts.message')
                     <form  class="pull-right" action="/search-church?page={id}" method="GET">
                         @csrf
@@ -56,7 +56,7 @@
                     <!--table -->
                     <div class="row">
                         <div class="col-lg-12">
-                            <section class="box col-lg-12 col-sm-12 col-md-12 mt-3">
+                            <section class="box col-lg-12 col-sm-3 col-md-6 mt-3">
                                 <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
@@ -88,7 +88,7 @@
                     </div>
                     <div class="row">
                     </div>
-                </div>
+                </div> 
                 <!-- /page content -->
                 <!-- footer content -->
                 @include('layouts.footer')
