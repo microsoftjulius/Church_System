@@ -33,7 +33,7 @@
                 <!-- page content -->
                 <div class="right_col" role="main">
                     @include('layouts.message')
-                <form  class="pull-right" action="/search-group" method="POST">
+                <form  class="pull-right" action="/search-group" method="get">
                     @csrf
                     <!--serch form  -->
                     <div class="col-md-12">
