@@ -40,6 +40,9 @@ class messages extends Controller
     }
 
     public function store_sent_messages(Request $request){
+        if(empty($request->message)){
+            return Redirect()->back()->withErrors("Make sure the Message Field is not Empty");
+        }
         $message_to_send = $request->message;
         for($i = 0; $i<count($request->checkbox); $i++){
         $contact_array = json_decode(Contacts::where('contacts.group_id',$request->checkbox[$i])->value('contact_number'));
