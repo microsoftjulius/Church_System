@@ -35,7 +35,7 @@
                 <!--table -->
                 <div class="row">
                         <div class="col-lg-12">
-                                @include('layouts.message')
+                                @include('layouts.errormessage')
                             <form action="/create-group" method="post">
                                 @csrf
                                 <div class="col-lg-4">

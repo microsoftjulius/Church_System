@@ -70,9 +70,10 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                            <?php $i=1;?>
                                         @foreach ($churches as $index=>$church)
                                         <tr>
-                                            <td>{{ $index +1 }}</td>
+                                            <td>{{ $i++ }}</td>
                                             <td>{{ $church->church_name }}</td>
                                             <td>{{ $church->database_name }}</td>
                                             <td>{{ $church->database_url }}</td>
@@ -88,7 +89,7 @@
                     </div>
                     <div class="row">
                     </div>
-                </div> 
+                </div>
                 <!-- /page content -->
                 <!-- footer content -->
                 @include('layouts.footer')

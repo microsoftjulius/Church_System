@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Http\Resources\Messages as MessageResource;
+use App\messages;
+use Illuminate\Mail\Message;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +18,7 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+Route::get('/messages/{id}',function($id){
+    return new MessageResource(messages::where('id',$id)->get());
 });
