@@ -62,6 +62,7 @@
                                 <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
+                                        <th class="th-sm">No.</th>
                                         <th class="th-sm">Group Name</th>
                                         <th class="th-sm">Created By</th>
                                         <th class="th-sm">Date Created</th>
@@ -70,8 +71,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                        @if ($contacts->currentPage() > 1)
+                                        @php($i =  1 + (($contacts->currentPage() - 1) * $contacts->perPage()))
+                                        @else
+                                        @php($i = 1)
+                                        @endif
                                     @foreach ($contacts as $contact)
                                         <tr>
+                                            <td>{{ $i++ }}</td>
                                             <td>{{ $contact->group_name }}</td>
                                             <td>{{ $contact->email }}</td>
                                             <td>{{ $contact->created_at }}</td>
@@ -86,7 +93,11 @@
                                 </tbody>
                                 </table>
                             </section>
+                            @if(isset($search_query))
+                            {{ $contacts->appends(['group_name' => $search_query])->links() }}
+                            @else
                             {{ $contacts->links() }}
+                            @endif
                         </div>
                     </div>
                     <div class="row">

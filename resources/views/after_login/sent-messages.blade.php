@@ -35,7 +35,7 @@
                 @include('layouts.message')
                 <!-- Search form -->
                 <div class="row">
-                            <form class="pull-right pt-4" role="search" action="/search-sent-messages" method="Post" >
+                            <form class="pull-right pt-4" role="search" action="/search-sent-messages" method="get" >
                             @csrf
                                 <div class="col-md-12">
                                         <div class="col-md-8"></div>
@@ -67,9 +67,14 @@
                                                     </tr>
                                                 </thead>
                                             <tbody>
+                                            @if ($display_sent_message_details->currentPage() > 1)
+                                            @php($i =  1 + (($display_sent_message_details->currentPage() - 1) * $display_sent_message_details->perPage()))
+                                            @else
+                                            @php($i = 1)
+                                            @endif
                                             @foreach ($display_sent_message_details as $message_details)
                                                 <tr>
-                                                    <td>{{ $message_details->id}}</td>
+                                                    <td>{{ $i++}}</td>
                                                     <td>{{ $message_details->message }}</td>
                                                     <td>{{ $message_details->created_on }}</td>
                                                     <td>{{ $message_details->email }}</td>
@@ -79,7 +84,11 @@
                                             </tbody>
                                     </table>
                                 </section>
+                                @if(isset($search_query))
+                                {{ $display_sent_message_details->appends(['search_message' => $search_query])->links() }}
+                                @else
                                 {{ $display_sent_message_details->links() }}
+                                @endif
                             </div>
                     </div>
                     <div class="row">

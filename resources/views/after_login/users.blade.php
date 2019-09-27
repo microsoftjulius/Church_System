@@ -35,7 +35,7 @@
                 @include('layouts.message')
                 <!-- Search form -->
                 <div class="row">
-                            <form class="pull-right pt-4" role="search" action="/search-user" method="Post" >
+                            <form class="pull-right pt-4" role="search" action="/search-user" method="get" >
                             @csrf
                                 <div class="col-md-12">
                                         <div class="col-md-8"></div>
@@ -71,10 +71,15 @@
                                                     </th>
                                                     <th class="th-sm">UserName
                                                     </th>
-                                                    <th class="th-sm">Created At</th> 
+                                                    <th class="th-sm">Created At</th>
                                                 </tr>
                                             </thead>
                                         <tbody>
+                                                @if ($display_all_church_users->currentPage() > 1)
+                                                @php($i =  1 + (($display_all_church_users->currentPage() - 1) * $display_all_church_users->perPage()))
+                                                @else
+                                                @php($i = 1)
+                                                @endif
                                         @foreach ($display_all_church_users as $index =>$users_particular_church)
                                             <tr>
                                                 <?php
@@ -83,7 +88,7 @@
                                                         array_push($first_name,'');
                                                     }
                                                 ?>
-                                                <td>{{ $index +1 }}</td>
+                                                <td>{{ $i++ }}</td>
                                                 <td>{{ $first_name[0] }}</td>
                                                 <td>{{ $first_name[1] }}</td>
                                                 <td>{{ $users_particular_church->email }}</td>
@@ -92,6 +97,11 @@
                                             @endforeach
                                         </tbody>
                                         </table>
+                                        @if(isset($search_query))
+                                        {{ $display_all_church_users->appends(['search' => $search_query])->links() }}
+                                        @else
+                                        {{ $display_all_church_users->links() }}
+                                        @endif
                                 </section>
                             </div>
                     </div>

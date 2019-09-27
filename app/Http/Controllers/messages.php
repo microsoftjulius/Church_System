@@ -27,7 +27,7 @@ class messages extends Controller
     $display_sent_message_details = message::join('users','users.id', 'messages.created_by')
     ->where('users.church_id',Auth::user()->church_id)
     ->select('messages.id', 'messages.message','messages.created_on','messages.status','users.email')->paginate('10');
-    return view('after_login.sent-messages',['display_sent_message_details'=>$display_sent_message_details]);
+    return view('after_login.sent-messages',compact('display_sent_message_details'));
     }
 
     public function drop_down_groups(){
@@ -92,7 +92,9 @@ class messages extends Controller
         ->orWhere('message', 'like', '%' . $request->search_message. '%')
         ->where('church_id',Auth::user()->church_id)
         ->paginate('10');
-        return view('after_login.sent-messages',compact('display_sent_message_details'));
+        return view('after_login.sent-messages',compact('display_sent_message_details'))->with([
+            'search_query' => $request->search_message
+        ]);
     }
 }
 

@@ -33,7 +33,7 @@
                 <!-- page content -->
                 <div class="right_col container-fluid" role="main">
                     @include('layouts.message')
-                    <form  class="pull-right" action="/search-church?page={id}" method="GET">
+                    <form  class="pull-right" action="/search-church" method="GET">
                         @csrf
                         <div class="col-md-12">
                             <div class="col-md-8"></div>
@@ -70,7 +70,11 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                            <?php $i=1;?>
+                                        @if ($churches->currentPage() > 1)
+                                        @php($i =  1 + (($churches->currentPage() - 1) * $churches->perPage()))
+                                        @else
+                                        @php($i = 1)
+                                        @endif
                                         @foreach ($churches as $index=>$church)
                                         <tr>
                                             <td>{{ $i++ }}</td>
@@ -83,7 +87,11 @@
                                         @endforeach
                                     </tbody>
                                 </table>
+                                @if(isset($search_query))
+                                {{ $churches->appends(['church_name' => $search_query])->links() }}
+                                @else
                                 {{ $churches->links() }}
+                                @endif
                             </section>
                         </div>
                     </div>
