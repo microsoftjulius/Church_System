@@ -32,6 +32,7 @@
                 <!-- /top navigation -->
                 <!-- page content -->
                 <div class="right_col" role="main">
+                @include('layouts.message')
                     <!--Setupform-->
 
                     <form class="col-md-offset-3 col-sm-6" style="border: 1px solid black ;border-width: 4px 4px 4px 4px; padding :1em; border: ridge #ccc; background-color:white;" action="/create-church" method="POST">
@@ -70,18 +71,12 @@
                             <div class="form-group row">
                                 <div class="text-center py-4 mt-3 ">
                                 <button type="submit" class="btn btn-primary">Save</button>
+                                <a href="/church"><button type="button" class="btn btn-warning"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Back</i></button></a>
                                 </div>
                             </div>
                         </form>
                     <div class="row">
-                    </div>
-                    <!--back button-->
-                    <div class="col-md-2 pull-right">
-                        <div class="input-group">
-                        <a href="/church"><button type="button" class="btn btn-danger"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Back</i></button></a>
-
-                        </div>
-                </div>
+                    </div>  
                 </div>
                 <!-- /page content -->
                 <!-- footer content -->

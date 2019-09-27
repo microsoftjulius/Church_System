@@ -31,35 +31,15 @@
                 @include('layouts.topnav')
                 <!-- /top navigation -->
                 <!-- page content -->
-                <div class="right_col" role="main">
-                <!--table -->
-                <div class="row">
-                <div class="col-lg-4"></div>
-                        <div class="col-lg-8">
-                                @include('layouts.message')
-                            <form action="/create-group" method="post">
-                                @csrf
-                                <div class="form-row align-items-center">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <label for="groupName"></label>
-                                        <input type="text" value="" name="group_name" class="form-control" placeholder=" Enter Group Name">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-4 text-center">
-                                        <label for="groupName"></label><br>
-                                        <input type="submit" value="Save" class="btn btn-success">
-                                        <a href="/contact-groups"><button type="button" class="btn btn-warning"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Back</i></button></a>
-                                    </div>
-                                </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div> 
+                <div class="right_col container-fluid" role="main">
+                    @include('layouts.message')
+                    
+                    <!--table -->
+                    {{$new_text}}    
+                    </div>
                     <div class="row">
                     </div>
-                </div>
+                 
                 <!-- /page content -->
                 <!-- footer content -->
                 @include('layouts.footer')

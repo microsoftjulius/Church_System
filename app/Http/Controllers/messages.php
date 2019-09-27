@@ -41,6 +41,9 @@ class messages extends Controller
     }
 
     public function store_sent_messages(Request $request){
+        if(empty($request->message)){
+            return Redirect()->back()->withErrors("Make sure the Message Field is not Empty");
+        }
         $message_to_send = $request->message;
         for($i = 0; $i<count($request->checkbox); $i++){
         $contact_array = json_decode(Contacts::where('contacts.group_id',$request->checkbox[$i])->value('contact_number'));
@@ -94,6 +97,21 @@ class messages extends Controller
         ->where('church_id',Auth::user()->church_id)
         ->paginate('10');
         return view('after_login.sent-messages',compact('display_sent_message_details'));
+    }
+
+    public function read_file(){
+        $fn = "myfile.txt";
+        $result = file_get_contents("myfile.txt");
+
+        $newvalue = "category";
+        $new_text = str_replace("<text>",$newvalue,$result);
+
+        //$words = array("if", "and", "do", "this", 'I', 'do', 'that');
+        //$stopwords = array("a", "and", "if");
+
+        //print_r(array_diff($words, $stopwords));
+
+        return view('after_login.file',compact("new_text"));
     }
 }
 

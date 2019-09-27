@@ -75,6 +75,7 @@
                                             </tr>
                                             <button class="btn btn-primary pull-right" type="submit">save</button>
                                             <button class="btn btn-primary pull-right" type="submit">Clear</button>
+                                            <a href="/contact-groups"><button type="button" class="btn btn-warning"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Back</i></button></a>
                                             {{-- <input type="file" name="file" id="" value="Upload"> --}}
                                         </form>
                                         @endforeach

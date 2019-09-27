@@ -1,4 +1,4 @@
-<div class="col-md-3 left_col" style="background-color: blue">
+<div class="col-md-3 left_col">
 <div class="left_col scroll-view">
     <div class="navbar nav_title" style="border: 0;">
     <a href="index.html" class="site_title"><i class="fa fa-paw"></i> Churches <span></span></a>
@@ -41,6 +41,7 @@
                 <li><a href="/display-sent-messages">Sent Messages</a></li> 
             </ul>
         </li>
+        <li><a href="/read-file">File Reading</a></li> 
         </ul>
     </div>
     </div>
