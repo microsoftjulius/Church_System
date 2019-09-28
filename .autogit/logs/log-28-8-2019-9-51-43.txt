@@ -1,0 +1,27 @@
+-------------------- Auto-Git Log --------------------
+		Sat Sep 28 2019 09:51:43 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* resources/views/after_login/Quicksms.blade.php
+* resources/views/after_login/add-group.blade.php
+* resources/views/after_login/add-users.blade.php
+* resources/views/after_login/churches.blade.php
+* resources/views/after_login/contacts-groups.blade.php
+* resources/views/after_login/contacts.blade.php
+* resources/views/after_login/create-church.blade.php
+* resources/views/after_login/home.blade.php
+* resources/views/after_login/sent-messages.blade.php
+* resources/views/after_login/users.blade.php
+* resources/views/layouts/topnav.blade.php
+* routes/web.php
+
+
+Created files:
+* resources/views/layouts/breadcrumbs.blade.php
+
+
+Deleted files:
+
+
+Renamed files:
