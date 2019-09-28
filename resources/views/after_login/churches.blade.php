@@ -36,7 +36,12 @@
                     <form  class="pull-right" action="/search-church" method="GET">
                         @csrf
                         <div class="col-md-12">
-                            <div class="col-md-8"></div>
+                        <div class="col-md-4">
+                                <div class="input-group">
+                                   @include('layouts.breadcrumbs')
+                                </div>
+                            </div>
+                            <div class="col-md-4"></div>
                             <div class="col-md-2">
                                 <div class="input-group">
                                     <input type="text" class="form-control col-md-12" placeholder="Search church" name="church_name" id="srch-term" required>
@@ -46,7 +51,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-2 mr-2">
+                            <div class="col-md-2">
                                 <div class="input-group">
                                     <a href="/createchurches"><button type="button" class="btn btn-primary"><i class="fa fa-plus"> Church</i></button></a>
                                 </div>

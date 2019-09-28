@@ -38,7 +38,12 @@
                             <form class="pull-right pt-4" role="search" action="/search-user" method="get" >
                             @csrf
                                 <div class="col-md-12">
-                                        <div class="col-md-8"></div>
+                                <div class="col-md-4">
+                                            <div class="input-group">
+                                            @include('layouts.breadcrumbs')
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4"></div>
                                             <div class="col-md-2">
                                                     <div class="input-group">
                                                         <input type="text" class="form-control col-md-12" placeholder="Search" name="search" id="srch-term" required>
