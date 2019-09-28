@@ -35,7 +35,7 @@
                     @include('layouts.message')
                     <!--table -->
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-12"> 
                             <section class="box col-lg-12 col-sm-12 col-md-12 mt-3">
                                 <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
                                     <thead>
@@ -73,9 +73,13 @@
                                                 <td><input type="text" name="contact" value="" class="form-control"></td>
                                                 <td></td>
                                             </tr>
+                                           
                                             <button class="btn btn-primary pull-right" type="submit">save</button>
                                             <button class="btn btn-primary pull-right" type="submit">Clear</button>
-                                            {{-- <input type="file" name="file" id="" value="Upload"> --}}
+                                            <a href="/contact-groups"><button type="button" class="btn btn-primary pull-right"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Back</i></button></a>
+                                            @include('layouts.breadcrumbs')
+                                            
+                                            {{-- <input type="file" name="file" id="" value="Upload"> --}} 
                                         </form>
                                         @endforeach
                                     </tbody>

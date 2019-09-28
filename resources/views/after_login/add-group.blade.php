@@ -33,28 +33,27 @@
                 <!-- page content -->
                 <div class="right_col" role="main">
                 <!--table -->
-                <div class="row">
+                <div class="row text-center">
                         <div class="col-lg-12">
-                                @include('layouts.message')
+                        @include('layouts.message')
+                            <div class="col-lg-4"></div>
+                            <div class="col-lg-4">    
                             <form action="/create-group" method="post">
                                 @csrf
-                                <div class="col-lg-4">
-                                    <label for="groupName">Group Name</label>
-                                    <input type="text" value="" name="group_name" class="form-control">
-                                </div>
-                                <div class="col-lg-4">
+                                <div class="row">
+                                <div class="col-lg-8">     
+                                    <input type="text" value="" name="group_name" class="form-control" placeholder="Enter Church Group">
+                                </div></div>
+                                <div class="row">
+                                <div class="col-lg-8 text-center">
                                     <label for="groupName"></label><br>
                                     <input type="submit" value="Save" class="btn btn-success">
-                                </div>
-                            </form>
+                                    <a href="/contact-groups"><button type="button" class="btn btn-warning"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Back</i></button></a>
+                                </div></div>
+                            </form></div>
+                            <div class="col-lg-4"></div>
                         </div>
                     </div>
-                    <div class="col-md-2 pull-right">
-                        <div class="input-group">
-                        <a href="/contact-groups"><button type="button" class="btn btn-danger"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Back</i></button></a>
-
-                        </div>
-                </div>
                     <div class="row">
                     </div>
                 </div>

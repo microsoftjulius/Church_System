@@ -32,6 +32,13 @@
                 <!-- /top navigation -->
                 <!-- page content -->
                 <div class="right_col" role="main">
+                <div class="col-md-12">
+                            <div class="col-md-3">
+                            <div class="input-group">
+                            @include('layouts.breadcrumbs') 
+                            </div>
+                            </div>
+                </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="">
