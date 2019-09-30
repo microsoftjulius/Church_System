@@ -61,16 +61,16 @@
                     <!--table -->
                     <div class="row">
                         <div class="col-lg-12">
-                            <section class="box col-lg-12 col-sm-3 col-md-6 mt-3">
+                            <section class="box col-lg-12 col-sm-12 col-md-12 mt-3">
                                 <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
                                             <th class="th-sm">No.</th>
                                             <th class="th-sm">Name
                                             </th>
-                                            <th class="th-sm">Database Name</th>
-                                            <th class="th-sm">Database Url</th>
-                                            <th class="th-sm">Church Logo</th>
+                                            <th class="th-sm">Database name</th>
+                                            <th class="th-sm">Database url</th>
+                                            <th class="th-sm">Church logo</th>
                                             <th class="th-sm"> Options</th>
                                         </tr>
                                     </thead>

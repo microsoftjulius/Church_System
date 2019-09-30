@@ -32,11 +32,12 @@
                 <!-- /top navigation -->
                 <!-- page content -->
                 <div class="right_col" role="main">
+                @include('layouts.message')
                     <!--Setupform-->
                         @include('layouts.errormessage')
                     <form class="col-md-offset-3 col-sm-6" style="border: 1px solid black ;border-width: 4px 4px 4px 4px; padding :1em; border: ridge #ccc; background-color:white;" action="/create-church" method="POST">
                         @csrf
-                    <div class="panel-heading text-center"><h4>Please Enter Church Details</h4></div>
+                    <div class="panel-heading text-center"><h4>Please enter church details</h4></div>
                             <div class="form-group row md-form">
                                 <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Name</label>
                                 <div class="col-sm-10">
@@ -69,8 +70,8 @@
                             </div>
                             <div class="form-group row">
                                 <div class="text-center py-4 mt-3 ">
-                                <button type="submit" class="btn btn-primary">Save</button>
-                                <a href="/church"><button type="button" class="btn btn-warning"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Back</i></button></a>
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+                                <a href="/church"><button type="button" class="btn btn-warning"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</i></button></a>
                                 </div>
                             </div>
                         </form>

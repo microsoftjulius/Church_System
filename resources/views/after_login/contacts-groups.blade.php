@@ -52,6 +52,7 @@
                                                             </div>
                                                     </div>
                                             </div>
+                                        
                                         <div class="col-md-2">
                                             <div class="input-group">
                                             <a href="/create-group-form"><button type="button" class="btn btn-primary"><i class="fa fa-plus"> Group</i></button></a>
@@ -68,10 +69,10 @@
                                 <thead>
                                     <tr>
                                         <th class="th-sm">No.</th>
-                                        <th class="th-sm">Group Name</th>
-                                        <th class="th-sm">Created By</th>
-                                        <th class="th-sm">Date Created</th>
-                                        <th class="th-sm">Number Of contacts</th>
+                                        <th class="th-sm">Group name</th>
+                                        <th class="th-sm">Created by</th>
+                                        <th class="th-sm">Date created</th>
+                                        <th class="th-sm">Number of contacts</th>
                                         <th class="th-sm">Option</th>
                                     </tr>
                                 </thead>

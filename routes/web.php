@@ -42,7 +42,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/get-next-page/{id}','GroupsController@pagination_for_groups');
     Route::get('/search-group','GroupsController@search_group');
     Route::post('/import-contacts/{id}', 'ContactsController@import')->name('import');
-    //Route::post('/search-sent-messages','messages@search_use_contact_group_attributes');
+    
     Route::post('/create-group','GroupsController@create_group');
     Route::get('/create-group-form','GroupsController@show_form');
     Route::post('/store-sent-messages','messages@store_sent_messages');

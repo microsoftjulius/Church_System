@@ -63,12 +63,12 @@
                                     <table id="dtBasicExample" class="table table-striped table-bordered table-sm bg-white" cellspacing="0" width="100%">
                                                 <thead>
                                                     <tr>
-                                                        <th class="th-sm">ID</th>
-                                                        <th class="th-sm">Message Body
+                                                        <th class="th-sm">Id</th>
+                                                        <th class="th-sm">Message body
                                                         </th>
-                                                        <th class="th-sm">Date/Time</th>
-                                                        <th class="th-sm"> Created By</th>
-                                                        <th class="th-sm"> Message Status</th>
+                                                        <th class="th-sm">Date and time</th>
+                                                        <th class="th-sm"> Created by</th>
+                                                        <th class="th-sm"> Message status</th>
                                                     </tr>
                                                 </thead>
                                             <tbody>

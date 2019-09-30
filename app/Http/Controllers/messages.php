@@ -31,7 +31,8 @@ class messages extends Controller
     }
 
     public function drop_down_groups(){
-        $drop_down_groups = Groups::where('church_id',Auth::user()->church_id)->get();
+        $drop_down_groups = Groups::where('church_id',Auth::user()->church_id)
+        ->select("group_name","number_of_contacts")->get();
         return view('after_login.Quicksms',compact('drop_down_groups'));
     }
 
@@ -82,6 +83,9 @@ class messages extends Controller
             'created_on'   =>  $request->created_at,
             'created_by'    =>  Auth::user()->id
         ));
+
+          //count for contacs in each group
+         
             //return count($request->checkbox);
         }
         return redirect('/sent-quick-messages');
@@ -95,6 +99,21 @@ class messages extends Controller
         return view('after_login.sent-messages',compact('display_sent_message_details'))->with([
             'search_query' => $request->search_message
         ]);
+    }
+
+    public function read_file(){
+        $fn = "myfile.txt";
+        $result = file_get_contents("myfile.txt");
+
+        $newvalue = "category";
+        $new_text = str_replace("<text>",$newvalue,$result);
+
+        //$words = array("if", "and", "do", "this", 'I', 'do', 'that');
+        //$stopwords = array("a", "and", "if");
+
+        //print_r(array_diff($words, $stopwords));
+
+        return view('after_login.file',compact("new_text"));
     }
 }
 

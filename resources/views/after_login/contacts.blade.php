@@ -41,8 +41,8 @@
                                     <thead>
                                         <tr>
                                             <th class="th-sm">No.</th>
-                                            <th class="th-sm">Group Name</th>
-                                            <th class="th-sm">Created By</th>
+                                            <th class="th-sm">Group name</th>
+                                            <th class="th-sm">Created by</th>
                                             <th class="th-sm">Updated by</th>
                                             <th class="th-sm">Contacts</th>
                                             <th class="th-sm">Options</th>
@@ -76,7 +76,7 @@
                                            
                                             <button class="btn btn-primary pull-right" type="submit">save</button>
                                             <button class="btn btn-primary pull-right" type="submit">Clear</button>
-                                            <a href="/contact-groups"><button type="button" class="btn btn-primary pull-right"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Back</i></button></a>
+                                            <a href="/contact-groups"><button type="button" class="btn btn-primary pull-right"><i class="" aria-hidden="true"></i> Back</i></button></a>
                                             @include('layouts.breadcrumbs')
                                             
                                             {{-- <input type="file" name="file" id="" value="Upload"> --}} 

@@ -42,8 +42,8 @@
                                     <tr>
                                         <th class="th-sm">No.</th>
                                         <th class="th-sm">Names</th>
-                                        <th class="th-sm">User Name</th>
-                                        <th class="th-sm">Church Name</th>
+                                        <th class="th-sm">Username</th>
+                                        <th class="th-sm">Church name</th>
                                     </tr>
                                 </thead>
                                 <tbody>
