@@ -36,7 +36,22 @@
 
 <script type="text/javascript">
 function countChars(obj){
-    document.getElementById("charNum").innerHTML = obj.value.length+' characters [1message is 160 characters,2messages 320 characters]';
+    var maxLength = 160;   
+    var strLength = obj.value.length;
+    var firstMessage = maxLength ;
+    
+    if(firstMessage == 160){
+      document.getElementById("charNum").innerHTML = obj.value.length+'<span class="text-danger">One message limit of '+maxLength+'characters over</span>';
+  }else{
+       document.getElementById("charNum").innerHTML = firstMessage+'characters [1message is 160 characters,2messages 310 characters]';
+   }
+ 
+   if (strLength === maxLength){
+    document.getElementById("charNum").innerHTML = obj.value.length+'<span class="text-danger">One message limit of '+maxLength+' characters over</span>';
+   } 
+   else{
+    document.getElementById("charNum").innerHTML = strLength+'characters [1message is 160 characters,2messages 310 characters]';
+   } 
 }
 </script>
 

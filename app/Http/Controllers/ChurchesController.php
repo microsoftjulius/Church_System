@@ -115,14 +115,17 @@ class ChurchesController extends Controller
     }
 
     public function search(Request $request){
-        $churches     = churchdatabase::where('database_url',$request->church_name)
-        ->orWhere('church_name',$request->church_name)
-        ->orWhere('database_name',$request->church_name)
+        $churches  = churchdatabase::where('church_name',$request->church_name)
+        //->orWhere('church_name',$request->church_name)
+        // ->orWhere('database_name',$request->church_name)
         ->orWhere('church_name', 'like', '%' . $request->church_name. '%')
-        ->orWhere('database_url', 'like', '%' . $request->church_name. '%')
-        ->orWhere('database_name', 'like', '%' . $request->church_name. '%')
-        ->paginate('4');
-        return view('after_login.churches',compact('churches'));
+        // ->orWhere('database_url', 'like', '%' . $request->church_name. '%')
+        // ->orWhere('database_name', 'like', '%' . $request->church_name. '%')
+        ->paginate('10');
+
+        return view('after_login.churches',compact('churches'))->with([
+            'search_query' => $request->church_name
+        ]);
     }
 
     public function view_church_user($id){

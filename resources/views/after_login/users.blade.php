@@ -35,16 +35,16 @@
                 @include('layouts.message')
                 <!-- Search form -->
                 <div class="row">
-                            <form class="pull-right pt-4" role="search" action="/search-user" method="Post" >
+                            <form class="pull-right pt-4" role="search" action="/search-user" method="get" >
                             @csrf
                                 <div class="col-md-12">
-                                        <div class="col-md-3">
+                                <div class="col-md-4">
                                             <div class="input-group">
-                                            @include('layouts.breadcrumbs') 
+                                            @include('layouts.breadcrumbs')
                                             </div>
                                         </div>
-                                        <div class="col-md-4"></div> 
-                                            <div class="col-md-3">
+                                        <div class="col-md-4"></div>
+                                            <div class="col-md-2">
                                                     <div class="input-group">
                                                         <input type="text" class="form-control col-md-12" placeholder="Search" name="search" id="srch-term" required>
                                                             <div class="input-group-btn">
@@ -56,7 +56,7 @@
                                             <div class="col-md-1"></div>
                                         <div class="col-md-2">
                                             <div class="input-group">
-                                            <a href="/addusers"><button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-user"> AddUser</i></button></a>
+                                            <a href="/addusers"><button type="button" class="btn btn-primary"><i class="fa fa-plus"> User</i></button></a>
 
                                             </div>
                                         </div>
@@ -70,17 +70,22 @@
                                         <table id="dtBasicExample" class="table table-striped table-bordered table-sm bg-white table-responsive" cellspacing="0" width="100%">
                                             <thead>
                                                 <tr>
-                                                    <th class="th-sm">ID</th>
-                                                    <th class="th-sm">First Name
+                                                    <th class="th-sm">Id</th>
+                                                    <th class="th-sm">First name
                                                     </th>
-                                                    <th class="th-sm">Last Name
+                                                    <th class="th-sm">Last name
                                                     </th>
-                                                    <th class="th-sm">UserName
+                                                    <th class="th-sm">Username
                                                     </th>
-                                                    <th class="th-sm">Created At</th> 
+                                                    <th class="th-sm">Date created</th>
                                                 </tr>
                                             </thead>
                                         <tbody>
+                                                @if ($display_all_church_users->currentPage() > 1)
+                                                @php($i =  1 + (($display_all_church_users->currentPage() - 1) * $display_all_church_users->perPage()))
+                                                @else
+                                                @php($i = 1)
+                                                @endif
                                         @foreach ($display_all_church_users as $index =>$users_particular_church)
                                             <tr>
                                                 <?php
@@ -89,7 +94,7 @@
                                                         array_push($first_name,'');
                                                     }
                                                 ?>
-                                                <td>{{ $index +1 }}</td>
+                                                <td>{{ $i++ }}</td>
                                                 <td>{{ $first_name[0] }}</td>
                                                 <td>{{ $first_name[1] }}</td>
                                                 <td>{{ $users_particular_church->email }}</td>
@@ -98,6 +103,11 @@
                                             @endforeach
                                         </tbody>
                                         </table>
+                                        @if(isset($search_query))
+                                        {{ $display_all_church_users->appends(['search' => $search_query])->links() }}
+                                        @else
+                                        {{ $display_all_church_users->links() }}
+                                        @endif
                                 </section>
                             </div>
                     </div>

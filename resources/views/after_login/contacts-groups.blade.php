@@ -37,13 +37,13 @@
                     @csrf
                     <!--serch form  -->
                     <div class="col-md-12">
-                                       <div class="col-md-3">
+                                        <div class="col-md-4">
                                             <div class="input-group">
-                                            @include('layouts.breadcrumbs') 
+                                            @include('layouts.breadcrumbs')
                                             </div>
-                                        </div> 
-                                        <div class="col-md-4"></div>  
-                                            <div class="col-md-3">
+                                        </div>
+                                        <div class="col-md-4"></div>
+                                            <div class="col-md-2">
                                                     <div class="input-group">
                                                         <input type="text" class="form-control col-md-12" placeholder="search group" name="group_name" id="srch-term" required>
                                                             <div class="input-group-btn">
@@ -68,16 +68,23 @@
                                 <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
-                                        <th class="th-sm">Group Name</th>
-                                        <th class="th-sm">Created By</th>
-                                        <th class="th-sm">Date Created</th>
-                                        <th class="th-sm">Number Of contacts</th>
+                                        <th class="th-sm">No.</th>
+                                        <th class="th-sm">Group name</th>
+                                        <th class="th-sm">Created by</th>
+                                        <th class="th-sm">Date created</th>
+                                        <th class="th-sm">Number of contacts</th>
                                         <th class="th-sm">Option</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                        @if ($contacts->currentPage() > 1)
+                                        @php($i =  1 + (($contacts->currentPage() - 1) * $contacts->perPage()))
+                                        @else
+                                        @php($i = 1)
+                                        @endif
                                     @foreach ($contacts as $contact)
                                         <tr>
+                                            <td>{{ $i++ }}</td>
                                             <td>{{ $contact->group_name }}</td>
                                             <td>{{ $contact->email }}</td>
                                             <td>{{ $contact->created_at }}</td>
@@ -92,7 +99,11 @@
                                 </tbody>
                                 </table>
                             </section>
+                            @if(isset($search_query))
+                            {{ $contacts->appends(['group_name' => $search_query])->links() }}
+                            @else
                             {{ $contacts->links() }}
+                            @endif
                         </div>
                     </div>
                     <div class="row">

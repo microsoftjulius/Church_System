@@ -33,30 +33,27 @@
                 <!-- page content -->
                 <div class="right_col" role="main">
                 <!--table -->
-                <div class="row">
-                <div class="col-lg-4"></div>
-                        <div class="col-lg-8">
-                                @include('layouts.message')
+                <div class="row text-center">
+                        <div class="col-lg-12">
+                        @include('layouts.message')
+                            <div class="col-lg-4"></div>
+                            <div class="col-lg-4">
                             <form action="/create-group" method="post">
                                 @csrf
-                                <div class="form-row align-items-center">
                                 <div class="row">
-                                    <div class="col-lg-6">
-                                        <label for="groupName"></label>
-                                        <input type="text" value="" name="group_name" class="form-control" placeholder=" Enter Group Name">
-                                    </div>
-                                </div>
+                                <div class="col-lg-8">
+                                    <input type="text" value="" name="group_name" class="form-control" placeholder="Enter Church Group">
+                                </div></div>
                                 <div class="row">
-                                    <div class="col-lg-4 text-center">
-                                        <label for="groupName"></label><br>
-                                        <input type="submit" value="Save" class="btn btn-success">
-                                        <a href="/contact-groups"><button type="button" class="btn btn-warning"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Back</i></button></a>
-                                    </div>
-                                </div>
-                                </div>
-                            </form>
+                                <div class="col-lg-8 text-center">
+                                    <label for="groupName"></label><br>
+                                    <button input type="submit" value="Save" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+                                    <a href="/contact-groups"><button type="button" class="btn btn-warning"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</i></button></a>
+                                </div></div>
+                            </form></div>
+                            <div class="col-lg-4"></div>
                         </div>
-                    </div> 
+                    </div>
                     <div class="row">
                     </div>
                 </div>

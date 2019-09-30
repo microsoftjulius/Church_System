@@ -35,14 +35,14 @@
                     @include('layouts.message')
                     <!--table -->
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-12"> 
                             <section class="box col-lg-12 col-sm-12 col-md-12 mt-3">
                                 <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
                                             <th class="th-sm">No.</th>
-                                            <th class="th-sm">Group Name</th>
-                                            <th class="th-sm">Created By</th>
+                                            <th class="th-sm">Group name</th>
+                                            <th class="th-sm">Created by</th>
                                             <th class="th-sm">Updated by</th>
                                             <th class="th-sm">Contacts</th>
                                             <th class="th-sm">Options</th>
@@ -73,10 +73,13 @@
                                                 <td><input type="text" name="contact" value="" class="form-control"></td>
                                                 <td></td>
                                             </tr>
+                                           
                                             <button class="btn btn-primary pull-right" type="submit">save</button>
                                             <button class="btn btn-primary pull-right" type="submit">Clear</button>
-                                            <a href="/contact-groups"><button type="button" class="btn btn-warning"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Back</i></button></a>
-                                            {{-- <input type="file" name="file" id="" value="Upload"> --}}
+                                            <a href="/contact-groups"><button type="button" class="btn btn-primary pull-right"><i class="" aria-hidden="true"></i> Back</i></button></a>
+                                            @include('layouts.breadcrumbs')
+                                            
+                                            {{-- <input type="file" name="file" id="" value="Upload"> --}} 
                                         </form>
                                         @endforeach
                                     </tbody>

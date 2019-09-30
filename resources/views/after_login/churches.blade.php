@@ -33,16 +33,16 @@
                 <!-- page content -->
                 <div class="right_col container-fluid" role="main">
                     @include('layouts.message')
-                    <form  class="pull-right" action="/search-church/{id}" method="GET">
+                    <form  class="pull-right" action="/search-church" method="GET">
                         @csrf
                         <div class="col-md-12">
-                            <div class="col-md-3">
-                            <div class="input-group">
-                            @include('layouts.breadcrumbs') 
+                        <div class="col-md-4">
+                                <div class="input-group">
+                                   @include('layouts.breadcrumbs')
+                                </div>
                             </div>
-                            </div> 
-                            <div class="col-md-4"></div> 
-                            <div class="col-md-3">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-2">
                                 <div class="input-group">
                                     <input type="text" class="form-control col-md-12" placeholder="Search church" name="church_name" id="srch-term" required>
                                     <div class="input-group-btn">
@@ -51,8 +51,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-1"></div>
-                            <div class="col-md-2 mr-2">
+                            <div class="col-md-2">
                                 <div class="input-group">
                                     <a href="/createchurches"><button type="button" class="btn btn-primary"><i class="fa fa-plus"> Church</i></button></a>
                                 </div>
@@ -69,16 +68,21 @@
                                             <th class="th-sm">No.</th>
                                             <th class="th-sm">Name
                                             </th>
-                                            <th class="th-sm">Database Name</th>
-                                            <th class="th-sm">Database Url</th>
-                                            <th class="th-sm">Church Logo</th>
+                                            <th class="th-sm">Database name</th>
+                                            <th class="th-sm">Database url</th>
+                                            <th class="th-sm">Church logo</th>
                                             <th class="th-sm"> Options</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @if ($churches->currentPage() > 1)
+                                        @php($i =  1 + (($churches->currentPage() - 1) * $churches->perPage()))
+                                        @else
+                                        @php($i = 1)
+                                        @endif
                                         @foreach ($churches as $index=>$church)
                                         <tr>
-                                            <td>{{ $index +1 }}</td>
+                                            <td>{{ $i++ }}</td>
                                             <td>{{ $church->church_name }}</td>
                                             <td>{{ $church->database_name }}</td>
                                             <td>{{ $church->database_url }}</td>
@@ -88,13 +92,17 @@
                                         @endforeach
                                     </tbody>
                                 </table>
+                                @if(isset($search_query))
+                                {{ $churches->appends(['church_name' => $search_query])->links() }}
+                                @else
                                 {{ $churches->links() }}
+                                @endif
                             </section>
                         </div>
                     </div>
                     <div class="row">
                     </div>
-                </div> 
+                </div>
                 <!-- /page content -->
                 <!-- footer content -->
                 @include('layouts.footer')

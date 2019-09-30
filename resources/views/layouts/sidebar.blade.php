@@ -40,8 +40,7 @@
                 <li><a href="/sent-quick-messages">Quick Message</a></li>
                 <li><a href="/display-sent-messages">Sent Messages</a></li> 
             </ul>
-        </li>
-        <li><a href="/read-file">File Reading</a></li> 
+        </li> 
         </ul>
     </div>
     </div>

@@ -70,8 +70,10 @@ class GroupsController extends Controller
         ->orWhere('Groups.group_name', 'like', '%' . $request->group_name. '%')
         ->where('users.church_id',Auth::user()->church_id)
         ->select('Groups.group_name','users.email','Groups.id','Groups.created_at')
-        ->paginate('10');
-        return view('after_login.contacts-groups',compact('contacts'));
+        ->paginate('4');
+        return view('after_login.contacts-groups',compact('contacts'))->with([
+            'search_query' => $request->group_name
+        ]);
     }
 
     public function show_form(){
