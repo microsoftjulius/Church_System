@@ -33,7 +33,7 @@
                 <!-- page content -->
                 <div class="right_col" role="main">
                     <!--Setupform-->
-
+                        @include('layouts.errormessage')
                     <form class="col-md-offset-3 col-sm-6" style="border: 1px solid black ;border-width: 4px 4px 4px 4px; padding :1em; border: ridge #ccc; background-color:white;" action="/create-church" method="POST">
                         @csrf
                     <div class="panel-heading text-center"><h4>Please Enter Church Details</h4></div>
@@ -75,7 +75,7 @@
                             </div>
                         </form>
                     <div class="row">
-                    </div> 
+                    </div>
                 </div>
                 <!-- /page content -->
                 <!-- footer content -->

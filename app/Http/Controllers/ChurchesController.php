@@ -38,9 +38,9 @@ class ChurchesController extends Controller
         {
             return Redirect()->back()->withErrors('Church Name already Registered');
         }
-        // if(empty($request->logo)){
-        //     return Redirect()->back()->withErrors('Please attach a logo');
-        // }
+        if(User::where('email',$request->church_name)->exists()){
+            return Redirect()->back()->withErrors('User Name Already Taken, Choose a different name');
+        }
         Contacts::create(array(
             'church_id' => Auth::user()->id,
             'group_id' => 4,

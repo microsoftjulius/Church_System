@@ -22,7 +22,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/church','ChurchesController@index_showall')->name('Churches');
     Route::get('/user','ChurchUserController@show')->name('Church Users');
 
-    Route::post('/search-user','ChurchUserController@index');
+    Route::get('/search-user','ChurchUserController@index');
     Route::get('/display-sent-messages','messages@display_sent_messages')->name('Sent Messages');
     Route::get('/sent-quick-messages','messages@drop_down_groups');
     Route::get('/sent-messages','messages@send');
@@ -37,7 +37,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/create-church','ChurchesController@create');
     Route::post('/create-user','ChurchesController@create_church_user');
     Route::post('/adds-user','ChurchUserController@store');
-    Route::get('/search-church?page={id}','ChurchesController@search');
+    Route::get('/search-church','ChurchesController@search');
     Route::get('/contact-groups','GroupsController@index')->name('Contact Groups');
     Route::get('/get-next-page/{id}','GroupsController@pagination_for_groups');
     Route::get('/search-group','GroupsController@search_group');
