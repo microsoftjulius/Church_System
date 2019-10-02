@@ -44,7 +44,7 @@
                             <div class="col-md-4"></div>
                             <div class="col-md-2">
                                 <div class="input-group">
-                                    <input type="text" class="form-control col-md-12" placeholder="Search church" name="church_name" id="srch-term" required>
+                                    <input type="text" class="form-control col-md-12" placeholder="Search group" name="church_name" id="srch-term" required>
                                     <div class="input-group-btn">
                                         <button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-search"></i>
                                         </button>
@@ -53,7 +53,7 @@
                             </div>
                             <div class="col-md-2">
                                 <div class="input-group">
-                                    <a href="/createchurches"><button type="button" class="btn btn-primary"><i class="fa fa-plus"> Church</i></button></a>
+                                    <a href="/createchurches"><button type="button" class="btn btn-primary"><i class="fa fa-plus"> Group</i></button></a>
                                 </div>
                             </div>
                         </div>
@@ -70,7 +70,7 @@
                                             </th>
                                             <th class="th-sm">Database name</th>
                                             <th class="th-sm">Database url</th>
-                                            <th class="th-sm">Church logo</th>
+                                            <th class="th-sm">Logo</th>
                                             <th class="th-sm"> Options</th>
                                         </tr>
                                     </thead>

@@ -56,7 +56,7 @@ class GroupsController extends Controller
             'group_id'  => $group_id,
             'created_by' => Auth::user()->id,
             'update_by' => Auth::user()->id,
-            'contact_number' => '[{"Contact":""}]'
+            'contact_number' => '[{"Contact":"","name":""}]'
         ));
         return redirect('/contact-groups');
     }

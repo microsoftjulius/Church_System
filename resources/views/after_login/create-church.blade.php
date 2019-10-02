@@ -34,10 +34,10 @@
                 <div class="right_col" role="main">
                 @include('layouts.message')
                     <!--Setupform-->
-
+                        @include('layouts.errormessage')
                     <form class="col-md-offset-3 col-sm-6" style="border: 1px solid black ;border-width: 4px 4px 4px 4px; padding :1em; border: ridge #ccc; background-color:white;" action="/create-church" method="POST">
                         @csrf
-                    <div class="panel-heading text-center"><h4>Please enter church details</h4></div>
+                    <div class="panel-heading text-center"><h4>Please enter group details</h4></div>
                             <div class="form-group row md-form">
                                 <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Name</label>
                                 <div class="col-sm-10">
@@ -76,7 +76,7 @@
                             </div>
                         </form>
                     <div class="row">
-                    </div> 
+                    </div>
                 </div>
                 <!-- /page content -->
                 <!-- footer content -->

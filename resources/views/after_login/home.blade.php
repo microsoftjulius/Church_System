@@ -23,7 +23,7 @@
                             <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
                             <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
                             </a>
-                        </div>  
+                        </div>
                         <!-- /menu footer buttons -->
                     </div>
                 </div>
@@ -35,7 +35,7 @@
                 <div class="col-md-12">
                             <div class="col-md-3">
                             <div class="input-group">
-                            @include('layouts.breadcrumbs') 
+                            @include('layouts.breadcrumbs')
                             </div>
                             </div>
                 </div>
@@ -47,8 +47,8 @@
                                         <div class="tile-stats">
                                             <div class="icon"><i class="fa fa-home"></i></div>
                                             <div class="count">{{ auth()->user()->count_churches() }}</div>
-                                            <h3>Churches</h3>
-                                            <p>Registered Churches</p>
+                                            <h3>Groups</h3>
+                                            <p>Registered Groups</p>
                                         </div>
                                     </div>
                                     <div class="animated flipInY col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -56,7 +56,7 @@
                                             <div class="icon"><i class="fa fa-users"></i></div>
                                             <div class="count">{{ auth()->user()->count_users_in_church() }}</div>
                                             <h3>Users</h3>
-                                            <p>Churches With Users</p>
+                                            <p>Groups With Users</p>
                                         </div>
                                     </div>
                                     <div class="animated flipInY col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -81,8 +81,8 @@
                 <!-- /footer content -->
             </div>
         </div>
-    
+
             @include('layouts.javascript')
-     
+
     </body>
 </html>

@@ -153,7 +153,7 @@
                                                     <th class="th-sm">Name
                                                     </th>
                                                     <th class="th-sm">Email</th>
-                                                    <th class="th-sm">church</th>
+                                                    <th class="th-sm">Group</th>
                                                     <th class="th-sm"> Options</th>
                                                 </tr>
                                             </thead>

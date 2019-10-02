@@ -32,10 +32,10 @@
                 <!-- /top navigation -->
                 <!-- page content -->
                 <div class="right_col" role="main">
-                    @include('layouts.message')
                     <!--table -->
                     <div class="row">
-                        <div class="col-lg-12"> 
+                        <div class="col-lg-12">
+                    @include('layouts.errormessage')
                             <section class="box col-lg-12 col-sm-12 col-md-12 mt-3">
                                 <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
                                     <thead>
@@ -44,22 +44,33 @@
                                             <th class="th-sm">Group name</th>
                                             <th class="th-sm">Created by</th>
                                             <th class="th-sm">Updated by</th>
+                                            <th class="th-sm">name</th>
                                             <th class="th-sm">Contacts</th>
                                             <th class="th-sm">Options</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @if ($get_group_contacts->currentPage() > 1)
+                                        @php($i =  1 + (($get_group_contacts->currentPage() - 1) * $get_group_contacts->perPage()))
+                                        @else
+                                        @php($i = 1)
+                                        @endif
                                         @foreach ($get_group_contacts as $contact)
                                             <?php $data = json_decode($contact->contact_number)?>
                                             @foreach ($data as $index =>$item)
                                             @if(!empty($item->Contact))
                                             <tr>
-                                                <td>{{ $index+1 }}</td>
+                                                <form action="/delete-contact/{{ $contact->group_id }}" method="POST">
+                                                    @csrf
+                                                    <td hidden><input type="hidden" name="index_to_delete" id="" value="{{ $i }}"></td>
+                                                <td>{{ $i++ }}</td>
                                                 <td>{{ $contact->group_name }}</td>
                                                 <td>{{ $contact->email }}</td>
                                                 <td>{{ $contact->email }}</td>
+                                                <td>{{ $item->name }}</td>
                                                 <td>{{ $item->Contact }}</td>
-                                                <td><a href="">Delete</a></td>
+                                                    <td><button class="btn btn-danger" type="submit">Delete</button></td>
+                                                </form>
                                             </tr>
                                             @endif
                                             @endforeach
@@ -70,16 +81,16 @@
                                                 <td><input type="text" name="groupname" value="{{ $contact->group_name }}" class="form-control" disabled></td>
                                                 <td><input type="text" name="created_by" value="{{ auth()->user()->email }}" class="form-control" disabled></td>
                                                 <td><input type="text" name="created_by" value="{{ auth()->user()->email }}" class="form-control" disabled></td>
+                                                <td><input type="text" name="name" value="" class="form-control"></td>
                                                 <td><input type="text" name="contact" value="" class="form-control"></td>
                                                 <td></td>
                                             </tr>
-                                           
-                                            <button class="btn btn-primary pull-right" type="submit">save</button>
+                                            <button class="btn btn-primary pull-right" type="submit">Save</button>
                                             <button class="btn btn-primary pull-right" type="submit">Clear</button>
                                             <a href="/contact-groups"><button type="button" class="btn btn-primary pull-right"><i class="" aria-hidden="true"></i> Back</i></button></a>
                                             @include('layouts.breadcrumbs')
-                                            
-                                            {{-- <input type="file" name="file" id="" value="Upload"> --}} 
+                                            <span class="text-primary">After inputing a name and a contact number, press enter to save it to the group</span>
+                                            {{-- <input type="file" name="file" id="" value="Upload"> --}}
                                         </form>
                                         @endforeach
                                     </tbody>

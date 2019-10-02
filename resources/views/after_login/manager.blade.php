@@ -37,13 +37,13 @@
                             <div class="">
                                 <div class="row top_tiles">
                                     <div class="animated flipInY col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                        
+
                                     </div>
                                     <div class="animated flipInY col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                         <div class="form-group row col-lg-12">
-                                            <label for="churchName" class="col-sm-6 col-form-label">Enter Church Name</label>
+                                            <label for="churchName" class="col-sm-6 col-form-label">Enter Group Name</label>
                                             <div class="col-sm-5">
-                                                <input type="text" class="form-control" name="church_name" placeholder="enter church name"required>
+                                                <input type="text" class="form-control" name="church_name" placeholder="enter group name"required>
                                             </div>
                                         </div>
                                     </div>
@@ -64,7 +64,7 @@
                                 <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
-                                        <th class="th-sm">Church Name
+                                        <th class="th-sm">Group Name
                                         </th>
                                         <th class="th-sm">No. of Contacts
                                         </th>
@@ -76,30 +76,30 @@
                                         </th>
                                     </tr>
                                 </thead>
-                                <tbody> 
+                                <tbody>
                                 <tr>
                                     <td>St Augustine</td>
-                                    <td>2</td> 
+                                    <td>2</td>
                                     <td>Caters all christians</td>
                                     <td>0775401793</td>
                                     <td>Details</td>
                                 </tr>
                                 <tr>
                                 <td>St Francis</td>
-                                    <td>2</td> 
+                                    <td>2</td>
                                     <td>Caters all christians</td>
                                     <td>0775401793</td>
                                     <td>Delete</td>
                                 </tr>
                                 <tr>
                                 <td>St Paul</td>
-                                    <td>2</td> 
+                                    <td>2</td>
                                     <td>Caters all christians</td>
                                     <td>0775401793</td>
                                     <td>Edit</td>
-                                </tr>  
-                                </tbody>    
-                                </table>    
+                                </tr>
+                                </tbody>
+                                </table>
                             </section>
                         </div>
                     </div>
