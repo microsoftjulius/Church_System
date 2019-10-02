@@ -53,6 +53,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/add-message-category',function(){return view('after_login.add-message-category');});
     Route::get('/incoming-messages',function(){return view('after_login.incoming-messages');});
     Route::get('/add-search-term',function(){return view('after_login.search-term-form');});
-   
     Route::post('/delete-contact/{group_id}','ContactsController@remove_element_from_an_array');
 });
