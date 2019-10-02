@@ -46,9 +46,9 @@ class ChurchUserController extends Controller {
     }
     public function store_users_password(Request $request) {
         $get_users_current_password = User::find(Auth::user()->id)->password;
-        $new_password = $request->new_password;
+        $current_password = $request->current_password;
         if ($request->new_password == $request->confirm_password) {
-            if (Hash::check($new_password, $get_users_current_password)) {
+            if (Hash::check($current_password, $get_users_current_password)) {
                 User::where("id", Auth::user()->id)->update(array('password' => Hash::make($request->new_password)));
                 return Redirect()->back()->withErrors("Password update was successful");
             } else {
