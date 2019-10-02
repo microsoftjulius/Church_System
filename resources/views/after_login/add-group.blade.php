@@ -42,7 +42,7 @@
                                 @csrf
                                 <div class="row">
                                 <div class="col-lg-8">
-                                    <input type="text" value="" name="group_name" class="form-control" placeholder="Enter Church Group">
+                                    <input type="text" value="" name="group_name" class="form-control" placeholder="Add Group">
                                 </div></div>
                                 <div class="row">
                                 <div class="col-lg-8 text-center">

@@ -36,15 +36,15 @@
                 <form  class="pull-right" action="/search-church" method="POST">
                     @csrf
                     <div class="form-group row col-lg-12">
-                        <label for="churchName" class="col-sm-2 col-form-label">Church</label>
+                        <label for="churchName" class="col-sm-2 col-form-label">Group</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" name="church_name" placeholder="enter church name"required>
+                            <input type="text" class="form-control" name="church_name" placeholder="enter group name"required>
                         </div>
                         <div class="col-sm-3">
-                            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Church</button>
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Group</button>
                         </div>
                         <div class="col-sm-2">
-                            <a href="/createchurches"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> Church</button></a>
+                            <a href="/createchurches"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> Group</button></a>
                         </div>
                     </div>
                 </form>
@@ -58,7 +58,7 @@
                                         <th class="th-sm">No.</th>
                                         <th class="th-sm">Names</th>
                                         <th class="th-sm">User Name</th>
-                                        <th class="th-sm">Church Name</th>
+                                        <th class="th-sm">Group Name</th>
                                     </tr>
                                 </thead>
                                 <tbody>

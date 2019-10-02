@@ -32,7 +32,7 @@
                 <!-- /top navigation -->
                 <!-- page content -->
                 <div class="right_col" role="main">
-                    @include('layouts.message') 
+                    @include('layouts.message')
                 <!--table -->
                 <div class="row">
                         <div class="col-lg-12">
