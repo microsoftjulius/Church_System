@@ -49,4 +49,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/view-contacts/{id}','ContactsController@view_for_group')->name('Add Contacts to Group');
     Route::post('/save-contact-to-group/{id}','ContactsController@save_contact_to_group');
     Route::get('/search-sent-messages','messages@search_messages');
+
+    
+    Route::get('/message-categories',function(){return view('after_login.message-categories');});
+    Route::get('/change-passwords',function(){return view('after_login.change-password');});
+    Route::post('/save-change-password','ChurchUserController@store_users_password');
+    Route::get('/add-message-category',function(){return view('after_login.add-message-category');});
+    Route::get('/incoming-messages',function(){return view('after_login.incoming-messages');});
+    Route::get('/add-search-term',function(){return view('after_login.search-term-form');});
+   
 });

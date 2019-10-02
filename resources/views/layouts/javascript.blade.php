@@ -41,19 +41,34 @@ function countChars(obj){
     var firstMessage = maxLength ;
     
     if(firstMessage == 160){
-      document.getElementById("charNum").innerHTML = obj.value.length+'<span class="text-danger">One message limit of '+maxLength+'characters over</span>';
+      document.getElementById("charNum").innerHTML = obj.value.length+'';
   }else{
        document.getElementById("charNum").innerHTML = firstMessage+'characters [1message is 160 characters,2messages 310 characters]';
    }
  
    if (strLength === maxLength){
-    document.getElementById("charNum").innerHTML = obj.value.length+'<span class="text-danger">One message limit of '+maxLength+' characters over</span>';
+    document.getElementById("charNum").innerHTML = obj.value.length+'(0-1)';
    } 
    else{
     document.getElementById("charNum").innerHTML = strLength+'characters [1message is 160 characters,2messages 310 characters]';
    } 
+   
 }
 </script>
+
+<script type="text/javascript">
+        $('text').maxlength({
+              alwaysShow: true,
+              threshold: 10,
+              warningClass: "label label-success",
+              limitReachedClass: "label label-danger",
+              separator: ' out of ',
+              preText: 'You write ',
+              postText: ' chars.',
+              validate: true,
+              placement: 'bottom-left'
+        });
+    </script>
 
 <script type="text/javascript">
 $(document).ready(function(){

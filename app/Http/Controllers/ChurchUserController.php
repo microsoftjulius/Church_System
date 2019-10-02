@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use\App\Password;
 use App\church_user;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -56,6 +57,38 @@ class ChurchUserController extends Controller
         ));
         return redirect('/user');
     }
+    
+    public function display_user_password(){
+     $display = User:: where('church_id', auth()->user()->church_id)
+     ->get();
+     return view('after_login.view-passwords',compact('display'));
+    }
+
+    public function store_users_password(Request $request){
+        $hashed_password = Hash::make($request->current_password);
+        if($request->new_password == $request->confirm_password){
+            if(User::where('password',$hashed_password)->where('id',Auth::user()->id)->exists()){
+                User::where("id",Auth::user()->id)->update(array(
+                    'password'=>Hash::make($request->new_password)
+                ));
+                return Redirect()->back()->withErrors("Password update was successful");
+            }
+            else{
+                return Redirect()->back()->withErrors("Incorrect password has been supplied");
+            }
+        }
+        else{
+            return Redirect()->back()->withErrors("Make sure the two passwords match");
+        }
+        
+    //     Password::create(array(
+    //       'current_password'  => $request->current_password,
+    //       'new_password'  => $request->new_password,
+    //       'confirm_password'=>$request->confirm_password
+    //   ));
+      //return redirect('/change-passwords');
+    }
+
 
     /**
      * Display the specified resource.
