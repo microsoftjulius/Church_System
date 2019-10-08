@@ -32,79 +32,38 @@
                 <!-- /top navigation -->
                 <!-- page content -->
                 <div class="right_col" role="main">
-                @include('layouts.message')
-                <!-- Search form -->
-                <div class="row">
-                            <form class="pull-right pt-4" role="search" action="/add-message-category" method="get" >
-                            @csrf
-                                <div class="col-md-12">
-                                       <div class="col-md-3">
-                                            <div class="input-group">
-                                                @include('layouts.breadcrumbs')
-                                            </div>
-                                        </div> 
-                                            <div class="col-md-3">
-                                                    <div class="input-group">
-                                                            <input type="text" class="form-control col-md-4" placeholder="Search" name="search_category" id="srch-term" >
-                                                            <div class="input-group-btn">
-                                                                <button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-search"></i>
-                                                                </button>
-                                                            </div>
-                                                    </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="input-group-btn">
-                                                    <a href="/add-message-category"></a><button class="btn btn-primary" type="submit"><i class="fa fa-plus"></i> Message category
-                                                    </button></a> 
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div class="input-group-btn">
-                                                    <a href="/add-search-term"></a><button class="btn btn-primary" type="submit" formaction="/add-search-term"><i class="fa fa-plus"></i> Search term
-                                                    </button></a>
-                                                </div>
-                                            </div>
-                                </div>
-                            </form>
-                        </div>
-                    <!--Table-->
-                <div class="row">
+                    <!--Search term list-->
+                    <div class="row">
                             <div class="col-lg-12">
                                 <section class="box col-lg-12 col-sm-12 col-md-12 mt-3">
                                     <table id="dtBasicExample" class="table table-striped table-bordered table-sm bg-white" cellspacing="0" width="100%">
                                                 <thead>
                                                     <tr>
                                                         <th class="th-sm">Id</th>
-                                                        <th class="th-sm">Message category
+                                                        <th class="th-sm">Search term
                                                         </th>
-                                                        <th class="th-sm">Number of categories</th>
-                                                        <th class="th-sm">Option</th>
+                                                        
                                                     </tr>
                                                 </thead>
                                             <tbody>
                                                 <tr>
                                                     <td>1</td>
                                                     <td>Prayer request</td>
-                                                    <td>20</td>
-                                                    <td><a href="/add-search-term">View/edit</a></td>
+                                                     
                                                 </tr>
                                                 <tr>
                                                     <td>2</td>
                                                     <td>Bible study</td>
-                                                    <td>10</td>
-                                                    <td><a href="/add-search-term">View/edit</a></td>
+                                                    
                                                 </tr>
                                             </tbody>
                                     </table>
                                 </section>
                                
                             </div>
-                    </div>
-                    
-                    
-
+                    </div>         
                     <div class="row">
-                    </div>
+                    </div>  
                 </div>
                 <!-- /page content -->
                 <!-- footer content -->

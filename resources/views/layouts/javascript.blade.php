@@ -41,13 +41,13 @@ function countChars(obj){
     var firstMessage = maxLength ;
     
     if(firstMessage == 160){
-      document.getElementById("charNum").innerHTML = obj.value.length+'';
+      document.getElementById("charNum").innerHTML = obj.value.length+'<span style="color:red;">(You have reached limit of 160 characters for 1 message)</span>';
   }else{
        document.getElementById("charNum").innerHTML = firstMessage+'characters [1message is 160 characters,2messages 310 characters]';
    }
  
    if (strLength === maxLength){
-    document.getElementById("charNum").innerHTML = obj.value.length+'(0-1)';
+    document.getElementById("charNum").innerHTML = obj.value.length+'<span style="color:red;">(You have reached limit of 160 characters for 1 message)</span>';
    } 
    else{
     document.getElementById("charNum").innerHTML = strLength+'characters [1message is 160 characters,2messages 310 characters]';

@@ -38,14 +38,25 @@
                             <form class="pull-right pt-4" role="search" action="/search-sent-messages" method="get" >
                             @csrf
                                 <div class="col-md-12">
-                                       <div class="col-md-7">
-                                            <div class="input-group">
-                                                @include('layouts.breadcrumbs')
-                                            </div>
+                                      
+                                        <div class="col-md-7">
+                                            <form action="" method="GET">
+                                                <div class="input-group">
+                                                <div class="input-group-btn">
+                                                    <input type="text" class="form-control col-sm-2 mr-2" name="from" placeholder=" Date from">
+                                                    </div>
+                                                    <div class="input-group-btn">
+                                                    <input type="text" class="form-control col-sm-2" name="to" placeholder="Date to">
+                                                    </div>
+                                                    <div class="input-group-btn">
+                                                    <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-search"> filter</i></button>
+                                                    </div>
+                                                </div>
+                                            </form>
                                         </div>
                                             <div class="col-md-3">
                                                     <div class="input-group">
-                                                            <input type="text" class="form-control col-md-12" placeholder="Search" name="search_message" id="srch-term" required>
+                                                            <input type="text" class="form-control col-md-10" placeholder="Search incoming messages" name="search_message" id="srch-term" required>
                                                             <div class="input-group-btn">
                                                                 <button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-search"></i>
                                                                 </button>
@@ -55,14 +66,15 @@
                                             <div class="col-md-2">
                                                     <div class="input-group-btn">
                                                         <div class="form-group row md-form"> 
-                                                            <div class="col-md-10">
+                                                            <div class="col-md-6">
                                                                 <div class="btn-group">
-                                                                    <a href="#" class="btn btn-primary dropdown-toggle w-50" data-toggle="dropdown">
+                                                                    <a href="#" class="btn btn-primary btn-block dropdown-toggle " data-toggle="dropdown">
                                                                     Categories &nbsp;<span class="caret"></span>
                                                                     </a>
                                                                     <ul class="dropdown-menu" style="padding: 3px;" id="myDiv">
-                                                                        <li> All groups</li>
-                                                                        <li> All groups</li>  
+                                                                        <li><input type="checkbox" id="select_all"/> Select all</li>
+                                                                        <li><input type="checkbox" id="select_all"/> Prayer request</li>
+                                                                        <li><input type="checkbox" id="select_all"/> Bible study</li>  
                                                                     </ul>
                                                                 </div>
                                                             </div>

@@ -36,7 +36,7 @@
                     <form class="col-md-offset-3 col-sm-6" style="border-width: 4px 4px 4px 4px; padding :1em; background-color:white;" action="/save-change-password" method="POST">
                         @csrf
                         @include('layouts.message')
-                    <div class="panel-heading text-center"><h4>Enter your password informaion</h4>
+                    <div class="panel-heading text-center"><h4>Enter your password information</h4>
                     <hr>
                     </div>
                             <div class="form-group row md-form">
