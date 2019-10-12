@@ -75,7 +75,7 @@
                                                     </th>
                                                     <th class="th-sm">Last name
                                                     </th>
-                                                    <th class="th-sm">Phone number
+                                                    <th class="th-sm">Phone number / Username
                                                     </th>
                                                     <th class="th-sm">Date created</th>
                                                 </tr>

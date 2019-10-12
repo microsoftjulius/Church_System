@@ -32,7 +32,7 @@ class messages extends Controller
 
     public function drop_down_groups(){
         $drop_down_groups = Groups::where('church_id',Auth::user()->church_id)
-        ->select("group_name","number_of_contacts")->get();
+        ->select("group_name","number_of_contacts","id")->get();
         return view('after_login.Quicksms',compact('drop_down_groups'));
     }
 
@@ -47,8 +47,9 @@ class messages extends Controller
         $message_to_send = $request->message;
         for($i = 0; $i<count($request->checkbox); $i++){
         $contact_array = json_decode(Contacts::where('contacts.group_id',$request->checkbox[$i])->value('contact_number'));
+        //return $contact_array;
         foreach($contact_array as $contact){
-                $contact->Contact;
+                //$contact->Contact;
                 //echo $contact->Contact;
                 $data= array(
                     'method'=>'SendSms',
@@ -85,7 +86,7 @@ class messages extends Controller
         ));
 
           //count for contacs in each group
-         
+
             //return count($request->checkbox);
         }
         return redirect('/sent-quick-messages');

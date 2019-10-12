@@ -73,8 +73,14 @@ class GroupsController extends Controller
         ->orWhere('Groups.group_name', 'like', '%' . $request->group_name. '%')
         ->where('users.church_id',Auth::user()->church_id)
         ->select('Groups.group_name','users.email','Groups.id','Groups.created_at')
-        ->paginate('4');
-        return view('after_login.contacts-groups',compact('contacts'))->with([
+        ->paginate('10');
+
+        $counted = Groups::join('church_databases','church_databases.id','Groups.church_id')
+        ->join('users','users.id','Groups.created_by')
+        ->join('contacts','contacts.group_id','Groups.id')
+        ->where('users.church_id',Auth::user()->church_id)
+        ->select('Groups.group_name','users.email','Groups.id')->count();
+        return view('after_login.contacts-groups',compact('counted','contacts'))->with([
             'search_query' => $request->group_name
         ]);
     }

@@ -52,7 +52,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Username</label>
+                                <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Phone number</label>
                                 <div class="col-sm-10">
                                 <input type="text" class="form-control form-control-lg" name="username" id="colFormLabelLg" required>
                                 </div>
@@ -69,11 +69,10 @@
                                 <a href="/user"><button type="button" class="btn btn-warning"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</i></button></a>
                                 </div>
                             </div>
-                           
                         </form>
 
                     <div class="row">
-                    </div>  
+                    </div>
                 </div>
                 <!-- /page content -->
                 <!-- footer content -->

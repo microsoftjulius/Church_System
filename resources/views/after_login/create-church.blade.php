@@ -32,7 +32,6 @@
                 <!-- /top navigation -->
                 <!-- page content -->
                 <div class="right_col" role="main">
-                @include('layouts.message')
                     <!--Setupform-->
                         @include('layouts.errormessage')
                     <form class="col-md-offset-3 col-sm-6" style="border: 1px solid black ;border-width: 4px 4px 4px 4px; padding :1em; border: ridge #ccc; background-color:white;" action="/create-church" method="POST">
