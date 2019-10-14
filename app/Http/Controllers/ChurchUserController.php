@@ -12,10 +12,10 @@ class ChurchUserController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request) {
-        $display_all_church_users = User::Where('email', $request->search)->orWhere('name', 'like', '%' . $request->search . '%')->where('church_id', 1)->paginate('10');
+        $display_all_church_users = User::Where('email', $request->search)
+        ->orWhere('name', 'like', '%' . $request->search . '%')
+        ->where('church_id', Auth::user()->church_id)->paginate('10');
         return view('after_login.users', compact('display_all_church_users'))->with(['search_query' => $request->search]);
-        //return Auth::user()->church_id;
-
     }
     /**
      * Show the form for creating a new resource.

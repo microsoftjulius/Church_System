@@ -41,13 +41,13 @@ class ChurchesController extends Controller
         if(User::where('email',$request->church_name)->exists()){
             return Redirect()->back()->withErrors('User Name Already Taken, Choose a different name');
         }
-        Contacts::create(array(
-            'church_id' => Auth::user()->id,
-            'group_id' => 4,
-            'created_by' => Auth::user()->id,
-            'update_by' =>Auth::user()->id,
-            'contact_number' => '[{"Contact":""}]'
-        ));
+        // Contacts::create(array(
+        //     'church_id' => Auth::user()->id,
+        //     'group_id' => 38,
+        //     'created_by' => Auth::user()->id,
+        //     'update_by' =>Auth::user()->id,
+        //     'contact_number' => '[{"Contact":"","name":""}]'
+        // ));
         churchdatabase::create(array(
             'church_name'       =>  $request->church_name,
             'database_name'     =>  $request->database_name,

@@ -39,6 +39,9 @@ class GroupsController extends Controller
      */
     public function create_group(Request $request)
     {
+        if(empty($request->group_name)){
+            return Redirect()->back()->withErrors("Group name cannot be empty");
+        }
         if(Groups::where('church_id',Auth::user()->church_id)->where('group_name',$request->group_name)
         ->exists()){
             return Redirect()->back()->withErrors('Group Already Exists, Kindly Create a new Group');
