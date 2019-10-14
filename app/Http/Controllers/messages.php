@@ -104,7 +104,7 @@ class messages extends Controller
     public function search_message_categories(Request $request){
         $display_message_categories = message::where('message_category',$request->search_category)
         ->orWhere('message_category', 'like', '%' .$request->search_category. '%')
-        ->where('chuerch_id',Auth::user()->church_id)
+        ->where('church_id',Auth::user()->church_id)
         ->paginate('10');
         return view('after_login.message-categories',compact('display_message_categories'))->with([
             'search_query' =>$request->search_category
