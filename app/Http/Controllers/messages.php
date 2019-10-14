@@ -102,8 +102,8 @@ class messages extends Controller
     }
     //for new sprints 7 and 8
     public function search_message_categories(Request $request){
-        $display_message_categories = message::where('message_category',$request->search_category)
-        ->orWhere('message_category', 'like', '%' .$request->search_category. '%')
+        $display_message_categories = message::where('category',$request->search_category)
+        ->orWhere('category', 'like', '%' .$request->search_category. '%')
         ->where('church_id',Auth::user()->church_id)
         ->paginate('10');
         return view('after_login.message-categories',compact('display_message_categories'))->with([
