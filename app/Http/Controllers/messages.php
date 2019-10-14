@@ -100,7 +100,7 @@ class messages extends Controller
             'search_query' => $request->search_message
         ]);
     }
-
+    //for new sprints 7 and 8
     public function search_message_categories(Request $request){
         $display_message_categories = message::where('message_category',$request->search_category)
         ->orWhere('message_category', 'like', '%' .$request->search_category. '%')
