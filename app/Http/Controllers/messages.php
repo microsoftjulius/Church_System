@@ -102,7 +102,7 @@ class messages extends Controller
     }
     //for new sprints 7 and 8
     public function search_message_categories(Request $request){
-        $display_message_categories = message::where('category',$request->search_category)
+        $display_message_categories = message_categories::where('category',$request->search_category)
         ->orWhere('category', 'like', '%' .$request->search_category. '%')
         ->where('church_id',Auth::user()->church_id)
         ->paginate('10');
@@ -114,7 +114,7 @@ class messages extends Controller
     public function save_message_category(Request $request){
         message::create(array(
         'church_id'  =>  Auth::user()->church_id,
-        'message_category' =>$request->message_category,
+        'category' =>$request->category,
         ));
         return redirect('/message-categories');
     }
