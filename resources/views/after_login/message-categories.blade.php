@@ -42,7 +42,7 @@
                                             <div class="input-group">
                                                 @include('layouts.breadcrumbs')
                                             </div>
-                                        </div> 
+                                        </div>
                                             <div class="col-md-3">
                                                     <div class="input-group">
                                                             <input type="text" class="form-control col-md-4" placeholder="Search" name="search_category" id="srch-term" >
@@ -55,7 +55,7 @@
                                             <div class="col-md-3">
                                                 <div class="input-group-btn">
                                                     <a href="/add-message-category"></a><button class="btn btn-primary" type="submit"><i class="fa fa-plus"></i> Message category
-                                                    </button></a> 
+                                                    </button></a>
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
@@ -74,34 +74,34 @@
                                     <table id="dtBasicExample" class="table table-striped table-bordered table-sm bg-white" cellspacing="0" width="100%">
                                                 <thead>
                                                     <tr>
-                                                        <th class="th-sm">Id</th>
-                                                        <th class="th-sm">Message category
-                                                        </th>
-                                                        <th class="th-sm">Number of categories</th>
+                                                        <th class="th-sm">No.</th>
+                                                        <th>Added by</th>
+                                                        <th class="th-sm">Message category</th>
                                                         <th class="th-sm">Option</th>
                                                     </tr>
                                                 </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Prayer request</td>
-                                                    <td>20</td>
-                                                    <td><a href="/add-search-term">View/edit</a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Bible study</td>
-                                                    <td>10</td>
-                                                    <td><a href="/add-search-term">View/edit</a></td>
-                                                </tr>
+                                                    @if ($category->currentPage() > 1)
+                                                    @php($i =  1 + (($category->currentPage() - 1) * $get_group_contacts->perPage()))
+                                                    @else
+                                                    @php($i = 1)
+                                                    @endif
+                                                    @foreach ($category as $index => $categories)
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>{{ $categories->name }}</td>
+                                                        <td>{{ $categories->category }}</td>
+                                                        <td><a href="/add-search-term">View/edit</a></td>
+                                                    </tr>
+                                                @endforeach
                                             </tbody>
                                     </table>
                                 </section>
-                               
+
                             </div>
                     </div>
-                    
-                    
+
+
 
                     <div class="row">
                     </div>

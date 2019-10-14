@@ -50,7 +50,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/read-file','messages@read_file');
     Route::get('/file-reading',function(){return view('after_login.file-reading');});
     Route::get('/search-term-list',function(){return view('after_login.search-term-table');});
-    Route::get('/message-categories',function(){return view('after_login.message-categories');});
+    Route::get('/message-categories','messages@message_categories_page');
     Route::get('/change-passwords',function(){return view('after_login.change-password');});
     Route::post('/save-change-password','ChurchUserController@store_users_password');
     Route::get('/add-message-category',function(){return view('after_login.add-message-category');});

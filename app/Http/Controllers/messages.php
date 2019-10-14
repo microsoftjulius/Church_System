@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Contacts;
 use App\messages as message;
 use App\Groups;
+use App\messageCategories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -122,14 +123,14 @@ class messages extends Controller
 
     public function save_added_search_terms(Request $request){
         message::create(array(
-          'church_id' =>Auth::user()->church_id,
-          'search_term_name' =>$request->search_term_name,
-          'search_terms_list' ->$request->search_terms_list
+            'church_id' =>Auth::user()->church_id,
+            'search_term_name' =>$request->search_term_name,
+            'search_terms_list' ->$request->search_terms_list
         ));
-    } 
+    }
 
     public function read_file(){
-      $fn = "myfile.txt";
+        $fn = "myfile.txt";
         $result = file_get_contents("myfile.txt");
 
         $emp = [];
@@ -145,10 +146,15 @@ class messages extends Controller
                     }
                 }
             }
-        //return substr_count($new_text, $newvalue); 
+        //return substr_count($new_text, $newvalue);
         //return view('after_login.file-reading',compact("new_text"));
     }
-   
-  
+
+    public function message_categories_page(){
+        $category = messageCategories::where('message_categories.church_id',Auth::user()->church_id)
+        ->join('users','users.id','message_categories.user_id')
+        ->select('category','name')->paginate('10');
+        return view('after_login.message-categories',compact('category'));
+    }
 
 }
