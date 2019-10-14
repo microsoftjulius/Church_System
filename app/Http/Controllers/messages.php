@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Contacts;
 use App\messages as message;
 use App\Groups;
-use App\message_categories;
+use App\category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -113,10 +113,12 @@ class messages extends Controller
             }
 
     public function save_message_category(Request $request){
-        message_categories::create(array(
+        category::create(array(
         'church_id'  =>  Auth::user()->church_id,
         'category' =>$request->category,
-        'message_id'=>$re
+        'message_id' =>$request->message_id,
+        'user_id' =>$request->user_id,
+        'church_id'=>$request->church_id,
         ));
         return redirect('/message-categories');
     }
