@@ -54,7 +54,7 @@
                                                     </form>
                                             </div>
                                             <div class="col-md-3">
-                                            <form class="" role="search" action="/add-message-categories" method="post" >
+                                            <form class="" role="search" >
                                              @csrf
                                                 <div class="input-group-btn">
                                                     <button formaction="/add-message-category"class="btn btn-primary" type="submit"><i class="fa fa-plus"></i> Message category

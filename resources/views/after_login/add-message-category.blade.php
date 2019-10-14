@@ -33,7 +33,7 @@
                 <!-- page content -->
                 <div class="right_col" role="main">
                     <!--Setupform-->
-                    <form class="col-md-offset-3 col-sm-6" style="border-width: 4px 4px 4px 4px; padding :1em; background-color:white;" action="/add-message-category" method="POST">
+                    <form class="col-md-offset-3 col-sm-6" style="border-width: 4px 4px 4px 4px; padding :1em; background-color:white;" action="/add-message-categories" method="POST">
                         @csrf
                         @include('layouts.message')
                     <div class="panel-heading text-center"><h4>Please Enter The Message Category</h4>
@@ -42,7 +42,7 @@
                             <div class="form-group row md-form">
                                 <label for="colFormLabelSm" class="col-sm-4 col-form-label col-form-label-sm">Message category</label>
                                 <div class="col-sm-8">
-                                <input type="text" class="form-control form-control-sm" name="message_category" id="materialFormCardNameEx" placeholder="message category" required>
+                                <input type="text" class="form-control form-control-sm" name="category" id="materialFormCardNameEx" placeholder="message category" required>
                                 </div>
                             </div> 
                             <div class="form-group row">

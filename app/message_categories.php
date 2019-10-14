@@ -7,4 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class message_categories extends Model
 {
     //
+     protected $fillable = ['id','category'];
 }

@@ -53,10 +53,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/message-categories',function(){return view('after_login.message-categories');});
     Route::get('/change-passwords',function(){return view('after_login.change-password');});
     Route::post('/save-change-password','ChurchUserController@store_users_password');
-    Route::post('/add-message-category',function(){return view('after_login.add-message-category');});
+    Route::get('/add-message-category',function(){return view('after_login.add-message-category');});
     Route::get('/incoming-messages',function(){return view('after_login.incoming-messages');});
     Route::post('/add-search-term',function(){return view('after_login.search-term-form');});
-    Route::get('/add-message-categories','messages@save_message_category');
+    Route::post('/add-message-categories','messages@save_message_category');
     Route::post('/search-message-categories','messages@search_message_categories');
     Route::post('/delete-contact/{group_id}','ContactsController@remove_element_from_an_array');
 });
