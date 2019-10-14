@@ -1,10 +1,12 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\category;
 use App\Contacts;
 use App\messages as message;
 use App\Groups;
-use App\category;
+use App\searchTerms;
+use App\messageCategories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -71,12 +73,19 @@ class messages extends Controller {
     }
     //for new sprints 7 and 8
     public function search_message_categories(Request $request) {
-        $display_message_categories = message::where('message_category', $request->search_category)->orWhere('message_category', 'like', '%' . $request->search_category . '%')->where('church_id', Auth::user()->church_id)->paginate('10');
+        $display_message_categories = category::where('message_category', $request->search_category)->orWhere('message_category', 'like', '%' . $request->search_category . '%')->where('church_id', Auth::user()->church_id)->paginate('10');
         return view('after_login.message-categories', compact('display_message_categories'))->with(['search_query' => $request->search_category]);
     }
+
+    public function show_add_category_blade(){
+        return view('after_login.add-message-category');
+    }
     public function save_message_category(Request $request) {
-        message::create(array('church_id' => Auth::user()->church_id, 'message_category' => $request->message_category,));
-        return redirect('/message-categories');
+        if(category::where('church_id',Auth::user()->church_id)->exists() && category::where('title',$request->category)->exists()){
+            return Redirect()->back()->withErrors("Message category already registered");
+        }
+        category::create(array('church_id' => Auth::user()->church_id, 'title' => $request->category,'user_id'=>Auth::user()->id));
+        return redirect('/message-categories')->withErrors("Category added successfully");
     }
     public function save_added_search_terms(Request $request) {
         message::create(array('church_id' => Auth::user()->church_id, 'search_term_name' => $request->search_term_name, 'search_terms_list'->$request->search_terms_list));
@@ -102,8 +111,8 @@ class messages extends Controller {
 
     }
     public function message_categories_page() {
-        $category = messageCategories::where('message_categories.church_id', Auth::user()->church_id)->join('users', 'users.id', 'message_categories.user_id')
-        ->select('category', 'name')->paginate('10');
+        $category = category::where('category.church_id', Auth::user()->church_id)->join('users', 'users.id', 'category.user_id')
+        ->select('title', 'name')->paginate('10');
         return view('after_login.message-categories', compact('category'));
     }
     public function show_search_terms() {
@@ -137,4 +146,5 @@ class messages extends Controller {
         searchTerms::where('church_id', Auth::user()->church_id)->update(array('search_term' => json_encode($search_term)));
         return Redirect()->back()->withErrors("Search Term was deleted Successfully");
     }
+
 }

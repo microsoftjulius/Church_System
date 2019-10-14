@@ -54,13 +54,15 @@
                                                     </form>
                                             </div>
                                             <div class="col-md-3">
-                                            <form class="" role="search" >
-                                             @csrf
+
                                                 <div class="input-group-btn">
-                                                    <button formaction="/add-message-category"class="btn btn-primary" type="submit"><i class="fa fa-plus"></i> Message category
+                                                    <form action="/add-message-category" method="GET">
+                                                        @csrf
+                                                    <button class="btn btn-primary" type="submit"><i class="fa fa-plus"></i> Message category
                                                     </button>
-                                                </div>
                                                 </form>
+                                                </div>
+
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="input-group-btn">
@@ -93,7 +95,7 @@
                                                     <tr>
                                                         <td>1</td>
                                                         <td>{{ $categories->name }}</td>
-                                                        <td>{{ $categories->category }}</td>
+                                                        <td>{{ $categories->title }}</td>
                                                         <td><a href="/add-search-term">View/edit</a></td>
                                                     </tr>
                                                 @endforeach
