@@ -86,7 +86,6 @@
                                                 <td></td>
                                             </tr>
                                             <button class="btn btn-primary pull-right" type="submit">Save</button>
-                                            <button class="btn btn-primary pull-right" type="submit">Clear</button>
                                             <a href="/contact-groups"><button type="button" class="btn btn-primary pull-right"><i class="" aria-hidden="true"></i> Back</i></button></a>
                                             @include('layouts.breadcrumbs')
                                             <span class="text-primary">After inputing a name and a contact number, press enter to save it to the group</span>

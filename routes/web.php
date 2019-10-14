@@ -49,7 +49,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/read-file','messages@read_file');
     Route::get('/file-reading',function(){return view('after_login.file-reading');});
-    Route::get('/search-term-list',function(){return view('after_login.search-term-table');});
+    Route::get('/search-term-list','messages@show_search_terms')->name("Search terms");
     Route::get('/message-categories','messages@message_categories_page');
     Route::get('/change-passwords',function(){return view('after_login.change-password');});
     Route::post('/save-change-password','ChurchUserController@store_users_password');
@@ -57,4 +57,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/incoming-messages',function(){return view('after_login.incoming-messages');});
     Route::post('/add-search-term',function(){return view('after_login.search-term-form');});
     Route::post('/delete-contact/{group_id}','ContactsController@remove_element_from_an_array');
+    Route::post('/save-search-term','messages@save_search_terms');
+    Route::post('/delete-search-term','messages@delete_search_term');
 });
