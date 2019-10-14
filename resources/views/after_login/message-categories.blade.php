@@ -54,18 +54,17 @@
                                                     </form>
                                             </div>
                                             <div class="col-md-3">
-                                            <form class="" role="search" >
-                                             @csrf
+                                            
                                                 <div class="input-group-btn">
                                                     <button formaction="/add-message-category"class="btn btn-primary" type="submit"><i class="fa fa-plus"></i> Message category
                                                     </button>
                                                 </div>
-                                                </form>
                                             </div>
+
                                             <div class="col-md-2">
                                                 <div class="input-group-btn">
-                                                    <a href="/add-search-term"></a><button class="btn btn-primary" type="submit" formaction="/add-search-term"><i class="fa fa-plus"></i> Search term
-                                                    </button></a>
+                                                    <button formaction="/add-search-term" class="btn btn-primary" type="submit"><i class="fa fa-plus"></i> Search term
+                                                    </button>
                                                 </div>
                                             </div>
                                 </div>
