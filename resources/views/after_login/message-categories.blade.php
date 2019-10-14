@@ -43,7 +43,7 @@
                                         </div> 
                                             <div class="col-md-3">
                                             <form class="pull-right pt-4" role="search" action="/search-message-categories" method="post" >
-                                             @csrf
+                                                @csrf
                                                     <div class="input-group">
                                                             <input type="text" class="form-control col-md-4" placeholder="Search" name="category" id="srch-term" >
                                                             <div class="input-group-btn">
@@ -63,7 +63,7 @@
 
                                             <div class="col-md-2">
                                                 <div class="input-group-btn">
-                                                    <button formaction="/add-search-term" class="btn btn-primary" type="submit"><i class="fa fa-plus"></i> Search term
+                                                    <a href="/add-search-term"> <button class="btn btn-primary" type="submit"><i class="fa fa-plus"></i> Search term
                                                     </button>
                                                 </div>
                                             </div>

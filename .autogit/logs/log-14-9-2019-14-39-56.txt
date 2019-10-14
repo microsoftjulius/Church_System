@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Mon Oct 14 2019 14:39:56 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* resources/views/after_login/message-categories.blade.php
+* routes/web.php
+
+
+Created files:
+
+
+Deleted files:
+
+
+Renamed files:
