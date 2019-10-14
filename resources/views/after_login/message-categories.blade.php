@@ -56,15 +56,15 @@
                                             <div class="col-md-3">
                                             
                                                 <div class="input-group-btn">
-                                                    <button formaction="/add-message-category"class="btn btn-primary" type="submit"><i class="fa fa-plus"></i> Message category
-                                                    </button>
+                                                    <<button href="/add-message-category"><button class="btn btn-primary" type="submit"><i class="fa fa-plus"></i> Message category
+                                                    </button></a>
                                                 </div>
                                             </div>
 
                                             <div class="col-md-2">
                                                 <div class="input-group-btn">
                                                     <a href="/add-search-term"> <button class="btn btn-primary" type="submit"><i class="fa fa-plus"></i> Search term
-                                                    </button>
+                                                    </button></a>
                                                 </div>
                                             </div>
                                 </div>
