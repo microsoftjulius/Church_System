@@ -52,7 +52,7 @@
                                             @foreach($drop_down_groups as $picking_from_database)
                                                 <div class="checkbox">
                                                     <label>
-                                                      <input type="checkbox" class="checkbox dropdown-item checkbox-primary" name="checkbox[]" value="{{$picking_from_database->id}}" /> {{ $picking_from_database->group_name }}
+                                                        <input type="checkbox" class="checkbox dropdown-item checkbox-primary" name="checkbox[]" value="{{$picking_from_database->id}}" /> {{ $picking_from_database->group_name }}
                                                     </label>
                                                 </div>
                                             @endforeach
@@ -71,7 +71,7 @@
                             <div class="col-sm-8">
                             <textarea type="text" class="form-control form-control-lg" rows="7" name="message" id="message" onkeyup="countChars(this);" maxlength='310'></textarea>
                             <p id="charNum">0   characters [1message is 160 characters,2messages 310 characters]</p>
-                            
+
                                 <br>
                             </div>
                         </div>

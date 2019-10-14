@@ -33,7 +33,7 @@
                 <!-- page content -->
                 <div class="right_col" role="main">
                 @include('layouts.message')
-                <!-- Search form -->  
+                <!-- Search form -->
                 {{$new_text}}
 
                     <div class="row">

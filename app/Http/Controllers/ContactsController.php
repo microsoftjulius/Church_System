@@ -32,7 +32,10 @@ class ContactsController extends Controller {
 
     }
     public function view_for_group($id) {
-        $get_group_contacts = Contacts::join('Groups', 'contacts.group_id', 'Groups.id')->join('church_databases', 'church_databases.id', 'contacts.church_id')->join('users', 'users.id', 'contacts.created_by')->where('group_id', $id)->where('contacts.church_id', Auth::user()->church_id)->paginate(10);
+        $get_group_contacts = Contacts::join('Groups', 'contacts.group_id', 'Groups.id')
+        ->join('church_databases', 'church_databases.id', 'contacts.church_id')
+        ->join('users', 'users.id', 'contacts.created_by')->where('group_id', $id)
+        ->where('contacts.church_id', Auth::user()->church_id)->paginate(10);
         return view('after_login.contacts', compact('get_group_contacts'));
     }
     //save contact to group

@@ -49,14 +49,16 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/read-file','messages@read_file');
     Route::get('/file-reading',function(){return view('after_login.file-reading');});
-    Route::get('/search-term-list',function(){return view('after_login.search-term-table');});
-    Route::get('/message-categories',function(){return view('after_login.message-categories');});
+    Route::get('/search-term-list','messages@show_search_terms')->name("Search terms");
+    Route::get('/message-categories','messages@message_categories_page');
     Route::get('/change-passwords',function(){return view('after_login.change-password');});
     Route::post('/save-change-password','ChurchUserController@store_users_password');
-    Route::get('/add-message-category',function(){return view('after_login.add-message-category');});
+    Route::get('/add-message-category','messages@show_add_category_blade');
     Route::get('/incoming-messages',function(){return view('after_login.incoming-messages');});
     Route::get('/add-search-term',function(){return view('after_login.search-term-form');});
     Route::post('/add-message-categories','messages@save_message_category');
     Route::post('/search-message-categories','messages@search_message_categories');
     Route::post('/delete-contact/{group_id}','ContactsController@remove_element_from_an_array');
+    Route::post('/save-search-term','messages@save_search_terms');
+    Route::post('/delete-search-term','messages@delete_search_term');
 });

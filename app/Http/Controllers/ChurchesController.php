@@ -34,6 +34,59 @@ class ChurchesController extends Controller
     //Create a new Church
     public function create(Request $request)
     {
+        if (strpos($request->church_name, '.') == true) {
+            return Redirect()->back()->withErrors("Church name can't contain a full stop");
+        } elseif (strpos($request->church_name, '!') == true) {
+            return Redirect()->back()->withErrors("Church name can't contain an exclamation mark");
+        } elseif (strpos($request->church_name, '@') == true) {
+            return Redirect()->back()->withErrors("Church name can't contain an @ sign");
+        } elseif (strpos($request->church_name, '#') == true) {
+            return Redirect()->back()->withErrors("Church name can't contain a hash");
+        } elseif (strpos($request->church_name, '$') == true) {
+            return Redirect()->back()->withErrors("church name can't contain a dollar sign");
+        } elseif (strpos($request->church_name, '%') == true) {
+            return Redirect()->back()->withErrors("church name can't contain a percentage symbol");
+        } elseif (strpos($request->church_name, '^') == true) {
+            return Redirect()->back()->withErrors("Church name can't contain a ^ sign");
+        } elseif (strpos($request->church_name, '&') == true) {
+            return Redirect()->back()->withErrors("Church name can't contain an ampasand sign");
+        } elseif (strpos($request->church_name, '*') == true) {
+            return Redirect()->back()->withErrors("church name can't contain an asteric");
+        } elseif (strpos($request->church_name, '"') == true) {
+            return Redirect()->back()->withErrors("church name can't contain a double quote");
+        } elseif (strpos($request->church_name, ',') == true) {
+            return Redirect()->back()->withErrors("church name can't contain a comma");
+        } elseif (strpos($request->church_name, ':') == true) {
+            return Redirect()->back()->withErrors("church name can't contain full quotes");
+        } elseif (strpos($request->church_name, '\'') == true) {
+            return Redirect()->back()->withErrors("church name can't contain a backslash");
+        } elseif (strpos($request->church_name, '?') == true) {
+            return Redirect()->back()->withErrors("church name can't contain a question mark");
+        } elseif (strpos($request->church_name, ';') == true) {
+            return Redirect()->back()->withErrors("church name can't contain a semi-column");
+        } elseif (strpos($request->church_name, '/') == true) {
+            return Redirect()->back()->withErrors("church name can't contain contain a forward slash");
+        } elseif (strpos($request->church_name, '}') == true) {
+            return Redirect()->back()->withErrors("church name can't contain curl brackets");
+        } elseif (strpos($request->church_name, '{') == true) {
+            return Redirect()->back()->withErrors("church name can't contain curl brackets");
+        } elseif (strpos($request->church_name, '[') == true) {
+            return Redirect()->back()->withErrors("church name can't contain angular brackets");
+        } elseif (strpos($request->church_name, ']') == true) {
+            return Redirect()->back()->withErrors("church name can't contain angular brackets");
+        } elseif (strpos($request->church_name, '-') == true) {
+            return Redirect()->back()->withErrors("church name can't contain an hyphen");
+        } elseif (strpos($request->church_name, '_') == true) {
+            return Redirect()->back()->withErrors("church name can't contain an under-scope");
+        } elseif (strpos($request->church_name, '=') == true) {
+            return Redirect()->back()->withErrors("church name can't contain an equals sign");
+        } elseif (strpos($request->church_name, '+') == true) {
+            return Redirect()->back()->withErrors("church name can't contain a plus sign");
+        } elseif (strpos($request->church_name, '(') == true) {
+            return Redirect()->back()->withErrors("church name can't contain a bracket");
+        } elseif (strpos($request->church_name, ')') == true) {
+            return Redirect()->back()->withErrors("church name can't contain a bracket");
+        }
         if(churchdatabase::where('church_name',$request->church_name)->exists())
         {
             return Redirect()->back()->withErrors('Church Name already Registered');
