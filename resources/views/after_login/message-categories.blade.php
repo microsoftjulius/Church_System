@@ -35,8 +35,6 @@
                 @include('layouts.message')
                 <!-- Search form -->
                 <div class="row">
-                            <form class="pull-right pt-4" role="search" action="/add-message-category" method="get" >
-                            @csrf
                                 <div class="col-md-12">
                                        <div class="col-md-3">
                                             <div class="input-group">
@@ -44,19 +42,25 @@
                                             </div>
                                         </div>
                                             <div class="col-md-3">
+                                            <form class="pull-right pt-4" role="search" action="/search-message-categories" method="post" >
+                                             @csrf
                                                     <div class="input-group">
-                                                            <input type="text" class="form-control col-md-4" placeholder="Search" name="search_category" id="srch-term" >
+                                                            <input type="text" class="form-control col-md-4" placeholder="Search" name="category" id="srch-term" >
                                                             <div class="input-group-btn">
                                                                 <button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-search"></i>
                                                                 </button>
                                                             </div>
                                                     </div>
+                                                    </form>
                                             </div>
                                             <div class="col-md-3">
+                                            <form class="" role="search" >
+                                             @csrf
                                                 <div class="input-group-btn">
-                                                    <a href="/add-message-category"></a><button class="btn btn-primary" type="submit"><i class="fa fa-plus"></i> Message category
-                                                    </button></a>
+                                                    <button formaction="/add-message-category"class="btn btn-primary" type="submit"><i class="fa fa-plus"></i> Message category
+                                                    </button>
                                                 </div>
+                                                </form>
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="input-group-btn">
@@ -65,7 +69,6 @@
                                                 </div>
                                             </div>
                                 </div>
-                            </form>
                         </div>
                     <!--Table-->
                 <div class="row">

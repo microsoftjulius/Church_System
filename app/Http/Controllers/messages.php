@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 use App\Contacts;
 use App\messages as message;
 use App\Groups;
-use App\messageCategories;
-use App\searchTerms;
+use App\category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

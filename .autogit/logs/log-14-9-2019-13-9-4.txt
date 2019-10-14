@@ -1,0 +1,20 @@
+-------------------- Auto-Git Log --------------------
+		Mon Oct 14 2019 13:09:04 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* app/Http/Controllers/messages.php
+* app/messages.php
+* resources/views/after_login/message-categories.blade.php
+* routes/web.php
+
+
+Created files:
+* .autogit/logs/log-14-9-2019-12-8-45.txt
+* app/message_categories.php
+
+
+Deleted files:
+
+
+Renamed files:
