@@ -47,11 +47,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/save-contact-to-group/{id}','ContactsController@save_contact_to_group');
     Route::get('/search-sent-messages','messages@search_messages');
 
+    Route::get('/read-file','messages@read_file');
+    Route::get('/file-reading',function(){return view('after_login.file-reading');});
+    Route::get('/search-term-list',function(){return view('after_login.search-term-table');});
     Route::get('/message-categories',function(){return view('after_login.message-categories');});
     Route::get('/change-passwords',function(){return view('after_login.change-password');});
     Route::post('/save-change-password','ChurchUserController@store_users_password');
     Route::get('/add-message-category',function(){return view('after_login.add-message-category');});
     Route::get('/incoming-messages',function(){return view('after_login.incoming-messages');});
-    Route::get('/add-search-term',function(){return view('after_login.search-term-form');});
+    Route::post('/add-search-term',function(){return view('after_login.search-term-form');});
     Route::post('/delete-contact/{group_id}','ContactsController@remove_element_from_an_array');
 });

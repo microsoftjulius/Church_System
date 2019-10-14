@@ -101,21 +101,54 @@ class messages extends Controller
             'search_query' => $request->search_message
         ]);
     }
+    //for new sprints 7 and 8
+    public function search_message_categories(Request $request){
+        $display_message_categories = message::where('message_category',$request->search_category)
+        ->orWhere('message_category', 'like', '%' .$request->search_category. '%')
+        ->where('church_id',Auth::user()->church_id)
+        ->paginate('10');
+        return view('after_login.message-categories',compact('display_message_categories'))->with([
+            'search_query' =>$request->search_category
+        ]);
+            }
+
+    public function save_message_category(Request $request){
+        message::create(array(
+        'church_id'  =>  Auth::user()->church_id,
+        'message_category' =>$request->message_category,
+        ));
+        return redirect('/message-categories');
+    }
+
+    public function save_added_search_terms(Request $request){
+        message::create(array(
+          'church_id' =>Auth::user()->church_id,
+          'search_term_name' =>$request->search_term_name,
+          'search_terms_list' ->$request->search_terms_list
+        ));
+    } 
 
     public function read_file(){
-        $fn = "myfile.txt";
+      $fn = "myfile.txt";
         $result = file_get_contents("myfile.txt");
 
+        $emp = [];
         $newvalue = "category";
+        $category = ['Ability', 'each' ,'following'];
         $new_text = str_replace("<text>",$newvalue,$result);
-
-        //$words = array("if", "and", "do", "this", 'I', 'do', 'that');
-        //$stopwords = array("a", "and", "if");
-
-        //print_r(array_diff($words, $stopwords));
-
-        return view('after_login.file',compact("new_text"));
+        array_push($emp, $new_text);
+            //return array_count_values($emp);
+            foreach($emp as $value){
+                for($i =0; $i<strlen($new_text); $i++){
+                    if($new_text[$i] != "each"){
+                        echo $value;
+                    }
+                }
+            }
+        //return substr_count($new_text, $newvalue); 
+        //return view('after_login.file-reading',compact("new_text"));
     }
+   
+  
+
 }
-
-

@@ -64,15 +64,15 @@
                             </div>
                         </div>
                         <div class="form-group row md-form">
-                                <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm">search term list</label>
+                                <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm" name="">search term list</label>
                                 <div class="col-sm-8">
-                                <button type="submit" class="btn btn-info btn-block"><i class="fa fa-table"></i> list of search terms</button>
+                              <a href="/search-term-list"><button type="button" class="btn btn-info btn-block" name="search_terms_list"><i class="fa fa-table"></i> list of search terms</button></a>
                                 </div>
                             </div>    
                             <div class="form-group row">
                                 <div class="text-center py-4 mt-3 ">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
-                                <a href="/home"><button type="button" class="btn btn-warning"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</i></button></a>
+                                <a href="/message-categories"><button type="button" class="btn btn-warning"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</i></button></a>
                                 </div>
                             </div>
                            
