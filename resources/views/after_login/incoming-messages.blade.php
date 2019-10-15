@@ -48,7 +48,7 @@
                                                     <input type="text" class="form-control col-sm-2" name="to" placeholder="Date to">
                                                     </div>
                                                     <div class="input-group-btn">
-                                                    <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-search"> filter</i></button>
+                                                    <button type="button" name="filter" id="filter" class="btn btn-success"><i class="glyphicon glyphicon-search"> filter</i></button>
                                                     </div>
                                                 </div>
                                             </form>
@@ -71,10 +71,15 @@
                                                                     Categories &nbsp;<span class="caret"></span>
                                                                     </a>
                                                                     <ul class="dropdown-menu" style="padding: 3px;" id="myDiv">
-                                                                        <li><input type="checkbox" id="select_all"/> Select all</li>
-                                                                        <li><input type="checkbox" id="select_all"/> Prayer request</li>
-                                                                        <li><input type="checkbox" id="select_all"/> Bible study</li>  
-                                                                    </ul>
+                                                                    <li><input type="checkbox" id="select_all"/> All categories</li>
+                                                                            @foreach($drop_down_categories as $picking_from_category_database)
+                                                                                <div class="checkbox">
+                                                                                    <label>
+                                                                                        <input type="checkbox" class="checkbox dropdown-item checkbox-primary" name="checkbox[]" value="{{$picking_from_category_database->id}}" /> {{ $picking_from_category_database->title }}
+                                                                                    </label>
+                                                                                </div>
+                                                                            @endforeach 
+                                                                    </ul> 
                                                                 </div>
                                                             </div>
                                                         </div>

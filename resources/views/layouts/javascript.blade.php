@@ -78,7 +78,7 @@ $(document).ready(function(){
                 this.checked = true;
             });
         }else{
-             $('.checkbox').each(function(){
+            $('.checkbox').each(function(){
                 this.checked = false;
             });
         }
@@ -92,4 +92,7 @@ $(document).ready(function(){
     });
 });
 </script>
+
+
+
 

@@ -169,4 +169,9 @@ class messages extends Controller {
         ->select('messages.message','category.title')->paginate('10');
         return view('after_login.incoming-messages',compact('messages_to_categories'));
     }
+    public function incoming_message_drop_down_categories(){
+        $drop_down_categories = category::where('church_id', Auth::user()->church_id)
+        ->select("title", "user_id", "id")->get();
+        return view('after_login.incoming-messages', compact('drop_down_categories'));
+    }
 }
