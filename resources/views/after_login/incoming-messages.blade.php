@@ -42,11 +42,12 @@
                                         <div class="col-md-7">
                                             <form action="" method="GET">
                                                 <div class="input-group">
-                                                <div class="input-group input-daterange">
-                                                    <input type="text" name="from_date" id="from_date" readonly class="form-control" />
-                                                    <div class="input-group-addon">to</div>
-                                                    <input type="text"  name="to_date" id="to_date" readonly class="form-control" />
-                                                </div>
+                                                <div class="input-group-btn">
+                                                    <input type="text" class="form-control col-sm-2 mr-2" name="from" placeholder=" Date from">
+                                                    </div>
+                                                    <div class="input-group-btn">
+                                                    <input type="text" class="form-control col-sm-2" name="to" placeholder="Date to">
+                                                    </div>
                                                     <div class="input-group-btn">
                                                     <button type="button" name="filter" id="filter" class="btn btn-success"><i class="glyphicon glyphicon-search"> filter</i></button>
                                                     </div>

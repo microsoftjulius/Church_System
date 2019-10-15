@@ -152,24 +152,4 @@ class messages extends Controller {
         ->select("title", "user_id", "id")->get();
         return view('after_login.incoming-messages', compact('drop_down_categories'));
     }
-
-    
-    public function fetch_data(Request $request)
-                {
-                if($request->ajax())
-                {
-                if($request->from_date != '' && $request->to_date != '')
-                {
-                $data = DB::table('messages')
-                    ->whereBetween('date', array($request->from_date, $request->to_date))
-                    ->get();
-                }
-                else
-                {
-                $data = DB::table('messages')->orderBy('date', 'desc')->get();
-                }
-                echo json_encode($data);
-                }
-                }
-
 }
