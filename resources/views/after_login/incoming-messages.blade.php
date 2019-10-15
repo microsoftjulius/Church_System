@@ -117,7 +117,6 @@
                                             </tbody>
                                     </table>
                                 </section>
-                               
                             </div>
                     </div>
                     <div class="row">
