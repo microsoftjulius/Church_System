@@ -38,7 +38,6 @@
                             <form class="pull-right pt-4" role="search" action="/search-sent-messages" method="get" >
                             @csrf
                                 <div class="col-md-12">
-                                      
                                         <div class="col-md-7">
                                             <form action="" method="GET">
                                                 <div class="input-group">
@@ -94,12 +93,22 @@
                                                         <th class="th-sm">Id</th>
                                                         <th class="th-sm">Message
                                                         </th>
-                                                        <th class="th-sm">Categories</th>
-                                                       
+                                                        <th class="th-sm">Category</th>
                                                     </tr>
                                                 </thead>
                                             <tbody>
-                                            
+                                                @if ($messages_to_categories->currentPage() > 1)
+                                                    @php($i =  1 + (($messages_to_categories->currentPage() - 1) * $messages_to_categories->perPage()))
+                                                    @else
+                                                    @php($i = 1)
+                                                    @endif
+                                                @foreach ($messages_to_categories as $messages)
+                                            <tr>
+                                                <th class="th-sm">{{ $i++ }}</th>
+                                                <th class="th-sm">{{ $messages->message }}</th>
+                                                <th class="th-sm">{{ $messages->title }}</th>
+                                            </tr>
+                                            @endforeach
                                             </tbody>
                                     </table>
                                 </section>
