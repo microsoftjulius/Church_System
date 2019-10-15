@@ -34,6 +34,9 @@ class messages extends Controller {
         if (empty($request->message)) {
             return Redirect()->back()->withErrors("Make sure the Message Field is not Empty");
         }
+        if (empty($request->checkbox)) {
+            return Redirect()->back()->withErrors("Make sure you have selected at least one group");
+        }
         $message_to_send = $request->message;
         for ($i = 0;$i < count($request->checkbox);$i++) {
             $contact_array = json_decode(Contacts::where('contacts.group_id', $request->checkbox[$i])->value('contact_number'));
@@ -73,8 +76,13 @@ class messages extends Controller {
     }
     //for new sprints 7 and 8
     public function search_message_categories(Request $request) {
-        $display_message_categories = category::where('message_category', $request->search_category)->orWhere('message_category', 'like', '%' . $request->search_category . '%')->where('church_id', Auth::user()->church_id)->paginate('10');
-        return view('after_login.message-categories', compact('display_message_categories'))->with(['search_query' => $request->search_category]);
+        $category = category::join('users','users.id','category.user_id')->where('title', $request->category)
+        ->orWhere('title', 'like', '%' . $request->category . '%')
+        ->orWhere('name', 'like', '%' . $request->category . '%')
+        ->where('category.church_id', Auth::user()->church_id)->paginate('10');
+        return view('after_login.message-categories', compact('category'))
+        ->with(['search_query' => $request->search_category]);
+        //return $request->category;
     }
 
     public function show_add_category_blade(){
@@ -98,7 +106,6 @@ class messages extends Controller {
         $category = ['Ability', 'each', 'following'];
         $new_text = str_replace("<text>", $newvalue, $result);
         array_push($emp, $new_text);
-        //return array_count_values($emp);
         foreach ($emp as $value) {
             for ($i = 0;$i < strlen($new_text);$i++) {
                 if ($new_text[$i] != "each") {
@@ -106,13 +113,10 @@ class messages extends Controller {
                 }
             }
         }
-        //return substr_count($new_text, $newvalue);
-        //return view('after_login.file-reading',compact("new_text"));
-
     }
     public function message_categories_page() {
         $category = category::where('category.church_id', Auth::user()->church_id)->join('users', 'users.id', 'category.user_id')
-        ->select('title', 'name')->paginate('10');
+        ->select('category.id','title', 'name')->paginate('10');
         return view('after_login.message-categories', compact('category'));
     }
     public function show_search_terms() {
@@ -151,5 +155,24 @@ class messages extends Controller {
         $drop_down_categories = category::where('church_id', Auth::user()->church_id)
         ->select("title", "user_id", "id")->get();
         return view('after_login.incoming-messages', compact('drop_down_categories'));
+    }
+
+    public function display_message_category_form($id){
+        $category = category::where('id',$id)
+        ->select('title','id')->get();
+        return view('after_login.search-term-form',compact('category'));
+    }
+
+    public function edit_message_category(Request $request, $id){
+        category::where('id',$id)
+        ->update(
+                array('title'=> $request->new_category_title)
+        );
+        return redirect('/message-categories')->withErrors('Category update was successful ');
+    }
+    public function show_incoming_messages(){
+        $messages_to_categories = category::join('messages','messages.category_id','category.id')
+        ->select('messages.message','category.title')->paginate('10');
+        return view('after_login.incoming-messages',compact('messages_to_categories'));
     }
 }

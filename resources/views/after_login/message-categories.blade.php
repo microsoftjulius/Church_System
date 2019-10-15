@@ -32,11 +32,11 @@
                 <!-- /top navigation -->
                 <!-- page content -->
                 <div class="right_col" role="main">
-                @include('layouts.message')
                 <!-- Search form -->
                 <div class="row">
+                        @include('layouts.message')
                                 <div class="col-md-12">
-                                       <div class="col-md-3">
+                                        <div class="col-md-3">
                                             <div class="input-group">
                                                 @include('layouts.breadcrumbs')
                                             </div>
@@ -67,7 +67,7 @@
 
                                             <div class="col-md-2">
                                                 <div class="input-group-btn">
-                                                    <a href="/add-search-term"> <button class="btn btn-primary" type="submit"><i class="fa fa-plus"></i> Search term
+                                                    <a href="/search-term-list"> <button class="btn btn-primary" type="submit"><i class="fa fa-plus"></i> Search term
                                                     </button></a>
                                                 </div>
                                             </div>
@@ -94,10 +94,10 @@
                                                     @endif
                                                     @foreach ($category as $index => $categories)
                                                     <tr>
-                                                        <td>1</td>
+                                                        <td>{{ $i++ }}</td>
                                                         <td>{{ $categories->name }}</td>
                                                         <td>{{ $categories->title }}</td>
-                                                        <td><a href="/add-search-term">View/edit</a></td>
+                                                        <td><a href="/add-search-term/{{ $categories->id }}">View/edit</a></td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>
