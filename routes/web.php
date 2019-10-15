@@ -61,5 +61,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/search-message-categories','messages@search_message_categories');
     Route::post('/delete-contact/{group_id}','ContactsController@remove_element_from_an_array');
     Route::post('/save-search-term','messages@save_search_terms');
-    Route::post('/delete-search-term','messages@delete_search_term'); 
+    Route::post('/delete-search-term','messages@delete_search_term');
 });
