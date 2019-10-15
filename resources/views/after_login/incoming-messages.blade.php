@@ -80,19 +80,7 @@
                                                                                     </label>
                                                                                 </div>
                                                                             @endforeach 
-                                                                    </ul>
-                                                                    <!---
-                                                                     <ul class="dropdown-menu" style="padding: 5px;" id="myDiv">
-                                                                        <li><input type="checkbox" id="select_all"/> All groups</li>
-                                                                            @foreach($drop_down_groups as $picking_from_database)
-                                                                                <div class="checkbox">
-                                                                                    <label>
-                                                                                        <input type="checkbox" class="checkbox dropdown-item checkbox-primary" name="checkbox[]" value="{{$picking_from_database->id}}" /> {{ $picking_from_database->group_name }}
-                                                                                    </label>
-                                                                                </div>
-                                                                            @endforeach
-                                                                    </ul>
-                                                                    --->
+                                                                    </ul> 
                                                                 </div>
                                                             </div>
                                                         </div>
