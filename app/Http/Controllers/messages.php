@@ -172,4 +172,11 @@ class messages extends Controller {
         ->select("title", "user_id", "id")->get();
         return view('after_login.incoming-messages',compact('messages_to_categories','drop_down_categories'));
     }
+
+    public function picking_messages_from_api(){
+        $client = new Nexmo\Client(new Nexmo\Client\Credentials\Basic(API_KEY, API_SECRET));
+        $message = new \Nexmo\Message\InboundMessage('ID');
+        $client->message()->search($message);
+        echo "The body of the message was: " . $message->getBody();
+    }
 }
