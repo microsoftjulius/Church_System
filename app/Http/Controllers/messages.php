@@ -146,5 +146,10 @@ class messages extends Controller {
         searchTerms::where('church_id', Auth::user()->church_id)->update(array('search_term' => json_encode($search_term)));
         return Redirect()->back()->withErrors("Search Term was deleted Successfully");
     }
-
+ 
+    public function incoming_message_drop_down_categories(){
+        $drop_down_categories = category::where('church_id', Auth::user()->church_id)
+        ->select("title", "user_id", "id")->get();
+        return view('after_login.incoming-messages', compact('drop_down_categories'));
+    }
 }
