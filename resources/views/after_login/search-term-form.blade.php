@@ -39,29 +39,28 @@
                         @include('layouts.message')
                     <div class="panel-heading text-center"><h4>Edit message category</h4>
                     <hr>
-                    </div>
-                            <div class="form-group row md-form">
-                                <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm">Category name</label>
-                                <div class="col-sm-8">
-                                <input type="text" class="form-control form-control-sm" name="new_category_title" id="materialFormCardNameEx" placeholder="search term" value="{{ $cats->title }}" required>
+                    </div> 
+                                <div class="form-group row md-form">
+                                    <div class="col-md-12">
+                                           <div class="col-md-6">
+                                            <label for="colFormLabelSm" class="col-sm-4 col-form-label col-form-label-sm">Category name</label>
+                                            
+                                            <input type="text" class="form-control form-control-sm" name="new_category_title" id="materialFormCardNameEx" placeholder="search term" value="{{ $cats->title }}" required>
+                                            </div>
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-5">
+                                                <ul class="list-unstyled" >
+                                                    <li><input type="checkbox" id="select_all"/> All Categories</li> 
+                                                    <li><input type="checkbox" id="category 1"/> category 1</li> 
+                                                    <li><input type="checkbox" id="category 2"/> category 2</li> 
+                                                    <li><input type="checkbox" id="category 3"/> category 3</li>       
+                                                </ul>
+                                            </div>
+                                    </div>
                                 </div>
-                            </div>
-                            {{-- <div class="form-group row md-form">
-                            <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm">Choose</label>
-                            <div class="col-sm-8">
-                                <div class="btn-group">
-                                    <a href="#"  class=" dropdown-toggle btn-block" data-toggle="dropdown">
-                                    Select search term category &nbsp;<span class="caret"></span>
-                                    </a>
-                                    <ul class="dropdown-menu" style="padding: 5px;" id="myDiv">
-                                        <li><input type="checkbox" id="select_all"/> All categories</li>
-                                        <li><input type="checkbox" id="select_all"/> Prayer request</li>
-                                        <li><input type="checkbox" id="select_all"/> bible study</li>
-                                        <li><input type="checkbox" id="select_all"/> Baptism</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div> --}}
+
+                                
+                            
                         {{-- <div class="form-group row md-form">
                                 <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm" name="">search term list</label>
                                 <div class="col-sm-8">
