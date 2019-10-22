@@ -1,0 +1,17 @@
+-------------------- Auto-Git Log --------------------
+		Tue Oct 22 2019 12:45:44 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* resources/views/after_login/add-message-category.blade.php
+
+
+Created files:
+* .autogit/logs/log-15-9-2019-18-23-14.txt
+* "app/Http/Controllers/new 1"
+
+
+Deleted files:
+
+
+Renamed files:
