@@ -57,7 +57,7 @@
                     <!--table -->
                 <div class="row">
                     <div class="text-center">
-                      <p><h3>List of Contacts Groups</h3></p>
+                      <p><h3>List of Contacts Churches</h3></p>
                     </div>
                         <div class="col-lg-12">
                             <section class="box col-lg-12 col-sm-12 col-md-12 mt-3">

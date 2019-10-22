@@ -40,7 +40,7 @@
                             <div class="form-group row md-form">
                                 <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Name</label>
                                 <div class="col-sm-10">
-                                <input type="text" class="form-control form-control-sm" name="church_name" id="materialFormCardNameEx" placeholder="Enter Church name" required>
+                                <input type="text" class="form-control form-control-sm" name="church_name" id="materialFormCardNameEx" placeholder="Enter group name" required>
                                 </div>
                             </div>
                             <div class="form-group row">

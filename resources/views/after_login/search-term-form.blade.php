@@ -32,6 +32,10 @@
                 <!-- /top navigation -->
                 <!-- page content -->
                 <div class="right_col" role="main">
+                    <div class="col-lg-6">
+
+                    </div>
+                    <div class="col-lg-6"></div>
                     <!--Setupform-->
                     @foreach ($category as $cats)
                     <form class="col-md-offset-3 col-sm-6" style="border-width: 4px 4px 4px 4px; padding :1em; background-color:white;" action="/edit-category-term/{{ $cats->id }}" method="POST">

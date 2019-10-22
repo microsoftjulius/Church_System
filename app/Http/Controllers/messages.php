@@ -9,6 +9,7 @@ use App\searchTerms;
 use App\messageCategories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class messages extends Controller {
     public function index() {
@@ -119,8 +120,30 @@ class messages extends Controller {
         ->select('category.id','title', 'name')->paginate('10');
         return view('after_login.message-categories', compact('category'));
     }
-    public function show_search_terms() {
-        $search_term = searchTerms::where('search_terms.church_id', Auth::user()->church_id)->join('users', 'users.id', 'search_terms.user_id')
+    public function show_search_terms(Request $request) {
+        $check_if_element_exists_array = [];
+        $search_term = json_decode(searchTerms::where('church_id', Auth::user()->church_id)->value('search_term'));
+            if((searchTerms::where('church_id',Auth::user()->church_id))->exists()){
+
+                $search_term = searchTerms::where('search_terms.church_id', Auth::user()->church_id)
+                ->join('users', 'users.id', 'search_terms.user_id')
+                ->select('name', 'search_term','email')->paginate('10');
+                return view('after_login.search-term-table', compact('search_term'));
+            }
+            else{
+                searchTerms::create(array(
+                    'search_term' => '[{"search_term":""}]',
+                    'user_id' => Auth::user()->id,
+                    'church_id' => Auth::user()->church_id
+                ));
+                $search_term = searchTerms::where('search_terms.church_id', Auth::user()->church_id)
+                ->join('users', 'users.id', 'search_terms.user_id')
+                ->select('name', 'search_term','email')->paginate('10');
+                return view('after_login.search-term-table', compact('search_term'));
+            }
+
+        $search_term = searchTerms::where('search_terms.church_id', Auth::user()->church_id)
+        ->join('users', 'users.id', 'search_terms.user_id')
         ->select('name', 'search_term','email')->paginate('10');
         return view('after_login.search-term-table', compact('search_term'));
     }
@@ -154,6 +177,7 @@ class messages extends Controller {
     public function display_message_category_form($id){
         $category = category::where('id',$id)
         ->select('title','id')->get();
+        //$search_term = DB::table('users')
         return view('after_login.search-term-form',compact('category'));
     }
 
@@ -166,8 +190,8 @@ class messages extends Controller {
     }
     public function show_incoming_messages(){
         $messages_to_categories = category::join('messages','messages.category_id','category.id')
+        ->where('category.church_id',Auth::user()->church_id)
         ->select('messages.message','category.title')->paginate('10');
-
         $drop_down_categories = category::where('church_id', Auth::user()->church_id)
         ->select("title", "user_id", "id")->get();
         return view('after_login.incoming-messages',compact('messages_to_categories','drop_down_categories'));

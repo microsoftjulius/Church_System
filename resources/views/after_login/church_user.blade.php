@@ -43,7 +43,7 @@
                                         <th class="th-sm">No.</th>
                                         <th class="th-sm">Names</th>
                                         <th class="th-sm">Username</th>
-                                        <th class="th-sm">Church name</th>
+                                        <th class="th-sm">Group name</th>
                                     </tr>
                                 </thead>
                                 <tbody>

@@ -53,7 +53,7 @@
                             </div>
                             <div class="col-md-2">
                                 <div class="input-group">
-                                    <a href="/createchurches"><button type="button" class="btn btn-primary"><i class="fa fa-plus">Church</i></button></a>
+                                    <a href="/createchurches"><button type="button" class="btn btn-primary"><i class="fa fa-plus">Group</i></button></a>
                                 </div>
                             </div>
                         </div>

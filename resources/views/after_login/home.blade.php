@@ -47,8 +47,8 @@
                                         <div class="tile-stats">
                                             <div class="icon"><i class="fa fa-home"></i></div>
                                             <div class="count">{{ auth()->user()->count_churches() }}</div>
-                                            <h3>Groups</h3>
-                                            <p>Registered Groups</p>
+                                            <h3>Churches</h3>
+                                            <p>Registered Churches</p>
                                         </div>
                                     </div>
                                     <div class="animated flipInY col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -56,7 +56,7 @@
                                             <div class="icon"><i class="fa fa-users"></i></div>
                                             <div class="count">{{ auth()->user()->count_users_in_church() }}</div>
                                             <h3>Users</h3>
-                                            <p>Groups With Users</p>
+                                            <p>Churches With Users</p>
                                         </div>
                                     </div>
                                     <div class="animated flipInY col-lg-4 col-md-4 col-sm-4 col-xs-12">
