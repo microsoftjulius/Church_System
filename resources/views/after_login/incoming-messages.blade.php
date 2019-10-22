@@ -78,8 +78,8 @@
                                                                                         <input type="checkbox" class="checkbox dropdown-item checkbox-primary" name="checkbox[]" value="{{$picking_from_category_database->id}}" /> {{ $picking_from_category_database->title }}
                                                                                     </label>
                                                                                 </div>
-                                                                            @endforeach 
-                                                                    </ul> 
+                                                                            @endforeach
+                                                                    </ul>
                                                                 </div>
                                                             </div>
                                                         </div>
