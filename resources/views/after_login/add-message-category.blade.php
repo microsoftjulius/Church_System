@@ -39,24 +39,13 @@
                     <div class="panel-heading text-center"><h4>Please Enter The Message Category</h4>
                     <hr>
                     </div>
-                            <div class="form-group row md-form">
-                                <div class="col-md-12">
+                            <div class="form-group row md-form"> 
                                     <div class="col-md-6">
                                             <label for="colFormLabelSm" class="col-sm-4 col-form-label col-form-label-sm">Message category</label>
                                             <div class="col-sm-8">
                                             <input type="text" class="form-control form-control-sm" name="category" id="materialFormCardNameEx" placeholder="message category" required>
                                             </div>
                                     </div>
-                                    <div class="col-md-1"></div>
-                                    <div class="col-md-5">
-                                        <ul class="list-unstyled" >
-                                            <li><input type="checkbox" id="select_all"/> All Categories</li> 
-                                            <li><input type="checkbox" id="category 1"/> category 1</li> 
-                                            <li><input type="checkbox" id="category 2"/> category 2</li> 
-                                            <li><input type="checkbox" id="category 3"/> category 3</li>       
-                                        </ul>
-                                    </div>
-                                </div>
                             </div> 
                             <div class="form-group row">
                                 <div class="text-center">
