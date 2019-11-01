@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
-use App\Http\Resources\Messages as MessageResource;
+use App\Http\Resources\MessagesResource as MessageResource;
 use App\messages;
 use Illuminate\Mail\Message;
 
@@ -22,3 +22,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/messages/{id}',function($id){
     return new MessageResource(messages::where('id',$id)->get());
 });
+Route::apiResource('messages','messages');
+Route::group(['prefix'=>'messages'],function(){
+    Route::apiResource('/{message}/groups','GroupsController');
+});
+

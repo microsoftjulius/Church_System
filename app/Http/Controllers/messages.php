@@ -6,14 +6,16 @@ use App\Contacts;
 use App\messages as message;
 use App\Groups;
 use App\searchTerms;
-use App\messageCategories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use App\Http\Resources\MessagesCollection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class messages extends Controller {
     public function index() {
-        return view('after_login.messages');
+        // return view('after_login.messages');
+        //return new MessagesCollection(message::all()); this transforms only one instance
+        return MessagesCollection::collection(message::all());
     }
     public function search_use_contact_group_attributes(Request $request) {
         $search = $request->search;
@@ -62,17 +64,18 @@ class messages extends Controller {
                 $ch_result = curl_exec($ch);
                 curl_close($ch);
                 //print an array that is json decoded
-                print_r(json_decode($ch_result, true));
+                //print_r(json_decode($ch_result, true));
             }
             message::create(array('church_id' => Auth::user()->church_id, 'group_id' => $request->checkbox[$i], 'message' => $request->message, 'contact_character' => $request->contact_character, 'created_on' => $request->created_at, 'created_by' => Auth::user()->id));
-            //count for contacs in each group
+            //count for contacts in each group
             //return count($request->checkbox);
-
         }
         return redirect('/sent-quick-messages');
     }
     public function search_messages(Request $request) {
-        $display_sent_message_details = message::where('message', $request->search_message)->orWhere('message', 'like', '%' . $request->search_message . '%')->where('church_id', Auth::user()->church_id)->paginate('10');
+        $display_sent_message_details = message::where('message', $request->search_message)->orWhere('message', 'like', '%' . $request->search_message . '%')->where('church_id', Auth::user()->church_id)
+        ->where('status','Recieved')
+        ->paginate('10');
         return view('after_login.sent-messages', compact('display_sent_message_details'))->with(['search_query' => $request->search_message]);
     }
     //for new sprints 7 and 8
@@ -120,36 +123,63 @@ class messages extends Controller {
         ->select('category.id','title', 'name')->paginate('10');
         return view('after_login.message-categories', compact('category'));
     }
-    public function show_search_terms(Request $request) {
+    public function show_search_terms(Request $request, $id) {
         $check_if_element_exists_array = [];
         $search_term = json_decode(searchTerms::where('church_id', Auth::user()->church_id)->value('search_term'));
-            if((searchTerms::where('church_id',Auth::user()->church_id))->exists()){
-
+            if((searchTerms::where('category_id',$id))->exists()){
                 $search_term = searchTerms::where('search_terms.church_id', Auth::user()->church_id)
+                ->where('category_id',$id)
                 ->join('users', 'users.id', 'search_terms.user_id')
-                ->select('name', 'search_term','email')->paginate('10');
-                return view('after_login.search-term-table', compact('search_term'));
+                ->select('name', 'search_term','email','category_id')->first();
+
+                $contacts = json_decode($search_term->search_term);
+                $contacts = array_slice($contacts, 1);
+
+                $count = count($contacts);
+                $offset = ($request->page - 1) * 10;
+                $contacts = new LengthAwarePaginator(array_slice($contacts, $offset, 10), $count, 10, $request->page);
+                $contacts->withPath("/search-term-list/$id");
+                return view('after_login.search-term-table', compact('search_term', 'contacts'));
             }
             else{
                 searchTerms::create(array(
                     'search_term' => '[{"search_term":""}]',
                     'user_id' => Auth::user()->id,
-                    'church_id' => Auth::user()->church_id
+                    'church_id' => Auth::user()->church_id,
+                    'category_id' => $id
                 ));
                 $search_term = searchTerms::where('search_terms.church_id', Auth::user()->church_id)
+                ->where('category_id',$id)
                 ->join('users', 'users.id', 'search_terms.user_id')
-                ->select('name', 'search_term','email')->paginate('10');
-                return view('after_login.search-term-table', compact('search_term'));
+                ->select('name', 'search_term','email','category_id')->first();
+
+                $contacts = json_decode($search_term->search_term);
+                $contacts = array_slice($contacts, 1);
+
+                $count = count($contacts);
+                $offset = ($request->page - 1) * 10;
+                $contacts = new LengthAwarePaginator(array_slice($contacts, $offset, 10), $count, 10, $request->page);
+                $contacts->withPath("/search-term-list/$id");
+                return view('after_login.search-term-table', compact('search_term', 'contacts'));
             }
 
         $search_term = searchTerms::where('search_terms.church_id', Auth::user()->church_id)
+        ->where('category_id',$id)
         ->join('users', 'users.id', 'search_terms.user_id')
-        ->select('name', 'search_term','email')->paginate('10');
-        return view('after_login.search-term-table', compact('search_term'));
+        ->select('name', 'search_term','email','category_id')->first();
+
+        $contacts = json_decode($search_term->search_term);
+        $contacts = array_slice($contacts, 1);
+
+        $count = count($contacts);
+        $offset = ($request->page - 1) * 10;
+        $contacts = new LengthAwarePaginator(array_slice($contacts, $offset, 10), $count, 10, $request->page);
+        $contacts->withPath("/search-term-list/$id");
+        return view('after_login.search-term-table', compact('search_term', 'contacts'));
     }
-    public function save_search_terms(Request $request) {
+    public function save_search_terms(Request $request, $id) {
         $check_if_element_exists_array = [];
-        $search_term = json_decode(searchTerms::where('church_id', Auth::user()->church_id)->value('search_term'));
+        $search_term = json_decode(searchTerms::where('church_id', Auth::user()->church_id)->where('category_id',$id)->value('search_term'));
         foreach ($search_term as $item) {
             array_push($check_if_element_exists_array, $item->search_term);
             if (in_array($request->search_term, $check_if_element_exists_array)) {
@@ -160,25 +190,28 @@ class messages extends Controller {
         $empty_array = array('search_term' => $request->search_term);
         array_push($search_term, $empty_array);
         //saving new array to the database
-        searchTerms::where('church_id', Auth::user()->church_id)->update(array(
+        searchTerms::where('church_id', Auth::user()->church_id)->where('category_id',$id)->update(array(
             'search_term' => json_encode($search_term),
             'user_id'     => Auth::user()->id
         ));
         return Redirect()->back()->withErrors('Search term added successfully');
     }
-    public function delete_search_term(Request $request){
-        $search_term = json_decode(searchTerms::where('church_id', Auth::user()->church_id)->value('search_term'));
+    public function delete_search_term($id, Request $request){
+        $search_term = json_decode(searchTerms::where('church_id', Auth::user()->church_id)->where('category_id',$id)->value('search_term'));
         unset($search_term[$request->index_to_delete]);
         array_splice($search_term, $request->index_to_delete, 0);
-        searchTerms::where('church_id', Auth::user()->church_id)->update(array('search_term' => json_encode($search_term)));
+        searchTerms::where('church_id', Auth::user()->church_id)->where('category_id',$id)->update(array('search_term' => json_encode($search_term)));
         return Redirect()->back()->withErrors("Search Term was deleted Successfully");
     }
 
     public function display_message_category_form($id){
+        $all_search_terms = searchTerms::where('church_id',Auth::user()->church_id)
+        ->where('category_id',$id)
+        ->paginate(10);
         $category = category::where('id',$id)
         ->select('title','id')->get();
         //$search_term = DB::table('users')
-        return view('after_login.search-term-form',compact('category'));
+        return view('after_login.search-term-form',compact('category','all_search_terms'));
     }
 
     public function edit_message_category(Request $request, $id){
@@ -191,16 +224,79 @@ class messages extends Controller {
     public function show_incoming_messages(){
         $messages_to_categories = category::join('messages','messages.category_id','category.id')
         ->where('category.church_id',Auth::user()->church_id)
+        ->where('status','Recieved')
         ->select('messages.message','category.title')->paginate('10');
         $drop_down_categories = category::where('church_id', Auth::user()->church_id)
         ->select("title", "user_id", "id")->get();
         return view('after_login.incoming-messages',compact('messages_to_categories','drop_down_categories'));
     }
+    // public function picking_messages_from_api(){
+    //     $client = new Nexmo\Client(new Nexmo\Client\Credentials\Basic(API_KEY, API_SECRET));
+    //     $message = new \Nexmo\Message\InboundMessage('ID');
+    //     $client->message()->search($message);
+    //     echo "The body of the message was: " . $message->getBody();
+    // }
+    public function display_search_terms(){
+        $all_search_terms = searchTerms::all();
+        return $all_search_terms;
+    }
 
-    public function picking_messages_from_api(){
-        $client = new Nexmo\Client(new Nexmo\Client\Credentials\Basic(API_KEY, API_SECRET));
-        $message = new \Nexmo\Message\InboundMessage('ID');
-        $client->message()->search($message);
-        echo "The body of the message was: " . $message->getBody();
+    public function incoming(Request $request){
+        //get all search terms from the database
+        $search_terms = searchTerms::all();
+        $search_terms_array = [];
+        //return $search_terms;
+        foreach($search_terms as $search_term){
+            $var = json_decode(strtolower($search_term->search_term));
+            foreach($var as $value){
+                array_push($search_terms_array,$value->search_term);
+            }
+            break;
+        }
+        //return $search_terms_array;
+        //convert message to array
+
+        // $message_array = explode(" ",strtolower($request->message));
+        // print_r($search_terms_array);
+        // echo "<br>";
+        // print_r($message_array);
+        // //check if any member occurs in both arrays
+        // $result=array_intersect($search_terms_array,$message_array);
+        // // $empty_result = [];
+        // echo "<br>";
+        // print_r($result);
+        /*
+        here, get the category id of the key word that has been saved in the
+        result variable and map it. then its done
+
+        */
+        //return($result);
+        //get the message from the request
+        $recieved_message = $request->message;
+        if(strpos($recieved_message, 'God') !== false){
+        message::create(array(
+            'group_id'      => $request->group,
+            'church_id'     => $request->church,
+            'category_id'   => $request->category,
+            'message'       => $request->message,
+            'contact_character' => 0,
+            'created_on'     => '10/09/2019 10:19',
+            'status'         => 'Recieved'
+        ));
+        return redirect('/church')->withErrors('New message recieved');
+        }
+        else{
+            message::create(array(
+                'group_id'      => $request->group,
+                'church_id'     => $request->church,
+                'category_id'   => 1,
+                'message'       => $request->message,
+                'contact_character' => 0,
+                'created_on'     => '10/09/2019 10:19',
+                'status'         => 'Recieved'
+            ));
+        }
+        return redirect('/church')->withErrors('New message recieved with default key word');
+
     }
 }

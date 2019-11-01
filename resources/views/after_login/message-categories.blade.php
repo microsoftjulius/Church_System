@@ -65,12 +65,12 @@
 
                                             </div>
 
-                                            <div class="col-md-2">
+                                            {{-- <div class="col-md-2">
                                                 <div class="input-group-btn">
                                                     <a href="/search-term-list"> <button class="btn btn-primary" type="submit"><i class="fa fa-plus"></i> Search term
                                                     </button></a>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                 </div>
                         </div>
                     <!--Table-->

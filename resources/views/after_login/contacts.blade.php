@@ -50,35 +50,32 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @if ($get_group_contacts->currentPage() > 1)
-                                        @php($i =  1 + (($get_group_contacts->currentPage() - 1) * $get_group_contacts->perPage()))
-                                        @else
-                                        @php($i = 1)
-                                        @endif
-                                        @foreach ($get_group_contacts as $contact)
-                                            <?php $data = json_decode($contact->contact_number)?>
-                                            @foreach ($data as $index =>$item)
-                                            @if(!empty($item->Contact))
-                                            <tr>
-                                                <form action="/delete-contact/{{ $contact->group_id }}" method="POST">
-                                                    @csrf
-                                                    <td hidden><input type="hidden" name="index_to_delete" id="" value="{{ $i }}"></td>
-                                                <td>{{ $i++ }}</td>
-                                                <td>{{ $contact->group_name }}</td>
-                                                <td>{{ $contact->email }}</td>
-                                                <td>{{ $contact->email }}</td>
-                                                <td>{{ $item->name }}</td>
-                                                <td>{{ $item->Contact }}</td>
-                                                    <td><button class="btn btn-danger" type="submit">Delete</button></td>
-                                                </form>
-                                            </tr>
+                                            @if ($contacts->currentPage() > 1)
+                                            @php($i =  1 + (($contacts->currentPage() - 1) * $contacts->perPage()))
+                                            @else
+                                            @php($i = 1)
                                             @endif
-                                            @endforeach
+                                        @foreach ($contacts as $i => $contact)
+                                        <tr>
+                                            <form action="/delete-contact/{{ $group->group_id }}" method="POST">
+                                                @csrf
+                                                <td hidden><input type="hidden" name="index_to_delete" id="" value="{{ $i }}"></td>
+                                            <td>{{ $i+1 }}</td>
+                                            <td>{{ $group->group_name }}</td>
+                                            <td>{{ $group->email }}</td>
+                                            <td>{{ $group->email }}</td>
+                                            <td>{{ $contact->name }}</td>
+                                            <td>{{ $contact->Contact }}</td>
+
+                                                <td><button class="btn btn-danger" type="submit">Delete</button></td>
+                                            </form>
+                                        </tr>
+                                        @endforeach
                                         <form action="/save-contact-to-group/{{ \Request::segment(2) }}" method="POST">
                                             @csrf
                                             <tr>
                                                 <td></td>
-                                                <td><input type="text" name="groupname" value="{{ $contact->group_name }}" class="form-control" disabled></td>
+                                                <td><input type="text" name="groupname" value="{{ $group->group_name }}" class="form-control" disabled></td>
                                                 <td><input type="text" name="created_by" value="{{ auth()->user()->email }}" class="form-control" disabled></td>
                                                 <td><input type="text" name="created_by" value="{{ auth()->user()->email }}" class="form-control" disabled></td>
                                                 <td><input type="text" name="name" value="" class="form-control"></td>
@@ -91,10 +88,11 @@
                                             <span class="text-primary">After inputing a name and a contact number, press enter to save it to the group</span>
                                             {{-- <input type="file" name="file" id="" value="Upload"> --}}
                                         </form>
-                                        @endforeach
+
                                     </tbody>
-                                    {{ $get_group_contacts->links() }}
+
                                 </table>
+                                {{ $contacts->links() }}
                             </section>
                         </div>
                     </div>

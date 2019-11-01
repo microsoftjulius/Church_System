@@ -43,7 +43,7 @@
                         @include('layouts.message')
                     <div class="panel-heading text-center"><h4>Edit message category</h4>
                     <hr>
-                    </div> 
+                    </div>
                                 <div class="form-group row md-form">
                                     <div class="col-md-12">
                                         <div class="col-md-6">
@@ -54,19 +54,35 @@
                                         </div>
                                             <div class="col-md-1"></div>
                                             <div class="col-md-5">
-                                                <ul class="list-unstyled" >
-                                                    <li><input type="checkbox" id="select_all"/> All Categories</li> 
-                                                    <li><input type="checkbox"/> category 1</li> 
-                                                    <li><input type="checkbox"/> category 2</li> 
-                                                    <li><input type="checkbox"/> category 3</li>       
-                                                </ul>
-                                                <a href="/add-message-category"><button type="button" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> Addcategory</i></button></a>
+                                                    @if ($all_search_terms->currentPage() > 1)
+                                                    @php($i =  1 + (($get_group_contacts->currentPage() - 1) * $get_group_contacts->perPage()))
+                                                    @else
+                                                    @php($i = 1)
+                                                    @endif
+
+                                                    @foreach ($all_search_terms as $contact)
+                                                    <?php $data = json_decode($contact->search_term)?>
+                                                    @foreach ($data as $index =>$item)
+                                                    @if(!empty($item->search_term))
+                                                    <tr>
+                                                        <form action="/delete-contact/{{ $contact->group_id }}" method="POST">
+                                                            @csrf
+                                                            <td hidden><input type="hidden" name="index_to_delete" id="" value="{{ $i }}"></td>
+                                                            <ul class="list-unstyled" >
+                                                                <li><input type="checkbox" checked="true"/> {{ $item->search_term }}</li>
+                                                            </ul>
+                                                        </form>
+                                                    </tr>
+                                                    @endif
+                                                    @endforeach
+                                                    @endforeach
+                                                <a href="/search-term-list/{{ $cats->id }}"><button type="button" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> Add / Remove Search Term</i></button></a>
                                             </div>
                                     </div>
                                 </div>
 
-                                
-                            
+
+
                         {{-- <div class="form-group row md-form">
                                 <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm" name="">search term list</label>
                                 <div class="col-sm-8">

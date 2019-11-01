@@ -6,6 +6,7 @@ use App\Groups;
 use App\Imports\ContactsImport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Pagination\LengthAwarePaginator;
 class ContactsController extends Controller {
     //It redirects to a page showing all contacts
     public function index() {
@@ -31,12 +32,21 @@ class ContactsController extends Controller {
         //
 
     }
-    public function view_for_group($id) {
-        $get_group_contacts = Contacts::join('Groups', 'contacts.group_id', 'Groups.id')
+    public function view_for_group($id, Request $request) {
+        $group = Contacts::join('Groups', 'contacts.group_id', 'Groups.id')
         ->join('church_databases', 'church_databases.id', 'contacts.church_id')
         ->join('users', 'users.id', 'contacts.created_by')->where('group_id', $id)
-        ->where('contacts.church_id', Auth::user()->church_id)->paginate(10);
-        return view('after_login.contacts', compact('get_group_contacts'));
+        ->where('contacts.church_id', Auth::user()->church_id)->first();
+
+        $contacts = json_decode($group->contact_number);
+        $contacts = array_slice($contacts, 1);
+
+        $count = count($contacts);
+        $offset = ($request->page - 1) * 10;
+        $contacts = new LengthAwarePaginator(array_slice($contacts, $offset, 10), $count, 10, $request->page);
+        $contacts->withPath("/view-contacts/$id");
+
+        return view('after_login.contacts', compact('group', 'contacts'));
     }
     //save contact to group
     public function save_contact_to_group($id, Request $request) {
@@ -109,7 +119,10 @@ class ContactsController extends Controller {
         } elseif ($request->contact[2] != 6) {
             return Redirect()->back()->withErrors("Required numbers only have 6 as their third number");
         }
-        if (preg_match('/[A-Za-z].*[0-9]|[0-9].*[A-Za-z]/', $request->contact)) {
+        elseif ($request->contact[2] != 6) {
+            return Redirect()->back()->withErrors("Input a correct phone number");
+        }
+        elseif (gettype($request->username))  {
             return Redirect()->back()->withErrors("Please put a correct phone number with no plus, syntax used is: 256*********");
         }
         $check_if_element_exists_array = [];

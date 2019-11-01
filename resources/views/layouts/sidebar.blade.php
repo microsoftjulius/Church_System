@@ -41,7 +41,7 @@
                 <li><a href="/display-sent-messages">Sent Messages</a></li>
                 <li><a href="/message-categories"><i class=""></i> Message categories </a></li>
                 <li><a href="/incoming-messages"><i class=""></i> Incoming messages </a></li>
-                <li><a href="/search-term-list"><i class=""></i> Message Search terms </a></li>
+
             </ul>
         </li>
         <li><a href="/change-passwords"><i class="fa fa-lock"></i> Change Password </a></li>

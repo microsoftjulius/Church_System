@@ -8,5 +8,5 @@ class searchTerms extends Model
 {
     protected $table = "search_terms";
 
-    protected $fillable = ['user_id','church_id','search_term'];
+    protected $fillable = ['user_id','church_id','search_term','category_id'];
 }
