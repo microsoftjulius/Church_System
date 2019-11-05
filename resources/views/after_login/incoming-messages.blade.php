@@ -41,10 +41,10 @@
                                 @csrf
                                     <div class="input-group">
                                     <div class="input-group-btn">
-                                        <input type="text" class="form-control col-sm-2 mr-2" name="time_start" placeholder=" Date from">
+                                        <input type="text" class="form-control col-sm-2 mr-2" name="from" placeholder=" Date from">
                                         </div>
                                         <div class="input-group-btn">
-                                        <input type="text" class="form-control col-sm-2" name="time_end" placeholder="Date to">
+                                        <input type="text" class="form-control col-sm-2" name="to" placeholder="Date to">
                                         </div>
                                         <div class="input-group-btn">
                                         <button type="submit" name="filter" id="filter" class="btn btn-success"><i class="glyphicon glyphicon-search"> filter</i></button>
