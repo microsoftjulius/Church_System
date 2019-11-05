@@ -39,7 +39,7 @@
                             @csrf
                                 <div class="col-md-12">
                                         <div class="col-md-7">
-                                            <form action="" method="GET">
+                                            <form action="/date-filter" method="GET">
                                                 <div class="input-group">
                                                 <div class="input-group-btn">
                                                     <input type="text" class="form-control col-sm-2 mr-2" name="from" placeholder=" Date from">

@@ -299,4 +299,17 @@ class messages extends Controller {
         return redirect('/church')->withErrors('New message recieved with default key word');
 
     }
+    public function date_filter(Request $request){
+        // $messages_to_categories = message:: whereDate('created_at', '>=', $fromDate)
+        // ->whereDate('created_at', '<=', $toDate);
+        // return view('after_login.incoming-messages',compact('messages_to_categories'));
+
+
+        // $messages_to_categories = message::select("message.*")
+
+        //     ->whereBetween('created_at', ['2019-10-01', '2019-10-10'])
+
+        //     ->get();
+        // dd($messages_to_categories);
+    }
 }

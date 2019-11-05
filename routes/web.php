@@ -63,6 +63,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/save-search-term/{id}','messages@save_search_terms');
     Route::post('/delete-search-term/{id}','messages@delete_search_term');
     Route::get('/show-search-terms','messages@display_search_terms');
+    // Route::get('/date-filter','messages@date_filter');
+
 
     Route::get('/messages/{message}/group_id/{group}/church_id/{church}/category_id/{category}','messages@incoming');
     //Route::get('/courses/{course}/years/{year}/semesters/{semester}/categories/{category}/materials/','MaterialController');
