@@ -305,11 +305,13 @@ class messages extends Controller {
         // return view('after_login.incoming-messages',compact('messages_to_categories'));
 
 
-        // $messages_to_categories = message::select("message.*")
-
-        //     ->whereBetween('created_at', ['2019-10-01', '2019-10-10'])
-
-        //     ->get();
-        // dd($messages_to_categories);
+        $messages_to_categories = message::select("message.*")
+        {
+        if ($request->input('from_date')<>'' && $request->input('to_date')<>'')
+        {    
+            $start = date("Y-m-d",strtotime($request->input('from_date')));
+            $end = date("Y-m-d",strtotime($request->input('to_date')."+1 day"));
+            $query->whereBetween('created_at',[$start,$end]);
+        }
     }
 }

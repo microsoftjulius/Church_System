@@ -39,10 +39,10 @@
                             @csrf
                                 <div class="col-md-12">
                                         <div class="col-md-7">
-                                            <form action="/date-filter" method="GET">
+                                            <form action="/dates-filter" method="get">
                                                 <div class="input-group">
                                                 <div class="input-group-btn">
-                                                    <input type="text" class="form-control col-sm-2 mr-2" name="from" placeholder=" Date from">
+                                                    <input type="text" class="form-control col-sm-2 mr-2" name="from_date" placeholder=" Date from">
                                                     </div>
                                                     <div class="input-group-btn">
                                                     <input type="text" class="form-control col-sm-2" name="to" placeholder="Date to">
