@@ -228,10 +228,9 @@ class messages extends Controller {
         ->select('messages.message','category.title')->paginate('10');
         $drop_down_categories = category::where('church_id', Auth::user()->church_id)
         ->select("title", "user_id", "id")->get();
-        $messages_to_categories = message::whereBetween('created_at', [$request->get('from'), $request->get('to')])
-        ->get();
 
-        return view('after_login.incoming-messages',compact('messages_to_categories','drop_down_categories','messages_to_filter'));
+        $dates_filter = message::whereBetween('created_at', [$request->get('from'), $request->get('to')])->get();
+        return view('after_login.incoming-messages',compact('messages_to_categories','drop_down_categories','dates_filter'));
     }
     // public function picking_messages_from_api(){
     //     $client = new Nexmo\Client(new Nexmo\Client\Credentials\Basic(API_KEY, API_SECRET));
@@ -302,10 +301,10 @@ class messages extends Controller {
         return redirect('/church')->withErrors('New message recieved with default key word');
 
     }
-    public function filters_date(Request $request)
-        {
-            $dates_filter = messag::whereBetween('created_at', [$request->get('from'), $request->get('to')])->get();
+    // public function filters_date(Request $request)
+    //     {
+    //         $dates_filter = message::whereBetween('created_at', [$request->get('from'), $request->get('to')])->get();
 
-            return redirect()->route('users.index', compact('users'));
-        }
+    //         return view('after_login.incoming-messages', compact('dates_filter'));
+    //     }
 }
