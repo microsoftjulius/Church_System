@@ -300,18 +300,12 @@ class messages extends Controller {
 
     }
     public function date_filter(Request $request){
-        // $messages_to_categories = message:: whereDate('created_at', '>=', $fromDate)
-        // ->whereDate('created_at', '<=', $toDate);
-        // return view('after_login.incoming-messages',compact('messages_to_categories'));
+    $start = message::get( 'time_start' );
+    $end = message::get( 'time_end' );      
 
+    $messages_to_categories = message::all()->whereBetween('created_at', [$start, $end])->get();
 
-        $messages_to_categories = message::select("message.*")
-        {
-        if ($request->input('from_date')<>'' && $request->input('to_date')<>'')
-        {    
-            $start = date("Y-m-d",strtotime($request->input('from_date')));
-            $end = date("Y-m-d",strtotime($request->input('to_date')."+1 day"));
-            $query->whereBetween('created_at',[$start,$end]);
+    return view('after_login.incoming-messages',compact('messages_to_categories'));
         }
-    }
+       // $request->input();
 }

@@ -35,25 +35,26 @@
                 @include('layouts.message')
                 <!-- Search form -->
                 <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-7">
+                                <form action="/dates-filter" method="get">
+                                @csrf
+                                    <div class="input-group">
+                                    <div class="input-group-btn">
+                                        <input type="text" class="form-control col-sm-2 mr-2" name="time_start" placeholder=" Date from">
+                                        </div>
+                                        <div class="input-group-btn">
+                                        <input type="text" class="form-control col-sm-2" name="time_end" placeholder="Date to">
+                                        </div>
+                                        <div class="input-group-btn">
+                                        <button type="submit" name="filter" id="filter" class="btn btn-success"><i class="glyphicon glyphicon-search"> filter</i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                             <form class="pull-right pt-4" role="search" action="/search-sent-messages" method="get" >
                             @csrf
-                                <div class="col-md-12">
-                                        <div class="col-md-7">
-                                            <form action="/dates-filter" method="get">
-                                                <div class="input-group">
-                                                <div class="input-group-btn">
-                                                    <input type="text" class="form-control col-sm-2 mr-2" name="from_date" placeholder=" Date from">
-                                                    </div>
-                                                    <div class="input-group-btn">
-                                                    <input type="text" class="form-control col-sm-2" name="to" placeholder="Date to">
-                                                    </div>
-                                                    <div class="input-group-btn">
-                                                    <button type="button" name="filter" id="filter" class="btn btn-success"><i class="glyphicon glyphicon-search"> filter</i></button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                            <div class="col-md-3">
+                                  <div class="col-md-3">
                                                     <div class="input-group">
                                                             <input type="text" class="form-control col-md-10" placeholder="Search incoming messages" name="search_message" id="srch-term" required>
                                                             <div class="input-group-btn">
@@ -84,9 +85,9 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                            </div>
-                                </div>
+                                            </div> 
                             </form>
+                            </div>
                         </div>
                     <!--Table-->
                 <div class="row">
