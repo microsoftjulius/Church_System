@@ -60,7 +60,7 @@
                             <div class="form-group row">
                                 <div class="text-center py-4 mt-3 ">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
-                                <a href="/home"><button type="button" class="btn btn-warning"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</i></button></a>
+                                <a href="{{url()->previous()}}"><button type="button" class="btn btn-warning"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</i></button></a>
                                 </div>
                             </div>
                            

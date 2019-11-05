@@ -35,64 +35,64 @@ class ChurchesController extends Controller
     public function create(Request $request)
     {
         if (strpos($request->church_name, '.') == true) {
-            return Redirect()->back()->withErrors("Church name can't contain a full stop");
+            return Redirect()->back()->withInput()->withErrors("Church name can't contain a full stop");
         } elseif (strpos($request->church_name, '!') == true) {
-            return Redirect()->back()->withErrors("Church name can't contain an exclamation mark");
+            return Redirect()->back()->withInput()->withErrors("Church name can't contain an exclamation mark");
         } elseif (strpos($request->church_name, '@') == true) {
-            return Redirect()->back()->withErrors("Church name can't contain an @ sign");
+            return Redirect()->back()->withInput()->withErrors("Church name can't contain an @ sign");
         } elseif (strpos($request->church_name, '#') == true) {
-            return Redirect()->back()->withErrors("Church name can't contain a hash");
+            return Redirect()->back()->withInput()->withErrors("Church name can't contain a hash");
         } elseif (strpos($request->church_name, '$') == true) {
-            return Redirect()->back()->withErrors("church name can't contain a dollar sign");
+            return Redirect()->back()->withInput()->withErrors("church name can't contain a dollar sign");
         } elseif (strpos($request->church_name, '%') == true) {
-            return Redirect()->back()->withErrors("church name can't contain a percentage symbol");
+            return Redirect()->back()->withInput()->withErrors("church name can't contain a percentage symbol");
         } elseif (strpos($request->church_name, '^') == true) {
-            return Redirect()->back()->withErrors("Church name can't contain a ^ sign");
+            return Redirect()->back()->withInput()->withErrors("Church name can't contain a ^ sign");
         } elseif (strpos($request->church_name, '&') == true) {
-            return Redirect()->back()->withErrors("Church name can't contain an ampasand sign");
+            return Redirect()->back()->withInput()->withErrors("Church name can't contain an ampasand sign");
         } elseif (strpos($request->church_name, '*') == true) {
-            return Redirect()->back()->withErrors("church name can't contain an asteric");
+            return Redirect()->back()->withInput()->withErrors("church name can't contain an asteric");
         } elseif (strpos($request->church_name, '"') == true) {
-            return Redirect()->back()->withErrors("church name can't contain a double quote");
+            return Redirect()->back()->withInput()->withErrors("church name can't contain a double quote");
         } elseif (strpos($request->church_name, ',') == true) {
-            return Redirect()->back()->withErrors("church name can't contain a comma");
+            return Redirect()->back()->withInput()->withErrors("church name can't contain a comma");
         } elseif (strpos($request->church_name, ':') == true) {
-            return Redirect()->back()->withErrors("church name can't contain full quotes");
+            return Redirect()->back()->withInput()->withErrors("church name can't contain full quotes");
         } elseif (strpos($request->church_name, '\'') == true) {
-            return Redirect()->back()->withErrors("church name can't contain a backslash");
+            return Redirect()->back()->withInput()->withErrors("church name can't contain a backslash");
         } elseif (strpos($request->church_name, '?') == true) {
-            return Redirect()->back()->withErrors("church name can't contain a question mark");
+            return Redirect()->back()->withInput()->withErrors("church name can't contain a question mark");
         } elseif (strpos($request->church_name, ';') == true) {
-            return Redirect()->back()->withErrors("church name can't contain a semi-column");
+            return Redirect()->back()->withInput()->withErrors("church name can't contain a semi-column");
         } elseif (strpos($request->church_name, '/') == true) {
-            return Redirect()->back()->withErrors("church name can't contain contain a forward slash");
+            return Redirect()->back()->withInput()->withErrors("church name can't contain contain a forward slash");
         } elseif (strpos($request->church_name, '}') == true) {
-            return Redirect()->back()->withErrors("church name can't contain curl brackets");
+            return Redirect()->back()->withInput()->withErrors("church name can't contain curl brackets");
         } elseif (strpos($request->church_name, '{') == true) {
-            return Redirect()->back()->withErrors("church name can't contain curl brackets");
+            return Redirect()->back()->withInput()->withErrors("church name can't contain curl brackets");
         } elseif (strpos($request->church_name, '[') == true) {
-            return Redirect()->back()->withErrors("church name can't contain angular brackets");
+            return Redirect()->back()->withInput()->withErrors("church name can't contain angular brackets");
         } elseif (strpos($request->church_name, ']') == true) {
-            return Redirect()->back()->withErrors("church name can't contain angular brackets");
+            return Redirect()->back()->withInput()->withErrors("church name can't contain angular brackets");
         } elseif (strpos($request->church_name, '-') == true) {
-            return Redirect()->back()->withErrors("church name can't contain an hyphen");
+            return Redirect()->back()->withInput()->withErrors("church name can't contain an hyphen");
         } elseif (strpos($request->church_name, '_') == true) {
-            return Redirect()->back()->withErrors("church name can't contain an under-scope");
+            return Redirect()->back()->withInput()->withErrors("church name can't contain an under-scope");
         } elseif (strpos($request->church_name, '=') == true) {
-            return Redirect()->back()->withErrors("church name can't contain an equals sign");
+            return Redirect()->back()->withInput()->withErrors("church name can't contain an equals sign");
         } elseif (strpos($request->church_name, '+') == true) {
-            return Redirect()->back()->withErrors("church name can't contain a plus sign");
+            return Redirect()->back()->withInput()->withErrors("church name can't contain a plus sign");
         } elseif (strpos($request->church_name, '(') == true) {
-            return Redirect()->back()->withErrors("church name can't contain a bracket");
+            return Redirect()->back()->withInput()->withErrors("church name can't contain a bracket");
         } elseif (strpos($request->church_name, ')') == true) {
-            return Redirect()->back()->withErrors("church name can't contain a bracket");
+            return Redirect()->back()->withInput()->withErrors("church name can't contain a bracket");
         }
         if(churchdatabase::where('church_name',$request->church_name)->exists())
         {
-            return Redirect()->back()->withErrors('Church Name already Registered');
+            return Redirect()->back()->withInput()->withErrors('Church Name already Registered');
         }
         if(User::where('email',$request->church_name)->exists()){
-            return Redirect()->back()->withErrors('User Name Already Taken, Choose a different name');
+            return Redirect()->back()->withInput()->withErrors('User Name Already Taken, Choose a different name');
         }
         // Contacts::create(array(
         //     'church_id' => Auth::user()->id,
@@ -139,7 +139,7 @@ class ChurchesController extends Controller
         User::where('church_id',null)->update(array(
             'church_id' =>  $request->church_id,
         ));
-        return Redirect()->back()->withErrors('User Created Successfully');
+        return Redirect()->back()->withInput()->withErrors('User Created Successfully');
     }
 
     //Edit the Church information
@@ -148,7 +148,7 @@ class ChurchesController extends Controller
         churchdatabase::where('id',$request->church_id)->update(array(
             'background_color'=>$request->background_color
         ));
-        return Redirect()->back()->withErrors('Background Color Edited Successfully');
+        return Redirect()->back()->withInput()->withErrors('Background Color Edited Successfully');
     }
 
     //Update church as Active

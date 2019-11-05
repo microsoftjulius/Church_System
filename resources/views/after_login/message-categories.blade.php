@@ -45,7 +45,7 @@
                                             <form class="pull-right pt-4" role="search" action="/search-message-categories" method="post" >
                                                 @csrf
                                                     <div class="input-group">
-                                                            <input type="text" class="form-control col-md-4" placeholder="Search" name="category" id="srch-term" >
+                                                            <input type="text" class="form-control col-md-4" placeholder="Search" name="category" id="srch-term" value="{{old('category')}}" >
                                                             <div class="input-group-btn">
                                                                 <button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-search"></i>
                                                                 </button>

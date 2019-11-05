@@ -18,21 +18,21 @@
 <!-- Custom Theme Scripts -->
 <script src="{{ asset('bootstrap/build/js/custom.min.js')}}"></script>
 
+<!--Jquery code for date time picker-->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <!-- MDB core JavaScript -->
 
 <!--multiselect checkboxes-->
 
 
-<script type="text/javascript">
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = today.getFullYear();
-
-    today = mm + '/' + dd + '/' + yyyy + " " + today.getHours() + ":" + today.getMinutes();
-    document.getElementById('dateshown').setAttribute("Value",today);
-
-</script>
+<script>
+        $( function() {
+          $( "#datepicker" ).datepicker();
+        } );
+        </script>
 
 <script type="text/javascript">
 function countChars(obj){

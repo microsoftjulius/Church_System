@@ -42,13 +42,13 @@
                                 @csrf
                                 <div class="row">
                                 <div class="col-lg-8">
-                                    <input type="text" value="" name="group_name" class="form-control" placeholder="Add Group">
+                                    <input type="text" value="" name="group_name" class="form-control" placeholder="Add Group" value="{{ old('group_name') }}">
                                 </div></div>
                                 <div class="row">
                                 <div class="col-lg-8 text-center">
                                     <label for="groupName"></label><br>
                                     <button input type="submit" value="Save" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
-                                    <a href="/contact-groups"><button type="button" class="btn btn-warning"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</i></button></a>
+                                    <a href="{{ url()->previous() }}"><button type="button" class="btn btn-warning"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</i></button></a>
                                 </div></div>
                             </form></div>
                             <div class="col-lg-4"></div>

@@ -13,6 +13,6 @@ class churchdatabase extends Controller
             'database_password' => $request->password,
             'attached_logo' =>$request->logo
         ));
-        return Redirect()->back();
+        return Redirect()->back()->withErrors("church created successfully");
     }
 }

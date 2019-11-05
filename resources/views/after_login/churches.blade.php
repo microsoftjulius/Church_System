@@ -44,7 +44,7 @@
                             <div class="col-md-4"></div>
                             <div class="col-md-2">
                                 <div class="input-group">
-                                    <input type="text" class="form-control col-md-12" placeholder="Search group" name="church_name" id="srch-term" required>
+                                    <input type="text" class="form-control col-md-12" placeholder="Search group" name="church_name" id="srch-term" value="{{old('church_name')}}" required>
                                     <div class="input-group-btn">
                                         <button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-search"></i>
                                         </button>

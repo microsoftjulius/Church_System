@@ -43,14 +43,14 @@
                                     <div class="col-md-6">
                                             <label for="colFormLabelSm" class="col-sm-4 col-form-label col-form-label-sm">Message category</label>
                                             <div class="col-sm-8">
-                                            <input type="text" class="form-control form-control-sm" name="category" id="materialFormCardNameEx" placeholder="message category" required>
+                                            <input type="text" class="form-control form-control-sm" name="category" id="materialFormCardNameEx" placeholder="message category" required value="{{ old('category')}}">
                                             </div>
                                     </div>
                             </div> 
                             <div class="form-group row">
                                 <div class="text-center">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
-                                <a href="/message-categories"><button type="button" class="btn btn-warning"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</i></button></a>
+                                <a href="{{ url()->previous() }}"><button type="button" class="btn btn-warning"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</i></button></a>
                                 </div>
                             </div>
                             </form>

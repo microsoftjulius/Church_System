@@ -35,14 +35,18 @@ class messages extends Controller {
     }
     public function store_sent_messages(Request $request) {
         if (empty($request->message)) {
-            return Redirect()->back()->withErrors("Make sure the Message Field is not Empty");
+            return Redirect()->back()->withInput()->withErrors("Make sure the Message Field is not Empty");
         }
         if (empty($request->checkbox)) {
-            return Redirect()->back()->withErrors("Make sure you have selected at least one group");
+            return Redirect()->back()->withInput()->withErrors("Make sure you have selected at least one group");
         }
         $message_to_send = $request->message;
         for ($i = 0;$i < count($request->checkbox);$i++) {
             $contact_array = json_decode(Contacts::where('contacts.group_id', $request->checkbox[$i])->value('contact_number'));
+
+        if(count($contact_array) < 2){
+            return Redirect()->back()->withInput()->withErrors("Some of the chosen groups have no contacts");
+        }
             //return $contact_array;
             foreach ($contact_array as $contact) {
                 //$contact->Contact;
@@ -66,11 +70,22 @@ class messages extends Controller {
                 //print an array that is json decoded
                 //print_r(json_decode($ch_result, true));
             }
-            message::create(array('church_id' => Auth::user()->church_id, 'group_id' => $request->checkbox[$i], 'message' => $request->message, 'contact_character' => $request->contact_character, 'tobesent_on' => $request->created_at, 'created_by' => Auth::user()->id));
+            $empty_array = array();
+            $message_response = json_decode($ch_result, true);
+            foreach($message_response as $res){
+                //return $res;
+                array_push($empty_array, $res);
+            }
+            //return $empty_array;
+            message::create(array('church_id' => Auth::user()->church_id, 'group_id' => $request->checkbox[$i],
+            'message' => $request->message, 'tobesent_on' => $request->created_at, 'status'=>$empty_array[0], 'created_by' => Auth::user()->id));
             //count for contacts in each group
             //return count($request->checkbox);
         }
-        return redirect('/sent-quick-messages');
+        if($empty_array[1] == 30){
+        return redirect()->back()->withErrors("Message sending was successful");
+        }
+        return redirect()->back()->withErrors($empty_array[2]);
     }
     public function search_messages(Request $request) {
         $display_sent_message_details = message::where('message', $request->search_message)->orWhere('message', 'like', '%' . $request->search_message . '%')->where('church_id', Auth::user()->church_id)
@@ -94,7 +109,7 @@ class messages extends Controller {
     }
     public function save_message_category(Request $request) {
         if(category::where('church_id',Auth::user()->church_id)->exists() && category::where('title',$request->category)->exists()){
-            return Redirect()->back()->withErrors("Message category already registered");
+            return Redirect()->back()->withInput()->withErrors("Message category already registered");
         }
         category::create(array('church_id' => Auth::user()->church_id, 'title' => $request->category,'user_id'=>Auth::user()->id));
         return redirect('/message-categories')->withErrors("Category added successfully");
@@ -183,7 +198,7 @@ class messages extends Controller {
         foreach ($search_term as $item) {
             array_push($check_if_element_exists_array, $item->search_term);
             if (in_array($request->search_term, $check_if_element_exists_array)) {
-                return Redirect()->back()->withErrors("search term is already registered");
+                return Redirect()->back()->withInput()->withErrors("search term is already registered");
             }
         }
         //$nospace_request = str_replace(" ", "", $request->search_term);
@@ -194,14 +209,17 @@ class messages extends Controller {
             'search_term' => json_encode($search_term),
             'user_id'     => Auth::user()->id
         ));
-        return Redirect()->back()->withErrors('Search term added successfully');
+        return Redirect()->back()->withInput()->withErrors('Search term added successfully');
     }
     public function delete_search_term($id, Request $request){
+        $empty_array = array();
         $search_term = json_decode(searchTerms::where('church_id', Auth::user()->church_id)->where('category_id',$id)->value('search_term'));
-        unset($search_term[$request->index_to_delete]);
-        array_splice($search_term, $request->index_to_delete, 0);
-        searchTerms::where('church_id', Auth::user()->church_id)->where('category_id',$id)->update(array('search_term' => json_encode($search_term)));
-        return Redirect()->back()->withErrors("Search Term was deleted Successfully");
+        unset($search_term[$request->index_to_delete + 1]);
+        foreach($search_term as $array){
+            array_push($empty_array, $array);
+        }
+        searchTerms::where('church_id', Auth::user()->church_id)->where('category_id',$id)->update(array('search_term' => json_encode($empty_array)));
+        return Redirect()->back()->withInput()->withErrors("Search Term was deleted Successfully");
     }
 
     public function display_message_category_form($id){

@@ -43,7 +43,7 @@
                                             <th class="th-sm">No.</th>
                                             <th class="th-sm">Search Term</th>
                                             <th class="th-sm">Created by</th>
-                                            {{-- <th class="th-sm">Options</th> --}}
+                                            <th class="th-sm">Options</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -55,7 +55,7 @@
                                                 <td>{{ $i+1 }}</td>
                                                 <td>{{ $contact->search_term }}</td>
                                                 <td>{{ $search_term->email }}</td>
-                                                {{-- <td><button class="btn btn-danger" type="submit">Delete</button></td> --}}
+                                                <td><button class="btn btn-danger" type="submit">Delete</button></td>
                                                 </form>
                                             </tr>
                                             @endforeach
@@ -65,10 +65,10 @@
                                                     <td></td>
                                                     <td><input type="text" name="search_term" value="" class="form-control"required></td>
                                                     <td><input type="text" name="created_by" value="{{ auth()->user()->email }}" class="form-control" disabled></td>
-                                                    {{-- <td><button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> Save</button></td> --}}
+                                                    <td><button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> Save</button></td>
                                                 </tr>
                                                 <button class="btn btn-primary pull-right" type="submit">Save</button>
-                                                <a href="/contact-groups"><button type="button" class="btn btn-primary pull-right"><i class="" aria-hidden="true"></i> Back</i></button></a>
+                                                <a href="{{url()->previous()}}"><button type="button" class="btn btn-primary pull-right"><i class="" aria-hidden="true"></i> Back</i></button></a>
                                                 @include('layouts.breadcrumbs')
                                                 <span class="text-primary">After inputing a search term, press enter to save it</span>
                                             </form>
