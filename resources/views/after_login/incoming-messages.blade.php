@@ -35,7 +35,7 @@
                 @include('layouts.message')
                 <!-- Search form -->
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-lg-12">
                         <div class="col-md-7">
                             <form action="/dates-filter" method="get">
                             @csrf
@@ -52,7 +52,7 @@
                                 </div>
                             </form>
                         </div>
-                                <form class="pull-right pt-4" role="search" action="/search-sent-messages" method="get" >
+                                <form class="pull-right pt-3" role="search" action="/search-sent-messages" method="get" >
                                 @csrf
                                     <div class="col-md-3">
                                             <div class="input-group">
@@ -117,6 +117,11 @@
                                             @endforeach
                                             </tbody>
                                     </table>
+                                    @if(isset($search_query))
+                                        {{ $messages_to_categories->appends(['search' => $search_query])->links() }}
+                                        @else
+                                        {{ $messages_to_categories->links() }}
+                                        @endif
                                 </section>
                             </div>
                     </div>
