@@ -40,17 +40,15 @@
                             <form action="/dates-filter" method="get">
                             @csrf
                                 <div class="input-group">
-                                @foreach($dates_filter as $picking_date_from__database)
                                 <div class="input-group-btn">
-                                    <input type="text" class="form-control col-sm-2 mr-2" name="from" placeholder=" Date from" value="$picking_date_from__database">
+                                    <input type="text" class="form-control col-sm-2 mr-2" name="from" placeholder=" Date from">
                                 </div>
                                 <div class="input-group-btn">
-                                    <input type="text" class="form-control col-sm-2" name="to" placeholder="Date to" value="$picking_date_from__database">
+                                    <input type="text" class="form-control col-sm-2" name="to" placeholder="Date to">
                                 </div>
                                     <div class="input-group-btn">
                                     <button type="submit" name="filter" id="filter" class="btn btn-success"><i class="glyphicon glyphicon-search"> filter</i></button>
                                     </div>
-                                    @endforeach
                                 </div>
                             </form>
                         </div>
