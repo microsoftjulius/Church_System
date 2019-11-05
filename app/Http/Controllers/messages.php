@@ -276,20 +276,23 @@ class messages extends Controller {
         //return $search_terms_array;
         //convert message to array
 
-        // $message_array = explode(" ",strtolower($request->message));
+        $message_array = explode(" ",strtolower($request->message));
         // print_r($search_terms_array);
-        // echo "<br>";
         // print_r($message_array);
-        // //check if any member occurs in both arrays
-        // $result=array_intersect($search_terms_array,$message_array);
-        // // $empty_result = [];
-        // echo "<br>";
-        // print_r($result);
+
+        $empty_array = [];
+        //check if any member occurs in both arrays
+        $result=array_intersect($search_terms_array,$message_array);
+        foreach($result as $res){
+            array_push($empty_array, $res);
+        }
+        //return($empty_array);
         /*
         here, get the category id of the key word that has been saved in the
         result variable and map it. then its done
-
         */
+        foreach($empty_array as $element){
+        $category_id = category::where('title',$element)->value('id');
         //return($result);
         //get the message from the request
         $recieved_message = $request->message;
@@ -297,13 +300,13 @@ class messages extends Controller {
         message::create(array(
             'group_id'      => $request->group,
             'church_id'     => $request->church,
-            'category_id'   => $request->category,
+            'category_id'   => $category_id,
             'message'       => $request->message,
             'contact_character' => 0,
-            'tobesent_on'     => '10/09/2019 10:19',
+            'tobesent_on'     => '',
             'status'         => 'Recieved'
         ));
-        return redirect('/church')->withErrors('New message recieved');
+        return redirect('/incoming-messages')->withErrors('New message recieved');
         }
         else{
             message::create(array(
@@ -312,16 +315,17 @@ class messages extends Controller {
                 'category_id'   => 1,
                 'message'       => $request->message,
                 'contact_character' => 0,
-                'tobesent_on'     => '10/09/2019 10:19',
+                'tobesent_on'     => '',
                 'status'         => 'Recieved'
             ));
         }
-        return redirect('/church')->withErrors('New message recieved with default key word');
+        }
+        return redirect('/incoming-messages')->withErrors('New message recieved with default key word');
 
     }
     public function filters_date(Request $request)
         {
-            $messages_to_categories = category::join('messages','messages.category_id','category.id')
+        $messages_to_categories = category::join('messages','messages.category_id','category.id')
         ->where('category.church_id',Auth::user()->church_id)
         ->where('status','Recieved')
         ->select('messages.message','category.title')->get('');
