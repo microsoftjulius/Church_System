@@ -23,7 +23,7 @@ class messages extends Controller {
         return view('after_login.sent-messages', compact('display_sent_message_details'));
     }
     public function display_sent_messages() {
-        $display_sent_message_details = message::join('users', 'users.id', 'messages.created_by')->where('users.church_id', Auth::user()->church_id)->select('messages.id', 'messages.message', 'messages.created_on', 'messages.status', 'users.email')->paginate('10');
+        $display_sent_message_details = message::join('users', 'users.id', 'messages.created_by')->where('users.church_id', Auth::user()->church_id)->select('messages.id', 'messages.message', 'messages.tobesent_on', 'messages.status', 'users.email')->paginate('10');
         return view('after_login.sent-messages', compact('display_sent_message_details'));
     }
     public function drop_down_groups() {
@@ -66,7 +66,7 @@ class messages extends Controller {
                 //print an array that is json decoded
                 //print_r(json_decode($ch_result, true));
             }
-            message::create(array('church_id' => Auth::user()->church_id, 'group_id' => $request->checkbox[$i], 'message' => $request->message, 'contact_character' => $request->contact_character, 'created_on' => $request->created_at, 'created_by' => Auth::user()->id));
+            message::create(array('church_id' => Auth::user()->church_id, 'group_id' => $request->checkbox[$i], 'message' => $request->message, 'contact_character' => $request->contact_character, 'tobesent_on' => $request->created_at, 'created_by' => Auth::user()->id));
             //count for contacts in each group
             //return count($request->checkbox);
         }
@@ -280,7 +280,7 @@ class messages extends Controller {
             'category_id'   => $request->category,
             'message'       => $request->message,
             'contact_character' => 0,
-            'created_on'     => '10/09/2019 10:19',
+            'tobesent_on'     => '10/09/2019 10:19',
             'status'         => 'Recieved'
         ));
         return redirect('/church')->withErrors('New message recieved');
@@ -292,7 +292,7 @@ class messages extends Controller {
                 'category_id'   => 1,
                 'message'       => $request->message,
                 'contact_character' => 0,
-                'created_on'     => '10/09/2019 10:19',
+                'tobesent_on'     => '10/09/2019 10:19',
                 'status'         => 'Recieved'
             ));
         }
