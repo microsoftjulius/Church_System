@@ -221,14 +221,16 @@ class messages extends Controller {
         );
         return redirect('/message-categories')->withErrors('Category update was successful ');
     }
-    public function show_incoming_messages(){
+    public function show_incoming_messages(Request $request){
         $messages_to_categories = category::join('messages','messages.category_id','category.id')
         ->where('category.church_id',Auth::user()->church_id)
         ->where('status','Recieved')
         ->select('messages.message','category.title')->paginate('10');
         $drop_down_categories = category::where('church_id', Auth::user()->church_id)
         ->select("title", "user_id", "id")->get();
-        return view('after_login.incoming-messages',compact('messages_to_categories','drop_down_categories'));
+        $dates_filter = message::whereBetween('created_at', [$request->get('from'), $request->get('to')])->get();
+
+        return view('after_login.incoming-messages',compact('messages_to_categories','drop_down_categories','dates_filter'));
     }
     // public function picking_messages_from_api(){
     //     $client = new Nexmo\Client(new Nexmo\Client\Credentials\Basic(API_KEY, API_SECRET));
@@ -299,17 +301,16 @@ class messages extends Controller {
         return redirect('/church')->withErrors('New message recieved with default key word');
 
     }
-    public function date_filter(Request $request){
-        // $messages_to_categories = message:: whereDate('created_at', '>=', $fromDate)
-        // ->whereDate('created_at', '<=', $toDate);
-        // return view('after_login.incoming-messages',compact('messages_to_categories'));
-
-
-        // $messages_to_categories = message::select("message.*")
-
-        //     ->whereBetween('created_at', ['2019-10-01', '2019-10-10'])
-
-        //     ->get();
-        // dd($messages_to_categories);
-    }
+    public function filters_date(Request $request)
+        {
+            $messages_to_categories = category::join('messages','messages.category_id','category.id')
+        ->where('category.church_id',Auth::user()->church_id)
+        ->where('status','Recieved')
+        ->select('messages.message','category.title')->get('');
+        $drop_down_categories = category::where('church_id', Auth::user()->church_id)
+        ->select("title", "user_id", "id")->get();
+            $dates_filter = message::whereBetween('created_at', [$request->from, $request->to])->get();
+//return dd($dates_filter);
+            return view('after_login.incoming-messages', compact('dates_filter','messages_to_categories','drop_down_categories'));
+        }
 }
