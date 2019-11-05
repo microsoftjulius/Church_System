@@ -245,7 +245,7 @@ class messages extends Controller {
         ->where('status','Recieved')
         ->select('messages.message','category.title')->paginate('10');
         $drop_down_categories = category::where('church_id', Auth::user()->church_id)
-        ->select("title", "user_id", "id")->get();
+        ->select("title", "user_id", "id")->paginate(10);
         $dates_filter = message::whereBetween('created_at', [$request->get('from'), $request->get('to')])->get();
 
         return view('after_login.incoming-messages',compact('messages_to_categories','drop_down_categories','dates_filter'));
