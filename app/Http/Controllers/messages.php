@@ -47,6 +47,7 @@ class messages extends Controller {
         if(count($contact_array) < 2){
             return Redirect()->back()->withInput()->withErrors("Some of the chosen groups have no contacts");
         }
+
             //return $contact_array;
             foreach ($contact_array as $contact) {
                 //$contact->Contact;
@@ -72,6 +73,9 @@ class messages extends Controller {
             }
             $empty_array = array();
             $message_response = json_decode($ch_result, true);
+            if(empty($message_response)){
+                return Redirect()->back()->withInput()->withErrors("check your internet connection");
+            }
             foreach($message_response as $res){
                 //return $res;
                 array_push($empty_array, $res);
@@ -323,16 +327,13 @@ class messages extends Controller {
         return redirect('/incoming-messages')->withErrors('New message recieved with default key word');
 
     }
-    public function filters_date(Request $request)
+    public function searchIncomingMessages(Request $request)
         {
-        $messages_to_categories = category::join('messages','messages.category_id','category.id')
-        ->where('category.church_id',Auth::user()->church_id)
-        ->where('status','Recieved')
-        ->select('messages.message','category.title')->get();
-        $drop_down_categories = category::where('church_id', Auth::user()->church_id)
-        ->select("title", "user_id", "id")->get();
-            $dates_filter = message::whereBetween('created_at', [$request->from, $request->to])->get();
-//return dd($dates_filter);
-            return view('after_login.incoming-messages', compact('dates_filter','messages_to_categories','drop_down_categories'))->with(['search_query' => $request->search]);
+            //return $request->from;
+            //return $request->search_message;
+            //return $request->to;
+            $created_year = message::join('category','messages.category_id','category.id')
+            ->whereYear('messages.created_at','2019')->where('title',$request->search_message)->get("messages.created_at");
+            return $created_year->date("Y-m-d",$created_year);
         }
 }
