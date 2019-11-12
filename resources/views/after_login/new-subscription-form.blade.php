@@ -33,36 +33,31 @@
                 <!-- page content -->
                 <div class="right_col" role="main">
                     <!--Setupform-->
-                    <form class="col-md-offset-3 col-sm-6" style="border-width: 4px 4px 4px 4px; padding :1em; background-color:white;" action="/save_new_subscription" method="POST">
+                    <form class="col-md-offset-3 col-sm-6" style="border-width: 4px 4px 4px 4px; padding :1em; background-color:white;" action="/adds-user" method="POST">
                         @csrf
                         @include('layouts.message')
                     <div class="panel-heading text-center"><h4>Please add subscription details</h4>
                     <hr>
                     </div>
                             <div class="form-group row md-form">
-                                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">First name</label>
+                                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Period</label>
                                 <div class="col-sm-10">
-                                <input type="text" class="form-control form-control-sm" name="first_name" id="materialFormCardNameEx" placeholder="Enter Your First Name" value="" required>
+                                <input type="text" class="form-control form-control-sm" name="period" id="materialFormCardNameEx" placeholder="Enter Your time frame" value="" required>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="colFormLabel" class="col-sm-2 col-form-label">Last name</label>
+                                <label for="colFormLabel" class="col-sm-2 col-form-label">Contact</label>
                                 <div class="col-sm-10">
-                                <input type="text" class="form-control" id="colFormLabel" name="last_name" placeholder="Enter Your Last Name" value="" required>
+                                <input type="text" class="form-control" id="colFormLabel" name="contact" placeholder="Enter Your contact" value="" required>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Username / Phone number</label>
+                                <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Amount</label>
                                 <div class="col-sm-10">
-                                <input type="text" class="form-control form-control-lg" name="username" id="colFormLabelLg" value="" required>
+                                <input type="text" class="form-control form-control-lg" name="amount" id="colFormLabelLg" placeholder="shs." value="" required>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Password</label>
-                                <div class="col-sm-10">
-                                <input type="password" class="form-control form-control-lg" name="password" id="colFormLabelLg" placeholder="xxxxxxxxxxxxxxx" value="" required>
-                                </div>
-                            </div>
+                            
                             <div class="form-group row">
                                 <div class="text-center py-4 mt-3 ">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
