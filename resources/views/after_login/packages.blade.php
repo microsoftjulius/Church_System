@@ -68,24 +68,27 @@
                                     <table id="dtBasicExample" class="table table-striped table-bordered table-sm bg-white" cellspacing="0" width="100%">
                                                 <thead>
                                                     <tr>
-                                                        <th class="th-sm">Id</th>
-                                                        <th class="th-sm">Name
-                                                        </th>
+                                                        <th class="th-sm">No.</th>
+                                                        <th class="th-sm">Category Name</th>
+                                                        <th class="th-sm">Phone Number</th>
                                                         <th class="th-sm">Time frame</th>
-                                                        <th class="th-sm">Amount</th> 
+                                                        <th class="th-sm">Amount</th>
                                                     </tr>
                                                 </thead>
                                             <tbody>
+                                                @foreach ($all_packages as $index => $package)
                                                 <tr>
-                                                    <td>1</td>
-                                                    <td>ociba james</td>
-                                                    <td>1month</td>
-                                                    <td>20,000</td>
+                                                    <td>{{ $index+1 }}</td>
+                                                    <td>{{ $package->title }}</td>
+                                                    <td>{{ $package->contact_number }}</td>
+                                                    <td>{{ $package->time_frame }}</td>
+                                                    <td>{{ number_format($package->Amount) }} /=</td>
                                                 </tr>
+                                                @endforeach
                                             </tbody>
                                     </table>
                                 </section>
-                                
+
                                 <!--link for pagination-->
                             </div>
                     </div>
