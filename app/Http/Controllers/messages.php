@@ -251,9 +251,8 @@ class messages extends Controller {
         ->select('messages.message','category.title')->paginate('10');
         $drop_down_categories = category::where('church_id', Auth::user()->church_id)
         ->select("title", "user_id", "id")->paginate(10);
-        $dates_filter = message::whereBetween('created_at', [$request->get('from'), $request->get('to')])->get();
 
-        return view('after_login.incoming-messages',compact('messages_to_categories','drop_down_categories','dates_filter'));
+        return view('after_login.incoming-messages',compact('messages_to_categories','drop_down_categories'));
     }
     // public function picking_messages_from_api(){
     //     $client = new Nexmo\Client(new Nexmo\Client\Credentials\Basic(API_KEY, API_SECRET));
@@ -303,6 +302,7 @@ class messages extends Controller {
         $recieved_message = $request->message;
         if(strpos($recieved_message, 'God') !== false){
         message::create(array(
+            //for now testing with one group, we ask on how to get the group id from the phone
             'group_id'      => $request->group,
             'church_id'     => $request->church,
             'category_id'   => $category_id,
@@ -334,22 +334,37 @@ class messages extends Controller {
             //return $request->search_message;
             //return $request->to;
             /**
-             * get the created at year where the category title is the $request->search_messages
-             * loop through the collection and return the array of the created years only,
-             * then for every year in the years array, return Date::make($year_array)->format('Y-m-d')
-             * in the for loop, we add the where query
+             * get the created_at year, convert it to the required date time format
+             * check the messages table where created_at is between the input converted dates
              */
-            $created_year = json_decode(message::join('category','messages.category_id','category.id')
-            ->where('messages.created_at','2019')->where('title',$request->search_message)->get("messages.created_at"), true);
-
-            $year_array = [];
-            foreach($created_year as $year){
-                array_push($year_array,$year["created_at"]);
+            if(empty($request->from) && empty($request->to)){
+                $messages_to_categories = message::join('category','messages.category_id','category.id')
+                ->where('title',$request->search_message)->paginate('10');
+                $drop_down_categories = category::where('church_id', Auth::user()->church_id)
+                ->select("title", "user_id", "id")->paginate(10);
+                return view('after_login.incoming-messages',compact('messages_to_categories','drop_down_categories'));
             }
-            for($i=0; $i<count($year_array); $i++){
-                echo Date::make($year_array[$i])->format('Y');
+            if(empty($request->from)){
+                $messages_to_categories = message::join('category','messages.category_id','category.id')
+                ->where('messages.created_at',[Date::make($request->to)->format('Y-m-d H-i-s')])
+                ->where('title',$request->search_message)->paginate('10');
+                $drop_down_categories = category::where('church_id', Auth::user()->church_id)
+                ->select("title", "user_id", "id")->paginate(10);
+                return view('after_login.incoming-messages',compact('messages_to_categories','drop_down_categories'));
             }
-            //return Date::make($year_array[0])->format('Y-m-d');
-            //return $year_array;
+            if(empty($request->to)){
+                $messages_to_categories = message::join('category','messages.category_id','category.id')
+                ->where('messages.created_at',[Date::make($request->from)->format('Y-m-d H-i-s')])
+                ->where('title',$request->search_message)->paginate('10');
+                $drop_down_categories = category::where('church_id', Auth::user()->church_id)
+                ->select("title", "user_id", "id")->paginate(10);
+                return view('after_login.incoming-messages',compact('messages_to_categories','drop_down_categories'));
+            }
+            $messages_to_categories = message::join('category','messages.category_id','category.id')
+            ->whereBetween('messages.created_at',[Date::make($request->from)->format('Y-m-d H-i-s'), Date::make($request->to)->format('Y-m-d H-i-s')])
+            ->where('title',$request->search_message)->paginate('10');
+            $drop_down_categories = category::where('church_id', Auth::user()->church_id)
+            ->select("title", "user_id", "id")->paginate(10);
+            return view('after_login.incoming-messages',compact('messages_to_categories','drop_down_categories'));
         }
 }
