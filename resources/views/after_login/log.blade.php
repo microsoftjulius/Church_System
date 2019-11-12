@@ -34,13 +34,14 @@
                 <div class="right_col" role="main">
                 @include('layouts.message')
                 <!-- Search form -->
+                @include('layouts.breadcrumbs')
                 {{--<div class="row">
                 <form  class="pull-right" action="/" method="">
                         @csrf
                         <div class="col-md-12">
                         <div class="col-md-4">
                                 <div class="input-group">
-                                @include('layouts.breadcrumbs')
+
                                 </div>
                             </div>
                             <div class="col-md-4"></div>

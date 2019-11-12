@@ -63,9 +63,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/delete-search-term/{id}','messages@delete_search_term');
     Route::get('/search-incoming-messages','messages@searchIncomingMessages');
     Route::get('/show-search-terms','messages@display_search_terms');
-    Route::get('/packages','PackagesController@getChurchPackages');
+    Route::get('/packages','PackagesController@getChurchPackages')->name('Packages');
     Route::get('/addnewsubscription','PackagesController@selectSubscribedForMessagesTitle');
-    Route::get('/logs','PackagesController@getPaymentLogs');
+    Route::get('/logs','PackagesController@getPaymentLogs')->name('Payment Logs');
     Route::get('/messages/{message}/group_id/{group}/church_id/{church}/category_id/{category}','messages@incoming');
     Route::get('/packages/category/{category_id}/time_frame/{time_frame}/contact_number/{contact_number}/amount/{amount}','PackagesController@createAutomaticPackage');
     Route::post('/save-manual-subscription','PackagesController@createManualSubscription');
