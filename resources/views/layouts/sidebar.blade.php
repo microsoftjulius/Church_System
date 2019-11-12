@@ -44,6 +44,13 @@
 
             </ul>
         </li>
+        <li><a><i class="fa fa-cc-paypal"></i> Payments <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
+                <li><a href="/packages">Packages</a></li>
+                <li><a href="/logs">Logs</a></li>
+            </ul>
+        </li>
+        
         <li><a href="/change-passwords"><i class="fa fa-lock"></i> Change Password </a></li>
         </ul>
     </div>
