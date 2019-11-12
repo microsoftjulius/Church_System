@@ -55,12 +55,25 @@
                                 <div class="col-lg-5">
                                     <div class="col-lg-4"></div>
                                     <div class="col-md-8">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control col-md-10" placeholder="Search incoming messages" name="search_message" id="srch-term">
-                                            <div class="input-group-btn">
-                                                <button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-search"></i>
-                                                </button>
-                                            </div>
+                                        <div class="btn-group">
+                                        <a href="#" class="btn btn-primary dropdown-toggle w-50" data-toggle="dropdown">
+                                        Select a category &nbsp;<span class="caret"></span>
+                                        </a>
+                                        <ul class="dropdown-menu" style="padding: 5px;" id="myDiv">
+                                            <li><input type="checkbox" id="select_all"/> All categories</li>
+                                                @foreach($drop_down_categories as $getting_from_database)
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="checkbox dropdown-item checkbox-default" name="search_message[]" value="{{$getting_from_database->id}}" /> {{ $getting_from_database->title }}
+                                                        </label>
+                                                    </div> 
+                                                @endforeach
+                                                
+                                        </ul>
+                                        <div class="input-group-btn">
+                                                                <button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-search"></i>
+                                                                </button>
+                                                </div>
                                         </div>
                                     </div>
                                 </div>
