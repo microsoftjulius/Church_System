@@ -34,7 +34,7 @@
                 <div class="right_col" role="main">
                 @include('layouts.message')
                 <!-- Search form -->
-                <div class="row">
+                {{--<div class="row">
                 <form  class="pull-right" action="/" method="">
                         @csrf
                         <div class="col-md-12">
@@ -55,12 +55,14 @@
                             </div>
                             <div class="col-md-2">
                                 <div class="input-group">
-                                <a href="/addnewsubscription"><button type="button" class="btn btn-primary"><i class="fa fa-plus"> New subscription</i></button></a>
+                                <a href="/"><button type="button" class="btn btn-primary"><i class="fa fa-plus"> </i></button></a>
                                 </div>
                             </div>
+                            
                         </div>
                     </form>
                         </div>
+                        --}}
                     <!--Table-->
                 <div class="row">
                             <div class="col-lg-12">
@@ -68,19 +70,21 @@
                                     <table id="dtBasicExample" class="table table-striped table-bordered table-sm bg-white" cellspacing="0" width="100%">
                                                 <thead>
                                                     <tr>
-                                                        <th class="th-sm">Id</th>
-                                                        <th class="th-sm">Name
+                                                        <th class="th-sm">Number</th>
+                                                        <th class="th-sm">Contact number
                                                         </th>
-                                                        <th class="th-sm">Time frame</th>
-                                                        <th class="th-sm">Amount</th> 
+                                                        <th class="th-sm">Payment made on</th>
+                                                        <th class="th-sm">Category</th> 
+                                                        <th class="th-sm">Status</th>
                                                     </tr>
                                                 </thead>
                                             <tbody>
                                                 <tr>
                                                     <td>1</td>
-                                                    <td>ociba james</td>
-                                                    <td>1month</td>
-                                                    <td>20,000</td>
+                                                    <td>0775423456</td>
+                                                    <td>12/11/2019</td>
+                                                    <td>Prayer</td>
+                                                    <td>Paid</td>
                                                 </tr>
                                             </tbody>
                                     </table>
