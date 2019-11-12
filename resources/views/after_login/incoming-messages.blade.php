@@ -34,11 +34,11 @@
                 <div class="right_col" role="main">
                     @include('layouts.message')
                     <!-- Search form -->
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="col-md-7">
-                                <form action="/dates-filter" method="get">
-                                    @csrf
+                    <form action="/search-incoming-messages" method="get">
+                        @csrf
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="col-md-7">
                                     <div class="col-lg-5">
                                         <div class="input-group">
                                             <div class="input-group-btn">
@@ -51,16 +51,8 @@
                                             <input type="date" class="form-control col-sm-2" name="to" placeholder="End date">
                                         </div>
                                     </div>
-                                    <div class="col-lg-2">
-                                        <div class="input-group-btn">
-                                            <button type="submit" name="filter" id="filter" class="btn btn-success"><i class="glyphicon glyphicon-search"> filter</i></button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="col-lg-5">
-                                <form class="pull-right pt-3" role="search" action="/search-sent-messages" method="get" >
-                                    @csrf
+                                </div>
+                                <div class="col-lg-5">
                                     <div class="col-lg-4"></div>
                                     <div class="col-md-8">
                                         <div class="input-group">
@@ -71,10 +63,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                     <!--Table-->
                     <div class="row">
                         <div class="col-lg-12">

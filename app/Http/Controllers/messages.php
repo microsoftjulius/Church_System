@@ -327,7 +327,7 @@ class messages extends Controller {
         return redirect('/incoming-messages')->withErrors('New message recieved with default key word');
 
     }
-    public function filters_date(Request $request)
+    public function searchIncomingMessages(Request $request)
         {
         $messages_to_categories = category::join('messages','messages.category_id','category.id')
         ->where('category.church_id',Auth::user()->church_id)
