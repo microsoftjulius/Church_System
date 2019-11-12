@@ -67,7 +67,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/addnewsubscription','PackagesController@selectSubscribedForMessagesTitle');
     Route::get('/logs',function() { return view('after_login.log');});
     Route::get('/messages/{message}/group_id/{group}/church_id/{church}/category_id/{category}','messages@incoming');
-    Route::get('/packages/category/{category_id}/time_frame/{time_frame}/contact_number/{contact_number}/amount/{Amount}','PackagesController@createAutomaticPackage');
+    Route::get('/packages/category/{category_id}/time_frame/{time_frame}/contact_number/{contact_number}/amount/{amount}','PackagesController@createAutomaticPackage');
     Route::post('/save-manual-subscription','PackagesController@createManualSubscription');
 
 });
