@@ -330,13 +330,6 @@ class messages extends Controller {
     }
     public function searchIncomingMessages(Request $request)
         {
-            //return $request->from;
-            //return $request->search_message;
-            //return $request->to;
-            /**
-             * get the created_at year, convert it to the required date time format
-             * check the messages table where created_at is between the input converted dates
-             */
             if(empty($request->from) && empty($request->to)){
                 $messages_to_categories = message::join('category','messages.category_id','category.id')
                 ->where('title',$request->search_message)->paginate('10');

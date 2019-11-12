@@ -60,15 +60,14 @@
                                         Select a category &nbsp;<span class="caret"></span>
                                         </a>
                                         <ul class="dropdown-menu" style="padding: 5px;" id="myDiv">
-                                            <li><input type="checkbox" id="select_all"/> All categories</li>
-                                                @foreach($drop_down_categories as $getting_from_database)
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox" class="checkbox dropdown-item checkbox-default" name="search_message[]" value="{{$getting_from_database->id}}" /> {{ $getting_from_database->title }}
-                                                        </label>
-                                                    </div> 
-                                                @endforeach
-                                                
+                                            @foreach($drop_down_categories as $getting_from_database)
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" class="" name="search_message" value="{{ $getting_from_database->title }}"/> {{ $getting_from_database->title }}
+                                                    </label>
+                                                </div>
+                                            @endforeach
+
                                         </ul>
                                         <div class="input-group-btn">
                                                                 <button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-search"></i>
