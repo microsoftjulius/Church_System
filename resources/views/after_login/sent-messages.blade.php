@@ -38,7 +38,7 @@
                             <form class="pull-right pt-4" role="search" action="/search-sent-messages" method="get" >
                             @csrf
                                 <div class="col-md-12">
-                                       <div class="col-md-4">
+                                    <div class="col-md-4">
                                             <div class="input-group">
                                                 @include('layouts.breadcrumbs')
                                             </div>
