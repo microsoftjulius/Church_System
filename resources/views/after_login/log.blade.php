@@ -34,7 +34,7 @@
                 <div class="right_col" role="main">
                 @include('layouts.message')
                 <!-- Search form -->
-                <div class="row">
+                {{--<div class="row">
                 <form  class="pull-right" action="/" method="">
                         @csrf
                         <div class="col-md-12">
@@ -43,7 +43,7 @@
                                 @include('layouts.breadcrumbs')
                                 </div>
                             </div>
-                            {{--<div class="col-md-4"></div>
+                            <div class="col-md-4"></div>
                             <div class="col-md-2">
                                 <div class="input-group">
                                     <input type="text" class="form-control col-md-12" placeholder="Search package" name="" id="srch-term" value="" required>
@@ -58,10 +58,11 @@
                                 <a href="/"><button type="button" class="btn btn-primary"><i class="fa fa-plus"> </i></button></a>
                                 </div>
                             </div>
-                            --}}
+                            
                         </div>
                     </form>
                         </div>
+                        --}}
                     <!--Table-->
                 <div class="row">
                             <div class="col-lg-12">
