@@ -64,8 +64,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/delete-search-term/{id}','messages@delete_search_term');
     Route::get('/show-search-terms','messages@display_search_terms');
     Route::get('/dates-filter','messages@filters_date');
+    Route::get('/packages',function() { return view('after_login.packages');});
 
 
     Route::get('/messages/{message}/group_id/{group}/church_id/{church}/category_id/{category}','messages@incoming');
-    //Route::get('/courses/{course}/years/{year}/semesters/{semester}/categories/{category}/materials/','MaterialController');
+    
 });

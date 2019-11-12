@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Tue Nov 12 2019 09:32:59 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* resources/views/layouts/sidebar.blade.php
+
+
+Created files:
+* resources/views/after_login/package-subscription.blade.php
+
+
+Deleted files:
+
+
+Renamed files:

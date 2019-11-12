@@ -35,26 +35,31 @@
                 @include('layouts.message')
                 <!-- Search form -->
                 <div class="row">
-                            <form class="pull-right pt-4" role="search" action="/search-sent-messages" method="get" >
-                            @csrf
-                                <div class="col-md-12">
-                                       <div class="col-md-4">
-                                            <div class="input-group">
-                                                @include('layouts.breadcrumbs')
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4"></div>
-                                            <div class="col-md-4">
-                                                    <div class="input-group">
-                                                            <input type="text" class="form-control col-md-12" placeholder="Search" name="search_message" id="srch-term" required>
-                                                            <div class="input-group-btn">
-                                                                <button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-search"></i>
-                                                                </button>
-                                                            </div>
-                                                    </div>
-                                            </div>
+                <form  class="pull-right" action="/" method="">
+                        @csrf
+                        <div class="col-md-12">
+                        <div class="col-md-4">
+                                <div class="input-group">
+                                @include('layouts.breadcrumbs')
                                 </div>
-                            </form>
+                            </div>
+                            <div class="col-md-4"></div>
+                            <div class="col-md-2">
+                                <div class="input-group">
+                                    <input type="text" class="form-control col-md-12" placeholder="Search package" name="church_name" id="srch-term" value="" required>
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="input-group">
+                                <a href="/addnewsubscription"><button type="button" class="btn btn-primary"><i class="fa fa-plus"> New subscription</i></button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                         </div>
                     <!--Table-->
                 <div class="row">
@@ -64,36 +69,24 @@
                                                 <thead>
                                                     <tr>
                                                         <th class="th-sm">Id</th>
-                                                        <th class="th-sm">Message body
+                                                        <th class="th-sm">Name
                                                         </th>
-                                                        <th class="th-sm">Date and time</th>
-                                                        <th class="th-sm"> Created by</th>
-                                                        <th class="th-sm"> Message status</th>
+                                                        <th class="th-sm">Time frame</th>
+                                                        <th class="th-sm">Amount</th> 
                                                     </tr>
                                                 </thead>
                                             <tbody>
-                                            @if ($display_sent_message_details->currentPage() > 1)
-                                            @php($i =  1 + (($display_sent_message_details->currentPage() - 1) * $display_sent_message_details->perPage()))
-                                            @else
-                                            @php($i = 1)
-                                            @endif
-                                            @foreach ($display_sent_message_details as $message_details)
                                                 <tr>
-                                                    <td>{{ $i++}}</td>
-                                                    <td>{{ $message_details->message }}</td>
-                                                    <td>{{ $message_details->created_on }}</td>
-                                                    <td>{{ $message_details->email }}</td>
-                                                    <td>{{ $message_details->status }}</td>
+                                                    <td>1</td>
+                                                    <td>ociba james</td>
+                                                    <td>1month</td>
+                                                    <td>20,000</td>
                                                 </tr>
-                                            @endforeach
                                             </tbody>
                                     </table>
                                 </section>
-                                @if(isset($search_query))
-                                {{ $display_sent_message_details->appends(['search_message' => $search_query])->links() }}
-                                @else
-                                {{ $display_sent_message_details->links() }}
-                                @endif
+                                
+                                <!--link for pagination-->
                             </div>
                     </div>
                     <div class="row">
