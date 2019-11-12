@@ -77,6 +77,11 @@
                                                     </tr>
                                                 </thead>
                                             <tbody>
+                                            @if ($all_packages->currentPage() > 1)
+                                            @php($i =  1 + (($all_packages->currentPage() - 1) * $all_packages->perPage()))
+                                            @else
+                                            @php($i = 1)
+                                            @endif
                                                 @foreach ($all_packages as $index => $package)
                                                 <tr>
                                                     <td>{{ $index+1 }}</td>
@@ -89,6 +94,11 @@
                                                 @endforeach
                                             </tbody>
                                     </table>
+                                    @if(isset($search_query))
+                                    {{ $all_packages->appends(['search' => $search_query])->links() }}
+                                    @else
+                                    {{ $all_packages->links() }}
+                                    @endif
                                 </section>
 
                                 <!--link for pagination-->
