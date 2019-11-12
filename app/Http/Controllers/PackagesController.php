@@ -27,7 +27,7 @@ class PackagesController extends Controller
             'category_id'    => $category_id,
             'contact_number' => $request->contact_number,
             'time_frame'     => $request->time_frame,
-            'Amount'         => $request->Amount,
+            'Amount'         => $request->amount,
             'type'           => 'Automatic'
         ));
         return redirect('/packages')->withErrors("New Package Subscription has been created");

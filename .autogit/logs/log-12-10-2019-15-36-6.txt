@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Tue Nov 12 2019 15:36:06 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* resources/views/after_login/new-subscription-form.blade.php
+
+
+Created files:
+* .autogit/logs/log-12-10-2019-15-5-41.txt
+
+
+Deleted files:
+
+
+Renamed files:
