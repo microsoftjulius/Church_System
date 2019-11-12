@@ -58,7 +58,7 @@
                                 <a href="/"><button type="button" class="btn btn-primary"><i class="fa fa-plus"> </i></button></a>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </form>
                         </div>
@@ -70,26 +70,25 @@
                                     <table id="dtBasicExample" class="table table-striped table-bordered table-sm bg-white" cellspacing="0" width="100%">
                                                 <thead>
                                                     <tr>
-                                                        <th class="th-sm">Number</th>
-                                                        <th class="th-sm">Contact number
-                                                        </th>
-                                                        <th class="th-sm">Payment made on</th>
-                                                        <th class="th-sm">Category</th> 
-                                                        <th class="th-sm">Status</th>
+                                                        <th class="th-sm">No.</th>
+                                                        <th class="th-sm">Church Name</th>
+                                                        <th class="th-sm">Amount of Money Paid</th>
+                                                        <th class="th-sm">Date of Payment</th>
                                                     </tr>
                                                 </thead>
                                             <tbody>
+                                                @foreach ($all_packages as $index=>$packages)
                                                 <tr>
-                                                    <td>1</td>
-                                                    <td>0775423456</td>
-                                                    <td>12/11/2019</td>
-                                                    <td>Prayer</td>
-                                                    <td>Paid</td>
+                                                    <td>{{ $index+1 }}</td>
+                                                    <td>{{ $packages->church_name }}</td>
+                                                    <td></td>
+                                                    <td>{{ $packages->created_at }}</td>
                                                 </tr>
+                                                @endforeach
                                             </tbody>
                                     </table>
                                 </section>
-                                
+
                                 <!--link for pagination-->
                             </div>
                     </div>

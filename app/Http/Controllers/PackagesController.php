@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\PackagesModel;
 use App\SubscribedForMessages;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PackagesController extends Controller
 {
@@ -50,5 +51,15 @@ class PackagesController extends Controller
             'type'           => 'Manual'
         ));
         return redirect('/packages')->withErrors("New Package Subscription has been created");
+    }
+
+    public function getPaymentLogs(){
+        if(Auth::user()->church_id == 1){
+            $all_packages = PackagesModel::join('subscribed_for_messages','subscribed_for_messages.id','packages.category_id')
+            ->join('church_databases','church_databases.id','subscribed_for_messages.church_id')
+            ->select('church_databases.church_name','packages.amount','subscribed_for_messages.created_at')
+            ->paginate('10');
+            return view('after_login.log',compact('all_packages'));
+        }
     }
 }
