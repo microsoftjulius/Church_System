@@ -329,13 +329,11 @@ class messages extends Controller {
     }
     public function searchIncomingMessages(Request $request)
         {
-        $messages_to_categories = category::join('messages','messages.category_id','category.id')
-        ->where('category.church_id',Auth::user()->church_id)
-        ->where('status','Recieved')
-        ->select('messages.message','category.title')->get();
-        $drop_down_categories = category::where('church_id', Auth::user()->church_id)
-        ->select("title", "user_id", "id")->get();
-            $dates_filter = message::whereBetween('created_at', [$request->from, $request->to])->get();
-            return view('after_login.incoming-messages', compact('dates_filter','messages_to_categories','drop_down_categories'))->with(['search_query' => $request->search]);
+            //return $request->from;
+            //return $request->search_message;
+            //return $request->to;
+            $created_year = message::join('category','messages.category_id','category.id')
+            ->whereYear('messages.created_at','2019')->where('title',$request->search_message)->get("messages.created_at");
+            return $created_year->date("Y-m-d",$created_year);
         }
 }

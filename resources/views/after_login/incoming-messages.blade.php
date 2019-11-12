@@ -56,7 +56,7 @@
                                     <div class="col-lg-4"></div>
                                     <div class="col-md-8">
                                         <div class="input-group">
-                                            <input type="text" class="form-control col-md-10" placeholder="Search incoming messages" name="search_message" id="srch-term" required>
+                                            <input type="text" class="form-control col-md-10" placeholder="Search incoming messages" name="search_message" id="srch-term">
                                             <div class="input-group-btn">
                                                 <button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-search"></i>
                                                 </button>
