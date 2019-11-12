@@ -8,5 +8,5 @@ class PackagesModel extends Model
 {
     protected $table = "packages";
 
-    protected $fillable = ['church_id','category_id','time_frame','contact_number','Amount'];
+    protected $fillable = ['church_id','category_id','time_frame','contact_number','Amount','type'];
 }

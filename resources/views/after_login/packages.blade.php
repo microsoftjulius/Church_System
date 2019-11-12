@@ -71,6 +71,7 @@
                                                         <th class="th-sm">No.</th>
                                                         <th class="th-sm">Category Name</th>
                                                         <th class="th-sm">Phone Number</th>
+                                                        <th class="th-sm">Subscription Type</th>
                                                         <th class="th-sm">Time frame</th>
                                                         <th class="th-sm">Amount</th>
                                                     </tr>
@@ -81,6 +82,7 @@
                                                     <td>{{ $index+1 }}</td>
                                                     <td>{{ $package->title }}</td>
                                                     <td>{{ $package->contact_number }}</td>
+                                                    <td>{{ $package->type }}</td>
                                                     <td>{{ $package->time_frame }}</td>
                                                     <td>{{ number_format($package->Amount) }} /=</td>
                                                 </tr>

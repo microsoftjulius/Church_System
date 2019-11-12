@@ -367,5 +367,4 @@ class messages extends Controller {
             ->select("title", "user_id", "id")->paginate(10);
             return view('after_login.incoming-messages',compact('messages_to_categories','drop_down_categories'));
         }
-        
 }
