@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\MessagesCollection;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Date;
 
 class messages extends Controller {
     public function index() {
@@ -332,8 +333,23 @@ class messages extends Controller {
             //return $request->from;
             //return $request->search_message;
             //return $request->to;
-            $created_year = message::join('category','messages.category_id','category.id')
-            ->whereYear('messages.created_at','2019')->where('title',$request->search_message)->get("messages.created_at");
-            return $created_year->date("Y-m-d",$created_year);
+            /**
+             * get the created at year where the category title is the $request->search_messages
+             * loop through the collection and return the array of the created years only,
+             * then for every year in the years array, return Date::make($year_array)->format('Y-m-d')
+             * in the for loop, we add the where query
+             */
+            $created_year = json_decode(message::join('category','messages.category_id','category.id')
+            ->where('messages.created_at','2019')->where('title',$request->search_message)->get("messages.created_at"), true);
+
+            $year_array = [];
+            foreach($created_year as $year){
+                array_push($year_array,$year["created_at"]);
+            }
+            for($i=0; $i<count($year_array); $i++){
+                echo Date::make($year_array[$i])->format('Y');
+            }
+            //return Date::make($year_array[0])->format('Y-m-d');
+            //return $year_array;
         }
 }

@@ -46,7 +46,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/view-contacts/{id}','ContactsController@view_for_group')->name('Add Contacts to Group');
     Route::post('/save-contact-to-group/{id}','ContactsController@save_contact_to_group');
     Route::get('/search-sent-messages','messages@search_messages');
-
     Route::get('/read-file','messages@read_file');
     Route::get('/file-reading',function(){return view('after_login.file-reading');});
     Route::get('/search-term-list/{id}','messages@show_search_terms')->name("Search terms");
@@ -62,6 +61,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/delete-contact/{group_id}','ContactsController@remove_element_from_an_array');
     Route::post('/save-search-term/{id}','messages@save_search_terms');
     Route::post('/delete-search-term/{id}','messages@delete_search_term');
+    Route::get('/search-incoming-messages','messages@searchIncomingMessages');
     Route::get('/show-search-terms','messages@display_search_terms');
     Route::get('/packages',function() { return view('after_login.packages');});
     Route::get('/messages/{message}/group_id/{group}/church_id/{church}/category_id/{category}','messages@incoming');

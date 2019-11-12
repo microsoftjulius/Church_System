@@ -42,13 +42,13 @@
                                     <div class="col-lg-5">
                                         <div class="input-group">
                                             <div class="input-group-btn">
-                                                <input type="date" class="form-control col-sm-2 mr-2" name="from" placeholder=" start date">
+                                                <input type="datetime-local" class="form-control col-sm-2 mr-2" name="from" placeholder=" start date">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-5">
                                         <div class="input-group-btn">
-                                            <input type="date" class="form-control col-sm-2" name="to" placeholder="End date">
+                                            <input type="datetime-local" class="form-control col-sm-2" name="to" placeholder="End date">
                                         </div>
                                     </div>
                                 </div>
