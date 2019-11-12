@@ -56,7 +56,7 @@
                                     <div class="col-lg-4"></div>
                                     <div class="col-md-8">
                                         <div class="btn-group">
-                                        <a href="#" class="btn btn-primary dropdown-toggle w-50" data-toggle="dropdown">
+                                        <a href="#" class="btn btn-default dropdown-toggle w-50" data-toggle="dropdown">
                                         Select a category &nbsp;<span class="caret"></span>
                                         </a>
                                         <ul class="dropdown-menu" style="padding: 5px;" id="myDiv">

@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Tue Nov 12 2019 14:05:28 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* app/Http/Controllers/messages.php
+* resources/views/after_login/incoming-messages.blade.php
+
+
+Created files:
+
+
+Deleted files:
+
+
+Renamed files:
