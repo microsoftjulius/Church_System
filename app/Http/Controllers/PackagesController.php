@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\PackagesModel;
+use App\SubscribedForMessages;
 use Illuminate\Support\Facades\Auth;
 
 class PackagesController extends Controller
@@ -32,9 +33,14 @@ class PackagesController extends Controller
         return redirect('/packages')->withErrors("New Package Subscription has been created");
     }
 
+    public function selectSubscribedForMessagesTitle(){
+        $subscribes_for_messages = SubscribedForMessages::where('church_id',Auth::user()->church_id)->get();
+        return view('after_login.new-subscription-form',compact('subscribes_for_messages'));
+    }
+
     public function createManualSubscription(Request $request){
-        //$category_id = $request->category_id;
-        $category_id = 2;
+        $category_id = $request->category_id;
+        //$category_id = 2;
         PackagesModel::create(array(
             'church_id'      => Auth::user()->church_id,
             'category_id'    => $category_id,

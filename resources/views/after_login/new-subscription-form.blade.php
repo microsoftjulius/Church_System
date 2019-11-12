@@ -57,7 +57,9 @@
                                 <input type="text" class="form-control form-control-lg" name="amount" id="colFormLabelLg" placeholder="shs." value="" required>
                                 </div>
                             </div>
-                            
+                            @foreach ($subscribes_for_messages as $message)
+                                {{ $message->title }}
+                            @endforeach
                             <div class="form-group row">
                                 <div class="text-center py-4 mt-3 ">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
