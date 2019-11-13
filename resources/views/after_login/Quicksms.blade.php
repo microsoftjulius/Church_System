@@ -44,7 +44,7 @@
                             <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Contact groups</label>
                             <div class="col-sm-10">
                                 <div class="btn-group">
-                                    <a href="#" class="btn btn-primary dropdown-toggle w-50" data-toggle="dropdown">
+                                    <a href="#" class="btn btn-default dropdown-toggle w-50" data-toggle="dropdown">
                                     Select a group &nbsp;<span class="caret"></span>
                                     </a>
                                     <ul class="dropdown-menu" style="padding: 5px;" id="myDiv">
@@ -52,7 +52,7 @@
                                             @foreach($drop_down_groups as $picking_from_database)
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox" class="checkbox dropdown-item checkbox-primary" name="checkbox[]" value="{{$picking_from_database->id}}" /> {{ $picking_from_database->group_name }}
+                                                        <input type="checkbox" class="checkbox dropdown-item checkbox-primary" name="checkbox[]" value="{{$picking_from_database->id}}" data-count="{{ $picking_from_database->number_of_contacts }}" /> {{ $picking_from_database->group_name }}
                                                     </label>
                                                 </div>
                                             @endforeach
@@ -98,6 +98,17 @@
             </div>
         </div>
         @include('layouts.javascript')
+        <script>
+            $('.dropdown-menu').click(e => {
+                $selected = $('.checkbox input[type="checkbox"]:checked');
+                var total = 0;
+                const count = $selected.length;
+                for (var i = 0; i < count; ++i) {
+                    total += parseInt($selected[i].getAttribute('data-count'));
+                }
 
+                $('#contact_character').val(total);
+            });
+        </script>
     </body>
 </html>

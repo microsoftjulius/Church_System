@@ -138,7 +138,7 @@ class ContactsController extends Controller {
         array_push($contact_array, $empty_array);
         //saving new array to the database
         Contacts::where('contacts.group_id', $id)->update(array('contact_number' => json_encode($contact_array)));
-        Groups::where('id', $id)->update(array('number_of_contacts' => count($contact_array)));
+        Groups::where('id', $id)->update(array('number_of_contacts' => count($contact_array) -1));
         return Redirect()->back();
     }
     public function remove_element_from_an_array($group_id, Request $request) {
@@ -151,7 +151,7 @@ class ContactsController extends Controller {
         //return (json_encode($contact_array));
         Contacts::where('contacts.group_id', $group_id)->update(array('contact_number' => json_encode($empty_array)));
         //$counted = json_decode($contact_array);
-        Groups::where('id', $group_id)->update(array('number_of_contacts' => count($empty_array)));
+        Groups::where('id', $group_id)->update(array('number_of_contacts' => count($empty_array) -1));
         return Redirect()->back()->withInput()->withErrors("Contact was deleted Successfully");
     }
     public function import() {
