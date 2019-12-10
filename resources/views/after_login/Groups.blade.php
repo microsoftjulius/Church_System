@@ -41,7 +41,7 @@
                                         <div class="col-md-8"></div>
                                             <div class="col-md-4">
                                                     <div class="input-group">
-                                                           <input type="text" class="form-control col-md-12" placeholder="Search" name="search" id="srch-term" required>
+                                                            <input type="text" class="form-control col-md-12" placeholder="Search" name="search" id="srch-term" required>
                                                             <div class="input-group-btn">
                                                                 <button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-search"></i>
                                                                 </button>
@@ -78,7 +78,6 @@
                     <div class="col-md-2 pull-right">
                         <div class="input-group">
                         <a href="{{url()->previous()}}"><button type="button" class="btn btn-danger"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Back</i></button></a>
-
                         </div>
                 </div>
 

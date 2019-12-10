@@ -81,8 +81,6 @@
                 <!-- /footer content -->
             </div>
         </div>
-
-            @include('layouts.javascript')
-
+        @include('layouts.javascript')
     </body>
 </html>
