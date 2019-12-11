@@ -53,7 +53,7 @@ class GroupsController extends Controller
             'church_id' => Auth::user()->church_id,
             'created_by' => Auth::user()->id
         ));
-        $group_id = Groups::max('id');
+        $group_id = Groups::where('church_id',Auth::user()->church_id)->max('id');
         Contacts::create(array(
             'church_id' => Auth::user()->church_id,
             'group_id'  => $group_id,

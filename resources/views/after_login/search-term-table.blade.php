@@ -47,12 +47,18 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                            
                                             @foreach ($contacts as $i => $contact)
+                                            @if($contacts->currentPage()>1)
+                                            @php($page_number = $contacts->currentPage()-1 . $i+1)
+                                            @else
+                                            @php($page_number = $i+1)
+                                            @endif
                                             <tr>
                                                 <form action="/delete-search-term/{{ $search_term->category_id }}" method="POST">
                                                     @csrf
                                                     <td hidden><input type="hidden" name="index_to_delete" id="" value="{{ $i }}"></td>
-                                                <td>{{ $i+1 }}</td>
+                                                <td>{{$page_number}}</td>
                                                 <td>{{ $contact->search_term }}</td>
                                                 <td>{{ $search_term->email }}</td>
                                                 <td><button class="btn btn-danger" type="submit">Delete</button></td>
@@ -68,13 +74,17 @@
                                                     <td><button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> Save</button></td>
                                                 </tr>
                                                 <button class="btn btn-primary pull-right" type="submit">Save</button>
-                                                <a href="{{url()->previous()}}"><button type="button" class="btn btn-primary pull-right"><i class="" aria-hidden="true"></i> Back</i></button></a>
+                                            <a href="/add-search-term/{{$search_term->category_id}}"><button type="button" class="btn btn-primary pull-right"><i class="" aria-hidden="true"></i> Back</i></button></a>
                                                 @include('layouts.breadcrumbs')
                                                 <span class="text-primary">After inputing a search term, press enter to save it</span>
                                             </form>
                                         </tbody>
                                 </table>
-                                {{ $contacts->links() }}
+                                @if(isset($search_query))
+                            {{ $contacts->appends(['group_name' => $search_query])->links() }}
+                            @else
+                            {{ $contacts->links() }}
+                            @endif
                             </section>
                         </div>
                     </div>

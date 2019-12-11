@@ -38,7 +38,7 @@
                     <div class="col-lg-6"></div>
                     <!--Setupform-->
                     @foreach ($category as $cats)
-                    <form class=" col-sm-12" style="border-width: 4px 4px 4px 4px; padding :4em; background-color:white;" action="/edit-category-term/{{ $cats->id }}" method="POST">
+                    <form class=" col-sm-12" style="border-width: 4px 4px 4px 4px; padding :4em; background-color:white;" action="/edit-category-term/{{ $cats->id }}" method="get">
                         @csrf
                         @include('layouts.message')
                     <div class="panel-heading text-center"><h4>Edit message category</h4>
@@ -92,7 +92,7 @@
                             <div class="form-group row">
                                 <div class="text-center py-4 mt-3 ">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
-                                <a href="{{ url()->previous() }}"><button type="button" class="btn btn-warning"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</i></button></a>
+                                <a href="/message-categories"><button type="button" class="btn btn-warning"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</i></button></a>
                                 </div>
                             </div>
 

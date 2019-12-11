@@ -54,10 +54,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/save-change-password','ChurchUserController@store_users_password');
     Route::get('/add-message-category','messages@show_add_category_blade');
     Route::get('/incoming-messages','messages@show_incoming_messages');
-    Route::post('/edit-category-term/{id}','messages@edit_message_category');
+    Route::get('/edit-category-term/{id}','messages@edit_message_category');
     Route::get('/add-search-term/{id}','messages@display_message_category_form');
     Route::post('/add-message-categories','messages@save_message_category');
-    Route::post('/search-message-categories','messages@search_message_categories');
+    Route::get('/search-message-categories','messages@search_message_categories');
     Route::post('/delete-contact/{group_id}','ContactsController@remove_element_from_an_array');
     Route::post('/save-search-term/{id}','messages@save_search_terms');
     Route::post('/delete-search-term/{id}','messages@delete_search_term');
@@ -69,5 +69,4 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/messages/{message}/group_id/{group}/church_id/{church}/category_id/{category}','messages@incoming');
     Route::get('/packages/category/{category_id}/time_frame/{time_frame}/contact_number/{contact_number}/amount/{amount}','PackagesController@createAutomaticPackage');
     Route::post('/save-manual-subscription','PackagesController@createManualSubscription');
-
 });

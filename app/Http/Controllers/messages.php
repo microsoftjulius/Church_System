@@ -113,7 +113,7 @@ class messages extends Controller {
         return view('after_login.add-message-category');
     }
     public function save_message_category(Request $request) {
-        if(category::where('church_id',Auth::user()->church_id)->exists() && category::where('title',$request->category)->exists()){
+        if(category::where('church_id',Auth::user()->church_id)->where('title',$request->category)->exists()){
             return Redirect()->back()->withInput()->withErrors("Message category already registered");
         }
         category::create(array('church_id' => Auth::user()->church_id, 'title' => $request->category,'user_id'=>Auth::user()->id));
@@ -152,9 +152,9 @@ class messages extends Controller {
                 ->join('users', 'users.id', 'search_terms.user_id')
                 ->select('name', 'search_term','email','category_id')->first();
 
-                $contacts = json_decode($search_term->search_term);
+                //remove white space from the array
+                $contacts = (json_decode($search_term->search_term));
                 $contacts = array_slice($contacts, 1);
-
                 $count = count($contacts);
                 $offset = ($request->page - 1) * 10;
                 $contacts = new LengthAwarePaginator(array_slice($contacts, $offset, 10), $count, 10, $request->page);
@@ -173,7 +173,7 @@ class messages extends Controller {
                 ->join('users', 'users.id', 'search_terms.user_id')
                 ->select('name', 'search_term','email','category_id')->first();
 
-                $contacts = json_decode($search_term->search_term);
+                $contacts = array_reverse(json_decode($search_term->search_term));
                 $contacts = array_slice($contacts, 1);
 
                 $count = count($contacts);
@@ -238,6 +238,9 @@ class messages extends Controller {
     }
 
     public function edit_message_category(Request $request, $id){
+        if(category::where('church_id',Auth::user()->church_id)->where('title',$request->new_category_title)->exists()){
+            return redirect()->back()->withinput()->withErrors("Cannot update category to that name since a category with that name already exists");
+        }
         category::where('id',$id)
         ->update(
                 array('title'=> $request->new_category_title)

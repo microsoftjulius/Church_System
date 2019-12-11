@@ -88,7 +88,7 @@
                                                 </thead>
                                             <tbody>
                                                     @if ($category->currentPage() > 1)
-                                                    @php($i =  1 + (($category->currentPage() - 1) * $get_group_contacts->perPage()))
+                                                    @php($i =  1 + (($category->currentPage() - 1) * $category->perPage()))
                                                     @else
                                                     @php($i = 1)
                                                     @endif
@@ -103,7 +103,7 @@
                                             </tbody>
                                     </table>
                                 </section>
-
+                                {{ $category->links() }}
                             </div>
                     </div>
 
